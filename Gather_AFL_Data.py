@@ -1,5 +1,12 @@
-# To do: get the match ID for each team in a text file.
-# get match stats for each game for each team
+# To do: Add Whether they won and margin (maybe negative numbers)
+# add advanced stats & brownlow votes possibly?
+
+#Author: Mitchell Gill
+#Date: 03/06/2020 and continuing to update
+#A range of functions to gather data from 'footywire'
+#Including which teams are in which match ID's
+#And a way of scraping for each teams stats for each game they play in after creating
+#a txt of which teams play in which games
 
 import sys
 import requests
@@ -46,7 +53,6 @@ def scrape_match_basic_stats(teams, team_id):
     count = 1
     for mn in M_IDs:
         #start the for loop here and keep track of line num
-        print(repr(mn))
         URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)
         print(URL)
         page = requests.get(URL)
@@ -70,11 +76,102 @@ def scrape_match_basic_stats(teams, team_id):
             stat_array.append(1)
             oppo_ID = get_key(data[0], teams)
             stat_array.append(int(oppo_ID))
-        ### do more things like get the respective pure numbers into the stat stat_array
-        ### I think adding another function to do more HTML souping and return appended stat_array is best
-        ### could also gather the advanced stats here
+        stats_pulled = [element.text for element in soup.find_all('td', class_="statdata")]
+        stat_array = wrangle_stats_basic(stats_pulled, stat_array, home)
         write_to_excel(team, stat_array, count)
         count = count + 1
+
+#this is fucking disgusting
+#takes the big soup of all HTML text code labelled as 'statdata'
+#reverses the soup as the important stuff is at the back
+#kicks is the 'last stat' so it counts to kicks + 1 for the final stat point
+#splices all other data off and leaves us with the good stuff
+#if the team we are getting stats for is the home team it starts from array = 0
+#otherwise it starts from 2 and either way they do every third step
+def wrangle_stats_basic(stats_pulled, stat_array, home):
+    stats_pulled.reverse()
+    i = 1
+    for x in stats_pulled:
+        if(x == "Kicks"):
+            i = i + 1
+            break
+        i = i+1
+    stats_pulled = stats_pulled[:i]
+    stats_pulled.reverse()
+    if(home == 0):
+        for x in stats_pulled[::3]:
+            #gets rid of % mark
+            if("%" in x):
+                x = x[:-1]
+            #gets ride of kg or cm
+            elif(("cm" in x) or ("kg" in x)):
+                x = x[:-2]
+            #gets rid of mth
+            elif("mth" in x):
+                x = x[:-3]
+                #if mth is 10 or 11
+                if(len(x) == 7):
+                    y = x[-1]+x[-2]
+                    #makes the mth = to decimal
+                    z = float(y)*8.33
+                    #don't think this would actually happen
+                    if(z < 9):
+                        z = str(z)
+                        z = z[:1]
+                        x = x[:2] + '.' + z
+                    else:
+                        z = str(z)
+                        z = z[:2]
+                        x = x[:2] + '.' + z
+                #if mth is 0-9
+                else:
+                    y = x[-1]
+                    z = float(y)*8.33
+                    #will be less than 9 if mth is 0 or 1
+                    #will result in turning 24yr 11mth to 24.91
+                    if(z < 9):
+                        z = str(z)
+                        z = z[:1]
+                        x = x[:2] + '.' + z
+                    else:
+                        z = str(z)
+                        z = z[:2]
+                        x = x[:2] + '.' + z
+            stat_array.append(float(x))
+    #does the same as above except the current team is the away teams
+    #should really put this messy shit into a function but its too late
+    else:
+        for x in stats_pulled[2::3]:
+            if("%" in x):
+                x = x[:-1]
+            elif(("cm" in x) or ("kg" in x)):
+                x = x[:-2]
+            elif("mth" in x):
+                x = x[:-3]
+                if(len(x) == 7):
+                    y = x[-1]+x[-2]
+                    z = float(y)*8.33
+                    if(z < 9):
+                        z = str(z)
+                        z = z[:1]
+                        x = x[:2] + '.' + z
+                    else:
+                        z = str(z)
+                        z = z[:2]
+                        x = x[:2] + '.' + z
+                else:
+                    y = x[-1]
+                    z = float(y)*8.33
+                    if(z < 9):
+                        z = str(z)
+                        z = z[:1]
+                        x = x[:2] + '.' + z
+                    else:
+                        z = str(z)
+                        z = z[:2]
+                        x = x[:2] + '.' + z
+            stat_array.append(float(x))
+    return stat_array
 
 #Example input 'Round 23, Marvel Stadium... etc' will look at either first character
 # or comma position to determine what round it is
@@ -104,7 +201,14 @@ def write_to_excel(team, stat_array, match_count):
     if(not(path.exists(team+'_stats.xlsx'))):
         wb = Workbook()
         ws = wb.active
-        labels = ['Round', 'H/A?', 'Team_against_ID']
+        labels = ['Round', 'H/A?', 'Team_against_ID', 'Kicks', 'Handballs', 'Disposals',
+        'Kick to HB Ratio', 'Marks', 'Tackles', 'Hitouts', 'Frees For', 'Frees Against',
+        'Goals Kicked', 'Goal Assists', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
+        'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances',
+        'Clangers', 'Rebound 50s', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
+        '% In50s Score', '% In50s Goal', 'Height', 'Weight', 'Age', 'Av Games', '<50 Games',
+        '50-99 Games', '100-149 Games', '>150 Games', 'G from Marks', 'G from FK', 'G from 50m Pen',
+        'G from Play']
         i = 0
         j = 0
         #iterates through each column, in the given range, here it is the 1st column
