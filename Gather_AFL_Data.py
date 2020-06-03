@@ -4,7 +4,18 @@
 import sys
 import requests
 import pprint
+import os.path
+import xlsxwriter
+import openpyxl
+from openpyxl import Workbook, load_workbook
+from os import path
 from bs4 import BeautifulSoup
+
+#gets key from dictionary
+def get_key(val, my_dict):
+    for key, value in my_dict.items():
+         if val == value:
+             return key
 
 #Scrapes webpage for which teams played
 #inputs are a team dictionary the team we are looking at and the match num
@@ -24,6 +35,100 @@ def scrape_match_teams_playing(teams, team_id, match_num):
     if current_team in data:
         flag = 1
     return flag
+
+#Scrapes webpage for the basic stats and returns an array of the data
+#inputs the teams dict, current team
+def scrape_match_basic_stats(teams, team_id):
+    team = teams.get(str(team_id))
+    f = open(team+"_data.txt", 'r')
+    M_IDs = f.readlines()
+    M_IDs = [x.rstrip() for x in M_IDs]
+    count = 1
+    for mn in M_IDs:
+        #start the for loop here and keep track of line num
+        print(repr(mn))
+        URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)
+        print(URL)
+        page = requests.get(URL)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        stat_array = []
+        data = [element.text for element in soup.find_all('td', class_='bnorm', width='190')]
+        test_data = [element.text for element in soup.find_all('td', class_="lnorm", height='22')]
+        #uses test_data to chop out which round the match is being played as
+        round = determine_round(test_data[0])
+        stat_array.append(round)
+        #determines if the given team for the match is home or away
+        home = 0
+        #the home team appears first  in the data array
+        if(team == data[0]):
+            stat_array.append(0)
+            oppo_ID = get_key(data[1], teams)
+            stat_array.append(int(oppo_ID))
+        #otherwise they must be the away team
+        else:
+            home = 1
+            stat_array.append(1)
+            oppo_ID = get_key(data[0], teams)
+            stat_array.append(int(oppo_ID))
+        ### do more things like get the respective pure numbers into the stat stat_array
+        ### I think adding another function to do more HTML souping and return appended stat_array is best
+        ### could also gather the advanced stats here
+        write_to_excel(team, stat_array, count)
+        count = count + 1
+
+#Example input 'Round 23, Marvel Stadium... etc' will look at either first character
+# or comma position to determine what round it is
+# finals rounds are given 25-28 values accordingly
+def determine_round(round_string):
+    round = 0
+    if (round_string[0] == 'Q' or round_string[0] == 'E'):
+        round = 25
+    elif (round_string[0] == "S"):
+        round = 26
+    elif (round_string[0] == "P"):
+        round = 27
+    elif (round_string[0] == "G"):
+        round = 28
+    else:
+        if(round_string[7] == ","):
+            round = int(round_string[6])
+        else:
+            round = int(round_string[6] + round_string[7])
+    return round
+
+#opens an excel file based on the team name
+#if the excel file doesn't exist it creates the excel file and adds the labeled column
+#along with the first set of statistics
+#otherwise it opens the existing file and adds the relevant stats into the next open column
+def write_to_excel(team, stat_array, match_count):
+    if(not(path.exists(team+'_stats.xlsx'))):
+        wb = Workbook()
+        ws = wb.active
+        labels = ['Round', 'H/A?', 'Team_against_ID']
+        i = 0
+        j = 0
+        #iterates through each column, in the given range, here it is the 1st column
+        #goes to maximum rows of the length of labels for stats
+        for col in ws.iter_cols(max_col=1, max_row=len(labels)):
+            for cell in col:
+                cell.value = labels[i]
+                i = i+1
+        #iterates to the column that should be free next
+        for col in ws.iter_cols(min_col=match_count+1, max_col=match_count+1, max_row=len(stat_array)):
+            for cell in col:
+                cell.value = stat_array[j]
+                j = j + 1
+        wb.save(filename = team+'_stats.xlsx')
+    else:
+        wb = load_workbook(team+'_stats.xlsx')
+        ws = wb.active
+        j = 0
+        for col in ws.iter_cols(min_col=match_count+1, max_col=match_count+1, max_row=len(stat_array)):
+            for cell in col:
+                cell.value = stat_array[j]
+                j = j + 1
+        wb.save(filename = team+'_stats.xlsx')
+
 
 #Scrapes webpage for advanced stats match data for a given team and match
 #def scrape_match_advanced_stats(teams, team_id, match_num):
@@ -58,6 +163,7 @@ def createTeamDict():
     }
     return teamDict
 
+#creates a file for each team that has the ID's of each of their matches  since 2011
 def createTeamMatchFile(team_int, team_dict):
     #gets current team we are looking at
     current_team = (team_dict[str(team_int)])
@@ -93,11 +199,13 @@ def createTeamMatchFile(team_int, team_dict):
 
 def main():
     teams = createTeamDict()
-    i = 7
+    #for each team do:
+    scrape_match_basic_stats(teams,6)
+    #i = 1
     #should go through each of the 18 teams and create a txt file of their match ID's
-    while(i<19):
-        createTeamMatchFile(i,teams)
-        i = i+1
+    #while(i<19):
+    #    createTeamMatchFile(i,teams)
+    #    i = i+1
 
 if __name__ == '__main__':
     main()
