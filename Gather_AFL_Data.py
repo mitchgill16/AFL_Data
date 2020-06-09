@@ -1,8 +1,7 @@
-# To do: Add Whether they won and margin (maybe negative numbers)
-# add advanced stats & brownlow votes possibly?
+# To do: go through each team
 
-#Author: Mitchell Gill
-#Date: 03/06/2020 and continuing to update
+#Author:
+#Date: 07/06/2020 and continuing to update
 #A range of functions to gather data from 'footywire'
 #Including which teams are in which match ID's
 #And a way of scraping for each teams stats for each game they play in after creating
@@ -43,9 +42,11 @@ def scrape_match_teams_playing(teams, team_id, match_num):
         flag = 1
     return flag
 
-#Scrapes webpage for the basic stats and returns an array of the data
+
+#Scrapes webpage for the match stats and returns an array of the data
+#should also add the adv stats to the data
 #inputs the teams dict, current team
-def scrape_match_basic_stats(teams, team_id):
+def scrape_match_stats(teams, team_id):
     team = teams.get(str(team_id))
     f = open(team+"_data.txt", 'r')
     M_IDs = f.readlines()
@@ -54,124 +55,207 @@ def scrape_match_basic_stats(teams, team_id):
     for mn in M_IDs:
         #start the for loop here and keep track of line num
         URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)
+        advURL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)+"&advv=Y"
         print(URL)
         page = requests.get(URL)
+        advpage = requests.get(advURL)
         soup = BeautifulSoup(page.content, 'html.parser')
+        adv_soup = BeautifulSoup(advpage.content, 'html.parser')
         stat_array = []
+        stat_array.append(int(mn))
+        yr = determine_year(mn)
+        stat_array.append(int(yr))
         data = [element.text for element in soup.find_all('td', class_='bnorm', width='190')]
-        test_data = [element.text for element in soup.find_all('td', class_="lnorm", height='22')]
-        #uses test_data to chop out which round the match is being played as
-        round = determine_round(test_data[0])
+        round_data = [element.text for element in soup.find_all('td', class_="lnorm", height='22')]
+        points_table = [element.text for element in soup.find_all('td', align='center')]
+        home_score = points_table[5].strip()
+        away_score = points_table[10].strip()
+        #uses round_data to chop out which round the match is being played as
+        round = determine_round(round_data[0])
         stat_array.append(round)
         #determines if the given team for the match is home or away
         home = 0
-        #the home team appears first  in the data array
+        #the home team appears first  in the data array. 0 represents home team
         if(team == data[0]):
-            stat_array.append(0)
+            stat_array.append(0) #adds home value as 0 as current team is home team
+            points_for = int(home_score) #assigns points for as the home score as current team is home
+            points_against = int(away_score)
+            margin = points_for-points_against
+            win_value = determine_win(margin)
+            if(win_value == 1):
+                stat_array.append(0) #Home team won
+            elif(win_value == 0):
+                stat_array.append(1) #away team won
+            else:
+                stat_array.append(0.5) #draw
+            stat_array.extend([points_for, points_against, margin, win_value]) # appends all the above
             oppo_ID = get_key(data[1], teams)
             stat_array.append(int(oppo_ID))
-        #otherwise they must be the away team
+        #otherwise they must be the away team. 1 represents away team
         else:
             home = 1
-            stat_array.append(1)
+            stat_array.append(1) #adds home value as 1 as current team is away team
+            points_for = int(away_score) #determines point for as the away score as current team is away
+            points_against = int(home_score)
+            margin = points_for-points_against
+            win_value = determine_win(margin)
+            if(win_value == 1):
+                stat_array.append(1) #away team won
+            elif(win_value == 0):
+                stat_array.append(0) #home team won
+            else:
+                stat_array.append(0.5) #draw
+            stat_array.extend([points_for, points_against, margin, win_value]) #appends above
             oppo_ID = get_key(data[0], teams)
             stat_array.append(int(oppo_ID))
         stats_pulled = [element.text for element in soup.find_all('td', class_="statdata")]
-        stat_array = wrangle_stats_basic(stats_pulled, stat_array, home)
+        adv_stats_pulled = [element.text for element in adv_soup.find_all('td', class_="statdata")]
+        stat_array = wrangle_stats(stats_pulled, adv_stats_pulled, stat_array, home)
         write_to_excel(team, stat_array, count)
         count = count + 1
 
-#this is fucking disgusting
+#takes match number and determines whether it what year that was
+def determine_year(x):
+    x = int(x)
+    year = 9999
+    if(x >= 5147 and x <= 5342):
+        year = 2011
+    elif(x >= 5343 and x <= 5549):
+        year = 2012
+    elif(x >= 5550 and x <= 5756):
+        year = 2013
+    elif(x >= 5757 and x <= 5963):
+        year = 2014
+    elif(x >= 5964 and x <= 6171):
+        year = 2015
+    elif((x >= 6172 and x <= 6369) or (x >= 9298 and x <= 9306 )):
+        year = 2016
+    elif(x >= 9307 and x <= 9513):
+        year = 2017
+    elif(x >= 9514 and x <= 9720):
+        year = 2018
+    elif(x >= 9721 and x <= 9927):
+        year = 2019
+    elif(x >= 9928 and x <= 10078):
+        year = 2020
+    return year
+
 #takes the big soup of all HTML text code labelled as 'statdata'
 #reverses the soup as the important stuff is at the back
 #kicks is the 'last stat' so it counts to kicks + 1 for the final stat point
 #splices all other data off and leaves us with the good stuff
 #if the team we are getting stats for is the home team it starts from array = 0
 #otherwise it starts from 2 and either way they do every third step
-def wrangle_stats_basic(stats_pulled, stat_array, home):
-    stats_pulled.reverse()
+def wrangle_stats(stats_pulled, adv_stats_pulled, stat_array, home):
+    stats_pulled.reverse() #chops up the bits of basic stats we want
+    adv_stats_pulled.reverse()
     i = 1
+    j = 0
     for x in stats_pulled:
+        if(x == "150 or more"): #ensures that the backof the array starts at the 150 games or more area
+            j = i
         if(x == "Kicks"):
             i = i + 1
             break
         i = i+1
-    stats_pulled = stats_pulled[:i]
-    stats_pulled.reverse()
-    if(home == 0):
-        for x in stats_pulled[::3]:
-            #gets rid of % mark
-            if("%" in x):
-                x = x[:-1]
-            #gets ride of kg or cm
-            elif(("cm" in x) or ("kg" in x)):
-                x = x[:-2]
-            #gets rid of mth
-            elif("mth" in x):
-                x = x[:-3]
-                #if mth is 10 or 11
-                if(len(x) == 7):
-                    y = x[-1]+x[-2]
-                    #makes the mth = to decimal
-                    z = float(y)*8.33
-                    #don't think this would actually happen
-                    if(z < 9):
-                        z = str(z)
-                        z = z[:1]
-                        x = x[:2] + '.' + z
-                    else:
-                        z = str(z)
-                        z = z[:2]
-                        x = x[:2] + '.' + z
-                #if mth is 0-9
-                else:
-                    y = x[-1]
-                    z = float(y)*8.33
-                    #will be less than 9 if mth is 0 or 1
-                    #will result in turning 24yr 11mth to 24.91
-                    if(z < 9):
-                        z = str(z)
-                        z = z[:1]
-                        x = x[:2] + '.' + z
-                    else:
-                        z = str(z)
-                        z = z[:2]
-                        x = x[:2] + '.' + z
-            stat_array.append(float(x))
-    #does the same as above except the current team is the away teams
-    #should really put this messy shit into a function but its too late
+    if (j>0):
+        j = j-2
+        stats_pulled = stats_pulled[j:i]
     else:
-        for x in stats_pulled[2::3]:
-            if("%" in x):
-                x = x[:-1]
-            elif(("cm" in x) or ("kg" in x)):
-                x = x[:-2]
-            elif("mth" in x):
-                x = x[:-3]
-                if(len(x) == 7):
-                    y = x[-1]+x[-2]
-                    z = float(y)*8.33
-                    if(z < 9):
-                        z = str(z)
-                        z = z[:1]
-                        x = x[:2] + '.' + z
-                    else:
-                        z = str(z)
-                        z = z[:2]
-                        x = x[:2] + '.' + z
-                else:
-                    y = x[-1]
-                    z = float(y)*8.33
-                    if(z < 9):
-                        z = str(z)
-                        z = z[:1]
-                        x = x[:2] + '.' + z
-                    else:
-                        z = str(z)
-                        z = z[:2]
-                        x = x[:2] + '.' + z
+        stats_pulled = stats_pulled[j:i]
+    stats_pulled.reverse()
+    o = 1
+    p = 0
+    for y in adv_stats_pulled:
+        if(y == "% Goals Assisted"):
+            p = o
+        if (y == "Contested Possessions"):
+            o = o + 1
+            break
+        o = o + 1
+    p = p-2
+    adv_stats_pulled = adv_stats_pulled[p:o]
+    adv_stats_pulled.reverse()
+    if(home == 0): #does the home stats first as home team is the'for' team
+        for x in stats_pulled[::3]:
+            x = strip_units(x)
             stat_array.append(float(x))
+        for y in adv_stats_pulled[::3]: #adds home teams advanced stats after basic
+            y = strip_units(y)
+            stat_array.append(float(y))
+        for x in stats_pulled[2::3]: #adds away stats as away is team 'against'
+            x = strip_units(x)
+            stat_array.append(float(x))
+        for y in adv_stats_pulled[2::3]:
+            y = strip_units(y)
+            stat_array.append(float(y))
+    #does the same as above except the current team is the away teams
+    else: #does the away stats first as the away team is the against team
+        for x in stats_pulled[2::3]:
+            x = strip_units(x)
+            stat_array.append(float(x))
+        for y in adv_stats_pulled[2::3]:
+            y = strip_units(y)
+            stat_array.append(float(y))
+        for x in stats_pulled[::3]: #adds home stats as home team is 'against'
+            x = strip_units(x)
+            stat_array.append(float(x))
+        for y in adv_stats_pulled[::3]: #adds home teams advanced stats after basic
+            y = strip_units(y)
+            stat_array.append(float(y))
     return stat_array
+
+#takes a margin value and determines if the match was drawn, won or lost for the margin
+def determine_win(x):
+    value = 999
+    if(x>0):
+        value = 1
+    elif(x<0):
+        value = 0
+    elif(x == 0):
+        value = 0.5
+    return value
+
+#Gets rid of the non-numeric units in the stats
+def strip_units(x):
+    #gets rid of % mark
+    if("%" in x):
+        x = x[:-1]
+    #gets ride of kg or cm
+    elif(("cm" in x) or ("kg" in x)):
+        x = x[:-2]
+    #gets rid of mth
+    elif("mth" in x):
+        x = x[:-3]
+        #if mth is 10 or 11
+        if(len(x) == 7):
+            y = x[-1]+x[-2]
+            #makes the mth = to decimal
+            z = float(y)*8.33
+            #don't think this would actually happen
+            if(z < 9):
+                z = str(z)
+                z = z[:1]
+                x = x[:2] + '.' + z
+            else:
+                z = str(z)
+                z = z[:2]
+                x = x[:2] + '.' + z
+        #if mth is 0-9
+        else:
+            y = x[-1]
+            z = float(y)*8.33
+            #will be less than 9 if mth is 0 or 1
+            #will result in turning 24yr 11mth to 24.91
+            if(z < 9):
+                z = str(z)
+                z = z[:1]
+                x = x[:2] + '.' + z
+            else:
+                z = str(z)
+                z = z[:2]
+                x = x[:2] + '.' + z
+    return x
 
 #Example input 'Round 23, Marvel Stadium... etc' will look at either first character
 # or comma position to determine what round it is
@@ -201,14 +285,24 @@ def write_to_excel(team, stat_array, match_count):
     if(not(path.exists(team+'_stats.xlsx'))):
         wb = Workbook()
         ws = wb.active
-        labels = ['Round', 'H/A?', 'Team_against_ID', 'Kicks', 'Handballs', 'Disposals',
+        labels = ['Match_ID', 'Year', 'Round', 'H/A?', 'H/A Win?', 'Points For', 'Points Against', 'Margin',
+        'Team Won? (1=W, 0=L)', 'Team_against_ID', 'Kicks', 'Handballs', 'Disposals',
         'Kick to HB Ratio', 'Marks', 'Tackles', 'Hitouts', 'Frees For', 'Frees Against',
         'Goals Kicked', 'Goal Assists', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
         'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances',
         'Clangers', 'Rebound 50s', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
         '% In50s Score', '% In50s Goal', 'Height', 'Weight', 'Age', 'Av Games', '<50 Games',
-        '50-99 Games', '100-149 Games', '>150 Games', 'G from Marks', 'G from FK', 'G from 50m Pen',
-        'G from Play']
+        '50-99 Games', '100-149 Games', '>150 Games', 'Contested Poss', 'Uncontested Poss', 'Effective Disposals',
+        'Disposal Efficiency', 'Clangers', 'Contested Marks', 'Marks Inside 50', 'Clearances', 'Rebound 50s',
+        '1%ers', 'Bounces', 'Goals Assists', 'Goal Assist %', 'Kicks (every)', 'Handballs (row)', 'Disposals (from)',
+        'Kick to HB Ratio (kicks)', 'Marks (below)', 'Tackles(is against)', 'Hitouts', 'Frees For', 'Frees Against',
+        'Goals Kicked', 'Goal Assists', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
+        'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances',
+        'Clangers', 'Rebound 50s', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
+        '% In50s Score', '% In50s Goal', 'Height', 'Weight', 'Age', 'Av Games', '<50 Games',
+        '50-99 Games', '100-149 Games', '>150 Games', 'Contested Poss', 'Uncontested Poss', 'Effective Disposals',
+        'Disposal Efficiency', 'Clangers', 'Contested Marks', 'Marks Inside 50', 'Clearances', 'Rebound 50s',
+        '1%ers', 'Bounces', 'Goals Assists', 'Goal Assist %']
         i = 0
         j = 0
         #iterates through each column, in the given range, here it is the 1st column
@@ -232,16 +326,6 @@ def write_to_excel(team, stat_array, match_count):
                 cell.value = stat_array[j]
                 j = j + 1
         wb.save(filename = team+'_stats.xlsx')
-
-
-#Scrapes webpage for advanced stats match data for a given team and match
-#def scrape_match_advanced_stats(teams, team_id, match_num):
-#    team = teams.get(str(team_id))
-#    URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(match_num)+"&advv=Y"
-#    print(URL)
-#    page = requests.get(URL)
-    #print(page.content)
-#    soup = BeautifulSoup(page.content, 'html.parser')
 
 #creates a dictionary with each teams identifier on afl_tables
 def createTeamDict():
@@ -276,7 +360,7 @@ def createTeamMatchFile(team_int, team_dict):
     match = 1
     #round 1 2011, start of the expansion teams
     p = 5147
-    while(p<6362):
+    while(p<6370):
         #checks if current game has current team
         flag_num = scrape_match_teams_playing(team_dict, team_int, p)
         #if it does it records the match ID, makes it easier for the future
@@ -303,13 +387,11 @@ def createTeamMatchFile(team_int, team_dict):
 
 def main():
     teams = createTeamDict()
-    #for each team do:
-    scrape_match_basic_stats(teams,6)
-    #i = 1
-    #should go through each of the 18 teams and create a txt file of their match ID's
-    #while(i<19):
-    #    createTeamMatchFile(i,teams)
-    #    i = i+1
+    i = 1
+    #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
+    while(i<19):
+        scrape_match_stats(teams,i)
+        i = i+1
 
 if __name__ == '__main__':
     main()
