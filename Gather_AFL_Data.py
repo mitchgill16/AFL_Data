@@ -288,21 +288,21 @@ def write_to_excel(team, stat_array, match_count):
         labels = ['Match_ID', 'Year', 'Round', 'H/A?', 'H/A Win?', 'Points For', 'Points Against', 'Margin',
         'Team Won? (1=W, 0=L)', 'Team_against_ID', 'Kicks', 'Handballs', 'Disposals',
         'Kick to HB Ratio', 'Marks', 'Tackles', 'Hitouts', 'Frees For', 'Frees Against',
-        'Goals Kicked', 'Goal Assists', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
-        'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances',
-        'Clangers', 'Rebound 50s', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
+        'Goals Kicked', 'Goal Assists1', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
+        'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances1',
+        'Clangers1', 'Rebound 50s1', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
         '% In50s Score', '% In50s Goal', 'Height', 'Weight', 'Age', 'Av Games', '<50 Games',
         '50-99 Games', '100-149 Games', '>150 Games', 'Contested Poss', 'Uncontested Poss', 'Effective Disposals',
-        'Disposal Efficiency', 'Clangers', 'Contested Marks', 'Marks Inside 50', 'Clearances', 'Rebound 50s',
-        '1%ers', 'Bounces', 'Goals Assists', 'Goal Assist %', 'Kicks (every)', 'Handballs (row)', 'Disposals (from)',
-        'Kick to HB Ratio (kicks)', 'Marks (below)', 'Tackles(is against)', 'Hitouts', 'Frees For', 'Frees Against',
-        'Goals Kicked', 'Goal Assists', 'Behinds Kicked', 'Rushed Behinds', 'Scoring Shots',
-        'Conversion %', 'Disposals Per Goal', 'Disposals Per Scoring Shot', 'Clearances',
-        'Clangers', 'Rebound 50s', 'Inside 50s', 'In50s Per Scoring Shot', 'In50s Per Goal',
-        '% In50s Score', '% In50s Goal', 'Height', 'Weight', 'Age', 'Av Games', '<50 Games',
-        '50-99 Games', '100-149 Games', '>150 Games', 'Contested Poss', 'Uncontested Poss', 'Effective Disposals',
-        'Disposal Efficiency', 'Clangers', 'Contested Marks', 'Marks Inside 50', 'Clearances', 'Rebound 50s',
-        '1%ers', 'Bounces', 'Goals Assists', 'Goal Assist %']
+        'Disposal Efficiency', 'Clangers2', 'Contested Marks', 'Marks Inside 50', 'Clearances2', 'Rebound 50s2',
+        '1%ers', 'Bounces', 'Goals Assists2', 'Goal Assist %', 'Kicks (O)', 'Handballs (O)', 'Disposals (O)',
+        'Kick to HB Ratio (O)', 'Marks (O)', 'Tackles(O)', 'Hitouts(O)', 'Frees For(O)', 'Frees Against(O)',
+        'Goals Kicked(O)', 'Goal Assists1(O)', 'Behinds Kicked(O)', 'Rushed Behinds(O)', 'Scoring Shots(O)',
+        'Conversion %(O)', 'Disposals Per Goal(O)', 'Disposals Per Scoring Shot(O)', 'Clearances1(O)',
+        'Clangers1(O)', 'Rebound 50s1(O)', 'Inside 50s(O)', 'In50s Per Scoring Shot(O)', 'In50s Per Goal(O)',
+        '% In50s Score(O)', '% In50s Goal(O)', 'Height(O)', 'Weight(O)', 'Age(O)', 'Av Games(O)', '<50 Games(O)',
+        '50-99 Games(O)', '100-149 Games(O)', '>150 Games(O)', 'Contested Poss(O)', 'Uncontested Poss(O)', 'Effective Disposals(O)',
+        'Disposal Efficiency(O)', 'Clangers2(O)', 'Contested Marks(O)', 'Marks Inside 50(O)', 'Clearances2(O)', 'Rebound 50s2(O)',
+        '1%ers(O)', 'Bounces(O)', 'Goals Assists2(O)', 'Goal Assist %(O)']
         i = 0
         j = 0
         #iterates through each column, in the given range, here it is the 1st column
@@ -387,7 +387,7 @@ def createTeamMatchFile(team_int, team_dict):
 
 def main():
     teams = createTeamDict()
-    i = 1
+    i = 18
     #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
     while(i<19):
         scrape_match_stats(teams,i)
