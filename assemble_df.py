@@ -1,4 +1,25 @@
-#to do: make the dir import work, to have more methods available
+#to do: Add an update function to add extra games to the game ID file, and extra columns to stat matrix
+
+#ideas for the future
+
+##add ladder ranking for the each teams match
+###  the ladder would have to have round 1 values in round 2, as its the ladder before the round 2 games
+###  Round 1 games would be the position at the end of round 23 the previous year, finals stay the same as round 23
+###  Round 1 2011, can be entered manually from 2010?
+
+##Make a function that can find an average PAV for each game
+### Have the players PAV from the previous year, so not sure how good it is?
+### could try to find a way to see which players played per game, or just give
+### the team an average PAV from the previous years?
+
+#Takes the information created from Gather_AFL_Data.py and
+#produces the input matrix (X) and the labelled array (Y)
+#in a format that should be suitable for deep learning packages
+#Matrix X is of NxM where N is number of rows.
+#N should be each stat from the previous 5 games for each team playing
+#M is the number of examples, so its every match from R7 2011 to current
+#Array Y should be of 1xM, where each value is whether the home or away team Won
+#Should be used to compute Y-hat for neural network
 
 import numpy as np
 import pandas as pd
@@ -12,7 +33,6 @@ def find_teams_playing(match_id, teams):
     team2 = 999
     while(i<19):
         current_team = (teams[str(i)])
-        print(current_team)
         textfile = open(current_team+"_data.txt", 'r')
         lines = textfile.readlines()
         lines = [x.strip() for x in lines]
@@ -78,8 +98,13 @@ def create_prev5(match_id, team_id, teams):
             #print(len(t_df[i]))
             j = j + 1
         if(i == match_id):
+            ha_val = 0
+            for element in t_df[i]:
+                if(ha_val == 3):
+                    y_label = element
+                ha_val = ha_val + 1
             j = 0
-    return match_array
+    return match_array, y_label
 
 #combine the things + current match metadata
 #so it would go, array of metadata, append home_array, append away_array
@@ -93,7 +118,7 @@ def add_to_df(stat_df, example_m):
     #puts the current example of 10 prev games into ongoing df
     return stat_df
 
-#assemebles a matrix which is nxm
+#assemebles a matrix which is nxm, and a related true labelled matrix of 1xm
 # n = number of inputs, eg. stat categories of prev 5 games for each team + metadata for current game
 # m = number of matches played from 2011 to current
 #Loops through each match with the following 4 lines
@@ -104,13 +129,48 @@ def add_to_df(stat_df, example_m):
 def assemble_stat_matrix():
     #gets team dictionary
     teams = gad.createTeamDict()
+    #Round 7 2011, as everyteam would have played 5 games by then.
+    i = 5192
+    first = 0
+    GWS = 1
     #for each match do determine teams, determine H/A create prev 5, combine the matches, add to big DF of example
-    team1, team2 = find_teams_playing(9913, teams)
-    home_id, away_id, round = determine_home_away(9913, team1, team2, teams)
-    home_array = create_prev5(9913, home_id, teams)
-    away_array = create_prev5(9913, away_id, teams)
-    current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
-    print(current_example_array)
+    #while(i < 6330 or (i > 9297 and i < 9936 )):
+    while(i<9937):
+        print(str(i))
+        team1, team2 = find_teams_playing(i, teams)
+        #takes into account GWS entering the league and not having 5 previous games
+        if((team1 == 9 or team2 == 9) and GWS<6):
+            GWS = GWS + 1
+            i = i + 1
+            continue
+        #match doesn't exist
+        if(team1 == 999 or team2 == 999):
+            i = i + 1
+            continue
+        home_id, away_id, round = determine_home_away(i, team1, team2, teams)
+        #made the create_prev5 function also return the h/a winloss value in another variable
+        #It shouldn't matter that it finds it twice as it only adds it once
+        #Should be 1xM, where M is the total matches found stats for.
+        home_array, y_label = create_prev5(i, home_id, teams)
+        away_array, y_label = create_prev5(i, away_id, teams)
+        current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
+        if(first == 0):
+            data = {str(i) : current_example_array}
+            label_data = {str(i): [y_label]}
+            stats_df = pd.DataFrame(data)
+            label_df = pd.DataFrame(label_data)
+            first = 1
+        else:
+            stats_df[str(i)] = current_example_array
+            label_df[str(i)] = y_label
+        i = i + 1
+        #if(i > 6329 and i < 9298):
+        #    i = 9298
+    stats_df.to_csv('assembled_stat_matrix.csv')
+    label_df.to_csv('assembled_labelled_ymatrix.csv')
+    print(stats_df)
+    print(label_df)
+
 
 def main():
     #could make parameters a range of numbers?

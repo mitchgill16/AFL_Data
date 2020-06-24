@@ -1,6 +1,7 @@
-# To do: go through each team
+# To do: add update functions for the txt and xlsx files
+#you forgot game 9936, and R2 2020 onwards starts in like 10,000s
 
-#Author:
+#Author: Mitchell Gill
 #Date: 07/06/2020 and continuing to update
 #A range of functions to gather data from 'footywire'
 #Including which teams are in which match ID's
@@ -386,6 +387,13 @@ class gatherer:
                 textfile.write(str(j)+'\n')
             j = j+1
         textfile.close()
+
+    def update(M_ID_to_start_from, teams):
+        x = M_ID_to_start_from
+        i = 1
+        while(i<19):
+            update_match_files(x,i,teams)
+            update_stats_excel(x,i,teams)
 
     def main():
         teams = createTeamDict()
