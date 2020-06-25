@@ -21,21 +21,21 @@ class gatherer:
     from bs4 import BeautifulSoup
 
     #gets key from dictionary
-    def get_key(val, my_dict):
+    def get_key(self, val, my_dict):
         for key, value in my_dict.items():
              if val == value:
                  return key
 
     #Scrapes webpage for which teams played
     #inputs are a team dictionary the team we are looking at and the match num
-    def scrape_match_teams_playing(teams, team_id, match_num):
+    def scrape_match_teams_playing(self, teams, team_id, match_num):
         flag = 0
         team = teams.get(str(team_id))
         URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid=" + str(match_num)
         #print(URL)
         current_team = (teams[str(team_id)])
-        page = requests.get(URL)
-        soup = BeautifulSoup(page.content, 'html.parser')
+        page = self.requests.get(URL)
+        soup = self.BeautifulSoup(page.content, 'html.parser')
         #returns the teams playing for each match by getting the text element
         #of the HTML returned by the soup object
         data = [element.text for element in soup.find_all('td', class_='bnorm', width='190')]
@@ -49,24 +49,34 @@ class gatherer:
     #Scrapes webpage for the match stats and returns an array of the data
     #should also add the adv stats to the data
     #inputs the teams dict, current team
-    def scrape_match_stats(teams, team_id):
+    #update id: if its 0 it means start from the beggining
+    #if its a match_ID it only updates stats from a certain game in the text file
+    def scrape_match_stats(self, teams, team_id, update_id):
         team = teams.get(str(team_id))
         f = open(team+"_data.txt", 'r')
         M_IDs = f.readlines()
         M_IDs = [x.rstrip() for x in M_IDs]
         count = 1
+        found = 0
+        M_IDs_toappend = []
         for mn in M_IDs:
+            if(update_id <= int(mn) or update_id == 0):
+                print(mn + "made it into found")
+                M_IDs_toappend.append(mn)
+
+        for mn in M_IDs_toappend:
+            print("into url area")
             #start the for loop here and keep track of line num
             URL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)
             advURL = "https://www.footywire.com/afl/footy/ft_match_statistics?mid="+str(mn)+"&advv=Y"
             print(URL)
-            page = requests.get(URL)
-            advpage = requests.get(advURL)
-            soup = BeautifulSoup(page.content, 'html.parser')
-            adv_soup = BeautifulSoup(advpage.content, 'html.parser')
+            page = self.requests.get(URL)
+            advpage = self.requests.get(advURL)
+            soup = self.BeautifulSoup(page.content, 'html.parser')
+            adv_soup = self.BeautifulSoup(advpage.content, 'html.parser')
             stat_array = []
             stat_array.append(int(mn))
-            yr = determine_year(mn)
+            yr = self.determine_year(mn)
             stat_array.append(int(yr))
             data = [element.text for element in soup.find_all('td', class_='bnorm', width='190')]
             round_data = [element.text for element in soup.find_all('td', class_="lnorm", height='22')]
@@ -74,7 +84,7 @@ class gatherer:
             home_score = points_table[5].strip()
             away_score = points_table[10].strip()
             #uses round_data to chop out which round the match is being played as
-            round = determine_round(round_data[0])
+            round = self.determine_round(round_data[0])
             stat_array.append(round)
             #determines if the given team for the match is home or away
             home = 0
@@ -84,7 +94,7 @@ class gatherer:
                 points_for = int(home_score) #assigns points for as the home score as current team is home
                 points_against = int(away_score)
                 margin = points_for-points_against
-                win_value = determine_win(margin)
+                win_value = self.determine_win(margin)
                 if(win_value == 1):
                     stat_array.append(0) #Home team won
                 elif(win_value == 0):
@@ -92,7 +102,7 @@ class gatherer:
                 else:
                     stat_array.append(0.5) #draw
                 stat_array.extend([points_for, points_against, margin, win_value]) # appends all the above
-                oppo_ID = get_key(data[1], teams)
+                oppo_ID = self.get_key(data[1], teams)
                 stat_array.append(int(oppo_ID))
             #otherwise they must be the away team. 1 represents away team
             else:
@@ -101,7 +111,7 @@ class gatherer:
                 points_for = int(away_score) #determines point for as the away score as current team is away
                 points_against = int(home_score)
                 margin = points_for-points_against
-                win_value = determine_win(margin)
+                win_value = self.determine_win(margin)
                 if(win_value == 1):
                     stat_array.append(1) #away team won
                 elif(win_value == 0):
@@ -109,16 +119,16 @@ class gatherer:
                 else:
                     stat_array.append(0.5) #draw
                 stat_array.extend([points_for, points_against, margin, win_value]) #appends above
-                oppo_ID = get_key(data[0], teams)
+                oppo_ID = self.get_key(data[0], teams)
                 stat_array.append(int(oppo_ID))
             stats_pulled = [element.text for element in soup.find_all('td', class_="statdata")]
             adv_stats_pulled = [element.text for element in adv_soup.find_all('td', class_="statdata")]
-            stat_array = wrangle_stats(stats_pulled, adv_stats_pulled, stat_array, home)
-            write_to_excel(team, stat_array, count)
+            stat_array = self.wrangle_stats(stats_pulled, adv_stats_pulled, stat_array, home)
+            self.write_to_excel(team, stat_array, count)
             count = count + 1
 
     #takes match number and determines whether it what year that was
-    def determine_year(x):
+    def determine_year(self, x):
         x = int(x)
         year = 9999
         if(x >= 5147 and x <= 5342):
@@ -139,7 +149,7 @@ class gatherer:
             year = 2018
         elif(x >= 9721 and x <= 9927):
             year = 2019
-        elif(x >= 9928 and x <= 10078):
+        elif(x >= 9928 and x <= 11000):
             year = 2020
         return year
 
@@ -149,7 +159,7 @@ class gatherer:
     #splices all other data off and leaves us with the good stuff
     #if the team we are getting stats for is the home team it starts from array = 0
     #otherwise it starts from 2 and either way they do every third step
-    def wrangle_stats(stats_pulled, adv_stats_pulled, stat_array, home):
+    def wrangle_stats(self, stats_pulled, adv_stats_pulled, stat_array, home):
         stats_pulled.reverse() #chops up the bits of basic stats we want
         adv_stats_pulled.reverse()
         i = 1
@@ -181,35 +191,35 @@ class gatherer:
         adv_stats_pulled.reverse()
         if(home == 0): #does the home stats first as home team is the'for' team
             for x in stats_pulled[::3]:
-                x = strip_units(x)
+                x = self.strip_units(x)
                 stat_array.append(float(x))
             for y in adv_stats_pulled[::3]: #adds home teams advanced stats after basic
-                y = strip_units(y)
+                y = self.strip_units(y)
                 stat_array.append(float(y))
             for x in stats_pulled[2::3]: #adds away stats as away is team 'against'
-                x = strip_units(x)
+                x = self.strip_units(x)
                 stat_array.append(float(x))
             for y in adv_stats_pulled[2::3]:
-                y = strip_units(y)
+                y = self.strip_units(y)
                 stat_array.append(float(y))
         #does the same as above except the current team is the away teams
         else: #does the away stats first as the away team is the against team
             for x in stats_pulled[2::3]:
-                x = strip_units(x)
+                x = self.strip_units(x)
                 stat_array.append(float(x))
             for y in adv_stats_pulled[2::3]:
-                y = strip_units(y)
+                y = self.strip_units(y)
                 stat_array.append(float(y))
             for x in stats_pulled[::3]: #adds home stats as home team is 'against'
-                x = strip_units(x)
+                x = self.strip_units(x)
                 stat_array.append(float(x))
             for y in adv_stats_pulled[::3]: #adds home teams advanced stats after basic
-                y = strip_units(y)
+                y = self.strip_units(y)
                 stat_array.append(float(y))
         return stat_array
 
     #takes a margin value and determines if the match was drawn, won or lost for the margin
-    def determine_win(x):
+    def determine_win(self, x):
         value = 999
         if(x>0):
             value = 1
@@ -220,7 +230,7 @@ class gatherer:
         return value
 
     #Gets rid of the non-numeric units in the stats
-    def strip_units(x):
+    def strip_units(self, x):
         #gets rid of % mark
         if("%" in x):
             x = x[:-1]
@@ -263,7 +273,7 @@ class gatherer:
     #Example input 'Round 23, Marvel Stadium... etc' will look at either first character
     # or comma position to determine what round it is
     # finals rounds are given 25-28 values accordingly
-    def determine_round(round_string):
+    def determine_round(self, round_string):
         round = 0
         if (round_string[0] == 'Q' or round_string[0] == 'E'):
             round = 25
@@ -284,9 +294,9 @@ class gatherer:
     #if the excel file doesn't exist it creates the excel file and adds the labeled column
     #along with the first set of statistics
     #otherwise it opens the existing file and adds the relevant stats into the next open column
-    def write_to_excel(team, stat_array, match_count):
-        if(not(path.exists(team+'_stats.xlsx'))):
-            wb = Workbook()
+    def write_to_excel(self, team, stat_array, match_count):
+        if(not(self.path.exists(team+'_stats.xlsx'))):
+            wb = self.Workbook()
             ws = wb.active
             labels = ['Match_ID', 'Year', 'Round', 'H/A?', 'H/A Win?', 'Points For', 'Points Against', 'Margin',
             'Team Won? (1=W, 0=L)', 'Team_against_ID', 'Kicks', 'Handballs', 'Disposals',
@@ -321,9 +331,11 @@ class gatherer:
                     j = j + 1
             wb.save(filename = team+'_stats.xlsx')
         else:
+            from openpyxl import Workbook, load_workbook
             wb = load_workbook(team+'_stats.xlsx')
             ws = wb.active
             j = 0
+            match_count = ws.max_column
             for col in ws.iter_cols(min_col=match_count+1, max_col=match_count+1, max_row=len(stat_array)):
                 for cell in col:
                     cell.value = stat_array[j]
@@ -331,7 +343,7 @@ class gatherer:
             wb.save(filename = team+'_stats.xlsx')
 
     #creates a dictionary with each teams identifier on afl_tables
-    def createTeamDict():
+    def createTeamDict(self):
         teamDict = {
         "1" : "Adelaide",
         "2" : "Brisbane",
@@ -388,12 +400,34 @@ class gatherer:
             j = j+1
         textfile.close()
 
-    def update(M_ID_to_start_from, teams):
-        x = M_ID_to_start_from
+    def update_match_files(self, match_id, team_id, teams):
+        flag_num = self.scrape_match_teams_playing(teams, team_id, match_id)
+        if(flag_num == 1):
+            current_team = (teams[str(team_id)])
+            print("Team in match ID: " + str(match_id) + " is " + current_team)
+            textfile = open(current_team+"_data.txt", 'a')
+            textfile.write(str(match_id)+"\n")
+
+    #Updates locally stored stats update_match_files
+    #Will go through a range of match ID's and put them in appropriate text files (x)
+    #Then using x as the update value, will update the excel sheets from this value onwards
+        #eg. if I wanted to update every match_ID from match 9000, i'd set x as 9000
+    def update(self, M_ID_to_start_from, M_ID_to_end, teams):
+        y = M_ID_to_end
         i = 1
+        #updates match files from x to y
         while(i<19):
-            update_match_files(x,i,teams)
-            update_stats_excel(x,i,teams)
+            x = M_ID_to_start_from
+            while (x<=y):
+            #    self.update_match_files(x,i,teams)
+                x = x + 1
+            i = i+1
+        i = 1
+        x = M_ID_to_start_from
+        #adds the added matches into the excel spreadsheet from a minimum of x
+        while(i<19):
+            self.scrape_match_stats(teams, i, x)
+            i = i+1
 
     def main():
         teams = createTeamDict()

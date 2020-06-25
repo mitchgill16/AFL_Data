@@ -1,4 +1,4 @@
-#to do: Add an update function to add extra games to the game ID file, and extra columns to stat matrix
+#to do: run update with creation of new dataframes
 
 #ideas for the future
 
@@ -126,16 +126,14 @@ def add_to_df(stat_df, example_m):
 #Creates a home array and away aray of their previous 5 games through create_prev5
 #combines these arrays into a 10 match array with the current match metadata through combine prev5
 #adds this fully combined array into the ongoing dataframe of n*m, where m is amount of matches done
-def assemble_stat_matrix():
-    #gets team dictionary
-    teams = gad.createTeamDict()
+def assemble_stat_matrix(most_recent_match, teams):
     #Round 7 2011, as everyteam would have played 5 games by then.
     i = 5192
     first = 0
     GWS = 1
     #for each match do determine teams, determine H/A create prev 5, combine the matches, add to big DF of example
     #while(i < 6330 or (i > 9297 and i < 9936 )):
-    while(i<9937):
+    while(i<=most_recent_match):
         print(str(i))
         team1, team2 = find_teams_playing(i, teams)
         #takes into account GWS entering the league and not having 5 previous games
@@ -171,10 +169,14 @@ def assemble_stat_matrix():
     print(stats_df)
     print(label_df)
 
-
+#updates current local files to the most recent versions
+#have to manually check most recent game values though
+#then assemebles stat matrices up until most recent values
 def main():
-    #could make parameters a range of numbers?
-    assemble_stat_matrix()
+    g = gad()
+    teams = g.createTeamDict()
+    g.update(10126, 10143,teams)
+    assemble_stat_matrix(10143,teams)
 
 if __name__ == '__main__':
     main()
