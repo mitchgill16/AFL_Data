@@ -175,8 +175,8 @@ def assemble_stat_matrix(most_recent_match, teams):
 def main():
     g = gad()
     teams = g.createTeamDict()
-    g.update(10126, 10143,teams)
-    assemble_stat_matrix(10143,teams)
+    g.update(10144, 10152,teams)
+    assemble_stat_matrix(10152,teams)
 
 if __name__ == '__main__':
     main()

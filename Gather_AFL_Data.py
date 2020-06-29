@@ -419,7 +419,7 @@ class gatherer:
         while(i<19):
             x = M_ID_to_start_from
             while (x<=y):
-            #    self.update_match_files(x,i,teams)
+                self.update_match_files(x,i,teams)
                 x = x + 1
             i = i+1
         i = 1
