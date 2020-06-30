@@ -151,6 +151,8 @@ def assemble_stat_matrix(most_recent_match, teams):
         #Should be 1xM, where M is the total matches found stats for.
         home_array, y_label = create_prev5(i, home_id, teams)
         away_array, y_label = create_prev5(i, away_id, teams)
+        if(y_label == 0.5):
+            y_label = 0
         current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
         if(first == 0):
             data = {str(i) : current_example_array}
@@ -175,7 +177,7 @@ def assemble_stat_matrix(most_recent_match, teams):
 def main():
     g = gad()
     teams = g.createTeamDict()
-    g.update(10144, 10152,teams)
+    #g.update(10144, 10152,teams)
     assemble_stat_matrix(10152,teams)
 
 if __name__ == '__main__':
