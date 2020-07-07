@@ -29,36 +29,74 @@ def create_xb_model():
     #splits up the X and Y data into training and test
     seed = 28
     total = 0
-    i = 10
+    i = 0
+    j = 0
     highest = 0
     best = 0
-    while(i<11):
-        #seed = randint(0,50)
-        seed = 18
-        test_size = 0.2
-        X_train, X_test, y_train, y_test = train_test_split(x_data, y_label, test_size=test_size, random_state=seed)
-        print(X_test.shape)
-        #says the model is XGBclassfier which i think is binary??
-        model = xgb.XGBClassifier(learning_rate=0.2, max_depth=6, reg_lambda=1, gamma=0)
-        #trains the model, and makes the y shape as (m,) instead of (m,1)
-        model.fit(X_train, y_train.ravel())
-        #uses unseen data to predict
-        y_pred = model.predict(X_test)
-        predictions = [round(value) for value in y_pred]
-        for value in y_pred:
-            print(value)
-        accuracy = accuracy_score(y_test, predictions)
-        pcent = accuracy * 100.0
-        total = pcent + total
-        print("The accuracy of this model is" + str(pcent))
-        print(model)
+    best_j = 9999999
+    ts = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3]
+    lr = [0.5, 0.1, 0.15, 0.2, 0.3, 0.4]
+    md = [5, 6, 7 ,8 ,9, 10]
+    rl = [0, 0.5, 1, 1.5, 2]
+    gm = [0, 1, 2, 3]
+    models = []
+    accuracy_matrix = np.zeros(shape=(10,4320))
+    #average out of 10 random seeds
+    while(i<10):
+        k = 0
+        #random int generation
+        seed = randint(0,50)
+        #average out of 6 test/training splits
+        for t in ts:
+            test_size = t
+            X_train, X_test, y_train, y_test = train_test_split(x_data, y_label, test_size=test_size, random_state=seed)
+            print(X_test.shape)
+            #says the model is XGBclassfier which means binary data
+            #goes through each of parameters I'm testing
+            for l in lr:
+                for m in md:
+                    for r in rl:
+                        for g in gm:
+                            model = xgb.XGBClassifier(learning_rate=l, max_depth=m, reg_lambda=r, gamma=g)
+                            #trains the model, and makes the y shape as (m,) instead of (m,1)
+                            model.fit(X_train, y_train.ravel())
+                            #uses unseen data to predict
+                            y_pred = model.predict(X_test)
+                            predictions = [round(value) for value in y_pred]
+                            #sees how accurate the model was when testing the test set
+                            accuracy = accuracy_score(y_test, predictions)
+                            pcent = accuracy * 100.0
+                            print("The accuracy of this model is" + str(pcent))
+                            #appends the model paramters to the model array
+                            models.append(model)
+                            #appends what the test ratio split was
+                            #puts the accuracy into its appropriate row and column
+                            #row is the current random seed example
+                            #column is the current combination of parameters
+                            #will allow for an average across 10 seeds per combination of parameter
+                            accuracy_matrix[i][k] = pcent
+                            #checks what the best was
+                            if (pcent > highest):
+                                highest = pcent
+                                best = seed
+                                best_j = j
+                            j = j + 1
+                            k = k + 1
         i = i + 1
-        if (pcent > highest):
-            highest = pcent
-            best = seed
-    average = total/10
-    print("Average is " + str(average))
-    print("Best seed is " + str(seed))
+    average_columns = np.mean(accuracy_matrix, axis = 0)
+    best_av = 0
+    jj = 0
+    ii = 0
+    for av in average_columns:
+        print(av)
+        if(av>best_av):
+            best_av = av
+            jj = ii
+        ii = ii+1
+    print("best model is " + models[jj])
+    print("with a jj value of "+ str(jj))
+    print("with an average of " + str(best_av))
+    model = models[jj]
     return model
 
 
@@ -116,14 +154,14 @@ def main():
     teams = g.createTeamDict()
     model = create_xb_model()
     #create prev 5 for upcoming games.
-    predict(model,1, 2, 5, teams)
-    predict(model,1, 3, 5, teams)
-    predict(model,1, 4, 5, teams)
-    predict(model,1, 5, 5, teams)
-    predict(model,1, 6, 5, teams)
-    predict(model,1, 7, 5, teams)
-    predict(model,1, 8, 5, teams)
-    predict(model,1, 9, 5, teams)
-    predict(model,1, 10, 5, teams)
+    predict(model,2, 7, 6, teams)
+    predict(model,4, 10, 6, teams)
+    predict(model,6, 15, 6, teams)
+    predict(model,17, 1, 6, teams)
+    predict(model,8, 11, 6, teams)
+    predict(model,5, 12, 6, teams)
+    predict(model,13, 9, 6, teams)
+    predict(model,16, 14, 6, teams)
+    predict(model,3, 18, 6, teams)
 if __name__ == '__main__':
     main()
