@@ -126,9 +126,10 @@ def add_to_df(stat_df, example_m):
 #Creates a home array and away aray of their previous 5 games through create_prev5
 #combines these arrays into a 10 match array with the current match metadata through combine prev5
 #adds this fully combined array into the ongoing dataframe of n*m, where m is amount of matches done
-def assemble_stat_matrix(most_recent_match, teams):
+def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_from_new):
     #Round 7 2011, as everyteam would have played 5 games by then.
-    i = 5192
+    #create_from_new, is whether to re-make the whole data frame. 0 = re-make, 1=update
+    i = match_to_start_from
     first = 0
     GWS = 1
     #for each match do determine teams, determine H/A create prev 5, combine the matches, add to big DF of example
@@ -137,7 +138,7 @@ def assemble_stat_matrix(most_recent_match, teams):
         print(str(i))
         team1, team2 = find_teams_playing(i, teams)
         #takes into account GWS entering the league and not having 5 previous games
-        if((team1 == 9 or team2 == 9) and GWS<6):
+        if((team1 == 9 or team2 == 9) and GWS<6 and create_from_new == 0):
             GWS = GWS + 1
             i = i + 1
             continue
@@ -155,17 +156,23 @@ def assemble_stat_matrix(most_recent_match, teams):
             y_label = 0
         current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
         if(first == 0):
-            data = {str(i) : current_example_array}
-            label_data = {str(i): [y_label]}
-            stats_df = pd.DataFrame(data)
-            label_df = pd.DataFrame(label_data)
-            first = 1
+            #eg. we're only updating it
+            if(create_from_new == 1):
+                stats_df = pd.read_csv('assembled_stat_matrix.csv', index_col = 0)
+                label_df = pd.read_csv('assembled_labelled_ymatrix.csv', index_col = 0)
+                first = 1
+                stats_df[str(i)] = current_example_array
+                label_df[str(i)] = y_label
+            else:
+                data = {str(i) : current_example_array}
+                label_data = {str(i): [y_label]}
+                stats_df = pd.DataFrame(data)
+                label_df = pd.DataFrame(label_data)
+                first = 1
         else:
             stats_df[str(i)] = current_example_array
             label_df[str(i)] = y_label
         i = i + 1
-        #if(i > 6329 and i < 9298):
-        #    i = 9298
     stats_df.to_csv('assembled_stat_matrix.csv')
     label_df.to_csv('assembled_labelled_ymatrix.csv')
     print(stats_df)
@@ -177,8 +184,8 @@ def assemble_stat_matrix(most_recent_match, teams):
 def main():
     g = gad()
     teams = g.createTeamDict()
-    g.update(10182, 10190,teams)
-    assemble_stat_matrix(10190,teams)
+    g.update(10227, 10235,teams)
+    assemble_stat_matrix(10227, 10235, teams, 1)
 
 if __name__ == '__main__':
     main()
