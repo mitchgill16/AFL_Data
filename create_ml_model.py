@@ -258,45 +258,37 @@ def main():
         #predict upcoming games
         #if there is no 'home games' due to covid, do the reverse home/away structure for each game
         #the pda array should keep a track who wins for each seed, to hopefully minimise randomness
-        predict(model,18, 14, 9, teams, pda)
-        predict(model,14, 18, 9, teams, pda)
+        predict(model,13, 18, 10, teams, pda)
+        predict(model,18, 13, 10, teams, pda)
 
-        predict(model,11, 13, 9, teams, pda)
-        predict(model,13, 11, 9, teams, pda)
+        predict(model,14, 2, 10, teams, pda)
+        predict(model,2, 14, 10, teams, pda)
 
-        predict(model,3, 10, 9, teams, pda)
-        predict(model,10, 3, 9, teams, pda)
+        predict(model,7, 12, 10, teams, pda)
+        predict(model,12, 7, 10, teams, pda)
 
-        predict(model,5, 2, 9, teams, pda)
-        predict(model,2, 5, 9, teams, pda)
+        predict(model,1, 11, 10, teams, pda)
+        predict(model,11, 1, 10, teams, pda)
 
-        predict(model,12, 1, 9, teams, pda)
-        predict(model,1, 12, 9, teams, pda)
+        predict(model,4, 16, 10, teams, pda)
+        predict(model,16, 4, 10, teams, pda)
 
-        predict(model,15, 16, 9, teams, pda)
-        predict(model,16, 15, 9, teams, pda)
+        predict(model,8, 15, 10, teams, pda)
+        predict(model,15, 8, 10, teams, pda)
 
-        predict(model,17, 7, 9, teams, pda)
-        predict(model,7, 17, 9, teams, pda)
-
-        predict(model,8, 9, 9, teams, pda)
-        predict(model,9, 8, 9, teams, pda)
-
-        predict(model,6, 4, 9, teams, pda)
-        predict(model,4, 6, 9, teams, pda)
+        predict(model,5, 9, 10, teams, pda)
+        predict(model,9, 5, 10, teams, pda)
 
 
         i = i+1
     print(pda)
-    determine_winner(18, 14, pda, teams)
-    determine_winner(11, 13, pda, teams)
-    determine_winner(3, 10, pda, teams)
-    determine_winner(5, 2, pda, teams)
-    determine_winner(12, 1, pda, teams)
-    determine_winner(15, 16, pda, teams)
-    determine_winner(17, 7, pda, teams)
-    determine_winner(8, 9, pda, teams)
-    determine_winner(6, 4, pda, teams)
+    determine_winner(13, 18, pda, teams)
+    determine_winner(14, 2, pda, teams)
+    determine_winner(7, 12, pda, teams)
+    determine_winner(1, 11, pda, teams)
+    determine_winner(4, 16, pda, teams)
+    determine_winner(8, 15, pda, teams)
+    determine_winner(5, 9, pda, teams)
 
 if __name__ == '__main__':
     main()
