@@ -24,6 +24,7 @@
 import numpy as np
 import pandas as pd
 import random as rand
+import sys
 from Gather_AFL_Data import gatherer as gad
 
 def find_teams_playing(match_id, teams):
@@ -180,12 +181,14 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
 
 #updates current local files to the most recent versions
 #have to manually check most recent game values though
+#argv 1 is where to start from
+#argv 2 is where to finish
 #then assemebles stat matrices up until most recent values
 def main():
     g = gad()
     teams = g.createTeamDict()
-    g.update(10318, 10323,teams)
-    assemble_stat_matrix(10318, 10323, teams, 1)
+    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 1)
 
 if __name__ == '__main__':
     main()

@@ -178,6 +178,7 @@ def param_search(x_data):
     print("BEST PARAMS ARE HERE")
     print(xgb_bayes_search.best_params_)
     model = xgb_bayes_search.best_estimator_
+
     return model
 
 
