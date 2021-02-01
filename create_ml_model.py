@@ -253,26 +253,8 @@ def main():
     #model = param_search(x_data, y_label)
     model = pickle.load(open("xgb_model.dat", "rb"))
     pda = run_predictions(x_data, y_label, model, ohe, teams)
-
-    while(i<100):
-        print("in the "+str(i)+" loop")
-        seed = randint(0,5000)
-        model, accuracy = check_xb_model(model, seed, x_data)
-        if(accuracy < 68.0):
-            print("not accurate enough")
-            continue
-        #predict upcoming games
-        #if there is no 'home games' due to covid, do the reverse home/away structure for each game
-        #the pda array should keep a track who wins for each seed, to hopefully minimise randomness
-
-        predict(model,2, 7, 26, teams, pda)
-        predict(model,7, 2, 26, teams, pda)
-
-
-        i = i+1
     print(pda)
-    determine_winner(13, 14, pda, teams)
-    determine_winner(2, 7, pda, teams)
+    determine_winner(14, 7, pda, teams)
 
 if __name__ == '__main__':
     main()
