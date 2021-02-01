@@ -10,6 +10,9 @@ from Gather_AFL_Data import gatherer as gad
 import skopt
 from skopt.searchcv import BayesSearchCV
 from skopt.space import Real, Categorical, Integer
+from sklearn.model_selection import StratifiedKFold
+import pickle
+from sklearn.preprocessing import OneHotEncoder
 
 # def create_xb_model(t, l, m, r, g, mcw, seed, x_data):
 #     #transposes the matrix as xgboost wants examples as rows
@@ -101,12 +104,12 @@ def combine_prev5(home_id, away_id, round, home_array, away_array):
     current_example_array.extend(away_array)
     return current_example_array
 
-def predict(model,home_id, away_id, round, teams, pda):
+def predict(model,home_id, away_id, round, teams, pda, ohe):
     home_array = create_5_most_recent(home_id, teams)
     away_array = create_5_most_recent(away_id, teams)
     current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
-    X = np.array(current_example_array)
-    X = np.reshape(X,(1,len(X)))
+    cea = pd.DataFrame(current_example_array)
+    X, na_enc = ohe_data(cea, ohe, 1)
     y = model.predict(X)
     print(str(y[0]))
     if(y < 0.5):
@@ -128,7 +131,7 @@ def determine_winner(home_id, away_id, pda, teams):
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
 
-def param_search(x_data):
+def param_search(x_data, y_label):
 
     def on_step(optim_result):
         """
@@ -140,22 +143,6 @@ def param_search(x_data):
         if score >= 0.98:
             print('Interrupting!')
             return True
-
-    #transposes the matrix as xgboost wants examples as rows
-    #each input category is a column
-    x_t_data = x_data.T
-    #converts to numpy array
-    x_data = x_t_data.to_numpy()
-    #removes the first row as its a leftover label
-    x_data = np.delete(x_data,0,0)
-    #loads the ylabel matrix,
-    y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
-    #transposes y_label
-    y_t_label = y_label.T
-    #converts to numpy
-    y_label = y_t_label.to_numpy()
-    #removes the first row, as its not an accruate outcome label, its just a row label
-    y_label = np.delete(y_label, 0, 0)
     X_train, X_test, y_train, y_test = train_test_split(x_data, y_label, test_size=0.2, random_state=27022013)
     space ={'learning_rate': Real(0.01, 1.0, 'log-uniform'),
         'min_child_weight': Integer(0, 10),
@@ -181,22 +168,91 @@ def param_search(x_data):
 
     return model
 
+def ohe_data(x_data, enc, flag):
+    if (flag == 0):
+        #transposes the matrix as xgboost wants examples as rows
+        #each input category is a column
+        x_t_data = x_data.T
+        #converts to numpy array
+        x_data = x_t_data.to_numpy()
+        #removes the first row as its a leftover label
+        x_data = np.delete(x_data,0,0)
+        x_data = pd.DataFrame(data=x_data)
+        categorical_data = x_data[[1,2,10,110,210,310,410,510,610,710,810,910]]
+        x_data = x_data.drop([1,2,10,110,210,310,410,510,610,710,810,910], axis = 1)
+        ohe = OneHotEncoder(handle_unknown='ignore', sparse=False)
+        ohe = ohe.fit(categorical_data)
+        categorical_data = ohe.transform(categorical_data)
+        categorical_data = pd.DataFrame(categorical_data)
+        x_data = pd.concat([x_data, categorical_data], axis = 1)
+        x_data = x_data.to_numpy()
+    else:
+        #transposes the matrix as xgboost wants examples as rows
+        #each input category is a column
+        x_t_data = x_data.T
+        #converts to numpy array
+        x_data = x_t_data.to_numpy()
+        #removes the first row as its a leftover label
+        x_data = pd.DataFrame(x_data)
+        categorical_data = x_data[[1,2,10,110,210,310,410,510,610,710,810,910]]
+        #print(categorical_data)
+        x_data = x_data.drop([1,2,10,110,210,310,410,510,610,710,810,910], axis = 1)
+        categorical_data = enc.transform(categorical_data)
+        #print(categorical_data)
+        categorical_data = pd.DataFrame(categorical_data)
+        x_data = pd.concat([x_data, categorical_data], axis = 1)
+        x_data = x_data.to_numpy()
+        #print(x_data.shape)
+        ohe = enc
+    return x_data, ohe
+
+def run_predictions(x, y, m, ohe, teams):
+    pda = np.zeros(shape=19)
+    i = 1
+    results = []
+    while(i<11):
+        cv = StratifiedKFold(n_splits=10, shuffle=True)
+        for train,test in cv.split(x,y):
+            prediction = m.fit(x[train],y[train].ravel()).predict_proba(x[test])
+            print("variables for auroc curve done. Processing fold accuracy + checking best model")
+            y_pred = m.predict(x[test])
+            predictions = [round(value) for value in y_pred]
+            #sees how accurate the model was when testing the test set
+            accuracy = accuracy_score(y[test], predictions)
+            pcent = accuracy * 100.0
+            print("The accuracy of this model is" + str(pcent))
+            results.append(pcent)
+            predict(m,14, 7, 28, teams, pda, ohe)
+            predict(m,7, 14, 28, teams, pda, ohe)
+        i = i + 1
+    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
+    return pda
+
+    #do i <21
+    #cv split thing shuffle True
+    #predict
+    #results
+    #return pda
 
 def main():
     g = gad()
     teams = g.createTeamDict()
     #makes an array that keeps track of how many wins a team has for the random run
-    pda = np.zeros(shape=19)
-    i = 0
     #loads the input data from the assembled matrix in assemble_df.py
     x_data = pd.read_csv('assembled_stat_matrix.csv')
-    gm = 1
-    rl = 1
-    md = 8
-    lr =0.2
-    ts = 0.2
-    mcw = 1
-    model = param_search(x_data)
+    na_enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
+    x_data, ohe = ohe_data(x_data, na_enc, 0)
+    #loads the ylabel matrix,
+    y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
+    #transposes y_label
+    y_t_label = y_label.T
+    #converts to numpy
+    y_label = y_t_label.to_numpy()
+    #removes the first row, as its not an accruate outcome label, its just a row label
+    y_label = np.delete(y_label, 0, 0)
+    #model = param_search(x_data, y_label)
+    model = pickle.load(open("xgb_model.dat", "rb"))
+    pda = run_predictions(x_data, y_label, model, ohe, teams)
 
     while(i<100):
         print("in the "+str(i)+" loop")
@@ -208,8 +264,6 @@ def main():
         #predict upcoming games
         #if there is no 'home games' due to covid, do the reverse home/away structure for each game
         #the pda array should keep a track who wins for each seed, to hopefully minimise randomness
-        predict(model,13, 14, 26, teams, pda)
-        predict(model,14, 13, 26, teams, pda)
 
         predict(model,2, 7, 26, teams, pda)
         predict(model,7, 2, 26, teams, pda)
