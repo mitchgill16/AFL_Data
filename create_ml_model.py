@@ -222,8 +222,26 @@ def run_predictions(x, y, m, ohe, teams):
             pcent = accuracy * 100.0
             print("The accuracy of this model is" + str(pcent))
             results.append(pcent)
-            predict(m,14, 7, 28, teams, pda, ohe)
-            predict(m,7, 14, 28, teams, pda, ohe)
+
+            predict(m,14, 3, 1, teams, pda, ohe)
+            predict(m,3, 14, 1, teams, pda, ohe)
+            predict(m,4, 18, 1, teams, pda, ohe)
+            predict(m,18, 4, 1, teams, pda, ohe)
+            predict(m,11, 6, 1, teams, pda, ohe)
+            predict(m,6, 11, 1, teams, pda, ohe)
+            predict(m,1, 7, 1, teams, pda, ohe)
+            predict(m,7, 1, 1, teams, pda, ohe)
+            predict(m,5, 10, 1, teams, pda, ohe)
+            predict(m,10, 5, 1, teams, pda, ohe)
+            predict(m,2, 16, 1, teams, pda, ohe)
+            predict(m,16, 2, 1, teams, pda, ohe)
+            predict(m,12, 13, 1, teams, pda, ohe)
+            predict(m,13, 12, 1, teams, pda, ohe)
+            predict(m,9, 15, 1, teams, pda, ohe)
+            predict(m,15, 9, 1, teams, pda, ohe)
+            predict(m,17, 8, 1, teams, pda, ohe)
+            predict(m,8, 17, 1, teams, pda, ohe)
+
         i = i + 1
     print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
     return pda
@@ -254,7 +272,15 @@ def main():
     model = pickle.load(open("xgb_model.dat", "rb"))
     pda = run_predictions(x_data, y_label, model, ohe, teams)
     print(pda)
-    determine_winner(14, 7, pda, teams)
+    determine_winner(14, 3, pda, teams)
+    determine_winner(4, 18, pda, teams)
+    determine_winner(11, 6, pda, teams)
+    determine_winner(1, 7, pda, teams)
+    determine_winner(5, 10, pda, teams)
+    determine_winner(2, 16, pda, teams)
+    determine_winner(12, 13, pda, teams)
+    determine_winner(9, 15, pda, teams)
+    determine_winner(17, 8, pda, teams)
 
 if __name__ == '__main__':
     main()
