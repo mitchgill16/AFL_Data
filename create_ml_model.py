@@ -1,4 +1,6 @@
 import xgboost as xgb
+import tensorflow as tf; print(tf.__version__)
+import keras; print(keras.__version__)
 #import torch.nn as nn
 #import touch.nn.functional as F
 import pandas as pd
@@ -13,65 +15,22 @@ from skopt.space import Real, Categorical, Integer
 from sklearn.model_selection import StratifiedKFold
 import pickle
 from sklearn.preprocessing import OneHotEncoder
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Flatten
+from tensorflow.keras.layers import Dropout
+from tensorflow.keras.layers import Input
+from tensorflow.keras.layers import BatchNormalization
+from tensorflow.keras.layers import Conv1D
+from tensorflow.keras.layers import MaxPooling1D
+from tensorflow.keras.utils import to_categorical
+from keras.utils.vis_utils import plot_model
+from tensorflow.keras.layers import LSTM
+from tensorflow.keras.layers import Embedding
+from tensorflow.keras.preprocessing import sequence
+import matplotlib.pyplot as plt
+from tensorflow.keras.layers import Activation
 
-# def create_xb_model(t, l, m, r, g, mcw, seed, x_data):
-#     #transposes the matrix as xgboost wants examples as rows
-#     #each input category is a column
-#     x_t_data = x_data.T
-#     #converts to numpy array
-#     x_data = x_t_data.to_numpy()
-#     #removes the first row as its a leftover label
-#     x_data = np.delete(x_data,0,0)
-#     #loads the ylabel matrix,
-#     y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
-#     #transposes y_label
-#     y_t_label = y_label.T
-#     #converts to numpy
-#     y_label = y_t_label.to_numpy()
-#     #removes the first row, as its not an accruate outcome label, its just a row label
-#     y_label = np.delete(y_label, 0, 0)
-#     test_size = t
-#     X_train, X_test, y_train, y_test = train_test_split(x_data, y_label, test_size=test_size, random_state=seed)
-#     print(X_test.shape)
-#     print("seed is " + str(seed))
-#     #says the model is XGBclassfier which means binary data
-#     model = xgb.XGBClassifier(learning_rate=l, max_depth=m, reg_lambda=r, gamma=g, min_child_weight=mcw)
-#     #trains the model, and makes the y shape as (m,) instead of (m,1)
-#     model.fit(X_train, y_train.ravel())
-#     y_pred = model.predict(X_test)
-#     predictions = [round(value) for value in y_pred]
-#     #sees how accurate the model was when testing the test set
-#     accuracy = accuracy_score(y_test, predictions)
-#     pcent = accuracy * 100.0
-#     print("The accuracy of this model is" + str(pcent))
-#     return model, pcent
-
-def check_xb_model(model, seed, x_data):
-        #transposes the matrix as xgboost wants examples as rows
-        #each input category is a column
-        x_t_data = x_data.T
-        #converts to numpy array
-        x_data = x_t_data.to_numpy()
-        #removes the first row as its a leftover label
-        x_data = np.delete(x_data,0,0)
-        #loads the ylabel matrix,
-        y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
-        #transposes y_label
-        y_t_label = y_label.T
-        #converts to numpy
-        y_label = y_t_label.to_numpy()
-        #removes the first row, as its not an accruate outcome label, its just a row label
-        y_label = np.delete(y_label, 0, 0)
-        X_train, X_test, y_train, y_test = train_test_split(x_data, y_label, test_size=0.2, random_state=seed)
-        #trains the model, and makes the y shape as (m,) instead of (m,1)
-        model.fit(X_train, y_train.ravel())
-        y_pred = model.predict(X_test)
-        predictions = [round(value) for value in y_pred]
-        #sees how accurate the model was when testing the test set
-        accuracy = accuracy_score(y_test, predictions)
-        pcent = accuracy * 100.0
-        print("The accuracy of this model is" + str(pcent))
-        return model, pcent
 
 def create_5_most_recent(team_id, teams):
     current_team = (teams[str(team_id)])
@@ -252,6 +211,90 @@ def run_predictions(x, y, m, ohe, teams):
     #results
     #return pda
 
+def build_DNN_model(x_len):
+    model = Sequential()
+
+    model.add(Dense(32, input_dim = x_len))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.03))
+    model.add(BatchNormalization())
+
+    model.add(Dense(16))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.02))
+
+    model.add(Dense(16))
+    model.add(Activation('relu'))
+
+    model.add(Dense(8))
+    model.add(Activation('relu'))
+    #add output layer
+    model.add(Dense(1, activation='sigmoid'))
+    opt = tf.keras.optimizers.Adamax(learning_rate=0.003)
+
+    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['binary_accuracy'])
+    print(model.summary())
+    return model
+
+def build_CNN_model(x_len):
+    #del model
+    model = Sequential()
+    model.add(Conv1D(filters=32, kernel_size=14,
+                     input_shape=(x_len, 1)))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.2))
+    model.add(Conv1D(filters=16, kernel_size=10,
+                     input_shape=(32, 1)))
+    model.add(Activation('linear'))
+    model.add(Dropout(0.1))
+    model.add(Conv1D(filters=10, kernel_size=8,
+                     input_shape=(16, 1)))
+    model.add(Activation('linear'))
+    model.add(MaxPooling1D(pool_size=2))
+    model.add(BatchNormalization())
+    model.add(Flatten())
+    model.add(Dense(64, activation='linear'))
+    model.add(Dense(32, activation='linear'))
+    model.add(Dense(16, activation='linear'))
+    model.add(BatchNormalization())
+    model.add(Dense(1, activation='sigmoid'))
+    opt = tf.keras.optimizers.Adamax(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
+
+
+    model.compile(loss='binary_crossentropy', optimizer=opt,
+                  metrics=['binary_accuracy'])
+
+    print(model.summary())
+    return model
+
+#flag = 0 (DNN)
+#flag = 1 (CNN)
+def eval_dl(x,y,k,flag):
+    cv = StratifiedKFold(n_splits=k,shuffle=True)
+    best_model = []
+    results = []
+    highest = 0
+    i = 1
+    for train,test in cv.split(x,y):
+        if(flag == 0):
+            model = build_DNN_model(x[train].shape[1])
+        if(flag == 1):
+            x = x.reshape(x.shape[0], x.shape[1], 1)
+            model = build_CNN_model(x[train].shape[1])
+        bs = ((x[train].shape[0])/20)
+        bs = round(bs)
+        history = model.fit(x[train], y[train], validation_data=(x[test], y[test]), epochs = 50, batch_size=bs)
+        _, accuracy = model.evaluate(x[test], y[test], batch_size=bs, verbose=0)
+        accuracy = accuracy * 100
+        print("accuracy for model " + str(i) + " is " + str(accuracy))
+        if(accuracy > highest):
+            highest = accuracy
+            best_model = model
+        results.append(accuracy)
+        i = i + 1
+    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
+    return best_model
+
 def main():
     g = gad()
     teams = g.createTeamDict()
@@ -268,19 +311,24 @@ def main():
     y_label = y_t_label.to_numpy()
     #removes the first row, as its not an accruate outcome label, its just a row label
     y_label = np.delete(y_label, 0, 0)
+    pda = np.zeros(shape=19)
+    #m = eval_dl(x_data, y_label, 10, 0)
+    m = eval_dl(x_data, y_label, 10, 1)
+    predict(m,11, 6, 1, teams, pda, ohe)
+    predict(m,6, 11, 1, teams, pda, ohe)
     #model = param_search(x_data, y_label)
-    model = pickle.load(open("xgb_model.dat", "rb"))
-    pda = run_predictions(x_data, y_label, model, ohe, teams)
-    print(pda)
-    determine_winner(14, 3, pda, teams)
-    determine_winner(4, 18, pda, teams)
-    determine_winner(11, 6, pda, teams)
-    determine_winner(1, 7, pda, teams)
-    determine_winner(5, 10, pda, teams)
-    determine_winner(2, 16, pda, teams)
-    determine_winner(12, 13, pda, teams)
-    determine_winner(9, 15, pda, teams)
-    determine_winner(17, 8, pda, teams)
+    # model = pickle.load(open("xgb_model.dat", "rb"))
+    # pda = run_predictions(x_data, y_label, model, ohe, teams)
+    # print(pda)
+    # determine_winner(14, 3, pda, teams)
+    # determine_winner(4, 18, pda, teams)
+    # determine_winner(11, 6, pda, teams)
+    # determine_winner(1, 7, pda, teams)
+    # determine_winner(5, 10, pda, teams)
+    # determine_winner(2, 16, pda, teams)
+    # determine_winner(12, 13, pda, teams)
+    # determine_winner(9, 15, pda, teams)
+    # determine_winner(17, 8, pda, teams)
 
 if __name__ == '__main__':
     main()
