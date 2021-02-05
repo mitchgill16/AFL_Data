@@ -30,6 +30,9 @@ from tensorflow.keras.layers import Embedding
 from tensorflow.keras.preprocessing import sequence
 import matplotlib.pyplot as plt
 from tensorflow.keras.layers import Activation
+from sklearn.metrics import mean_squared_error
+from math import sqrt
+from sklearn.model_selection import cross_val_score, KFold
 
 
 def create_5_most_recent(team_id, teams):
@@ -92,7 +95,7 @@ def determine_winner(home_id, away_id, pda, teams):
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
 
-def param_search(x_data, y_label):
+def param_search(x_data, y_label, class_reg):
 
     def on_step(optim_result):
         """
@@ -118,7 +121,10 @@ def param_search(x_data, y_label):
         'min_child_weight': Integer(0, 5),
         'n_estimators': Integer(50, 200),
         'scale_pos_weight': Real(1e-6, 500, 'log-uniform')}
-    xgbclass = xgb.XGBClassifier(random_state=27022013)
+    if(class_reg == 0):
+        xgbclass = xgb.XGBClassifier(random_state=27022013)
+    else:
+        xgbclass = xgb.XGBRegressor(random_state=27022013)
     xgb_bayes_search = BayesSearchCV(xgbclass, space, n_iter=60, # specify how many iterations
                                     scoring=None, n_jobs=1, cv=5, verbose=3, random_state=42, n_points=12,
                                  refit=True)
@@ -207,21 +213,66 @@ def run_predictions(x, y, m, ohe, teams):
     print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
     return pda
 
-    #do i <21
-    #cv split thing shuffle True
-    #predict
-    #results
-    #return pda
+def predict_margin(x, y, m, ohe, teams):
+    results = []
+    win_results = []
+    low = 1000
+    best = m
+    j = 1
+    # while(j<10):
+    #     print("in fold: " + str(j))
+    x = x.reshape(x.shape[0], x.shape[1], 1)
+    cv = KFold(n_splits=10, shuffle=True)
+    for train,test in cv.split(x,y):
+        m = build_CNN_model(x[train].shape[1])
+        bs = ((x[train].shape[0])/20)
+        bs = round(bs)
+        history = m.fit(x[train], y[train], validation_data=(x[test], y[test]), epochs = 20, batch_size=bs)
+        prediction = m.predict(x[test])
+        print("variables for auroc curve done. Processing fold accuracy + checking best model")
+        y_pred = prediction
+        print(y_pred)
+        all_preds = y_pred
+        i = 0
+        actual = y[test]
+        predicted_wins = []
+        actual_wins = []
+        for omg in all_preds:
+            if(omg >= 0):
+                predicted_wins.append(0)
+            else:
+                predicted_wins.append(1)
+
+            if(actual[i] >= 0):
+                actual_wins.append(0)
+            else:
+                actual_wins.append(1)
+            i = i + 1
+        #sees how accurate the model was when testing the test set
+        accuracy = accuracy_score(actual_wins, predicted_wins)
+        pcent = accuracy * 100.0
+        print("The accuracy of this model is" + str(pcent))
+        win_results.append(pcent)
+        rmse = sqrt(mean_squared_error(all_preds, y[test]))
+        print("The rmse of this model is" + str(rmse))
+        if(rmse < low):
+            low = rmse
+            best = m
+        results.append(rmse)
+    # j = j + 1
+    print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
+    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(win_results), np.std(win_results)))
+    return best
 
 def build_DNN_model(x_len):
     model = Sequential()
 
-    model.add(Dense(32, input_dim = x_len))
+    model.add(Dense(63, input_dim = x_len))
     model.add(Activation('relu'))
     model.add(Dropout(0.03))
     model.add(BatchNormalization())
 
-    model.add(Dense(16))
+    model.add(Dense(32))
     model.add(Activation('relu'))
     model.add(Dropout(0.02))
 
@@ -231,10 +282,10 @@ def build_DNN_model(x_len):
     model.add(Dense(8))
     model.add(Activation('relu'))
     #add output layer
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(1, activation='linear'))
     opt = tf.keras.optimizers.Adamax(learning_rate=0.003)
 
-    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['binary_accuracy'])
+    model.compile(loss="mean_squared_error", optimizer=opt, metrics=[tf.keras.metrics.RootMeanSquaredError()])
     print(model.summary())
     return model
 
@@ -259,12 +310,11 @@ def build_CNN_model(x_len):
     model.add(Dense(32, activation='linear'))
     model.add(Dense(16, activation='linear'))
     model.add(BatchNormalization())
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(1, activation='linear'))
     opt = tf.keras.optimizers.Adamax(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
 
 
-    model.compile(loss='binary_crossentropy', optimizer=opt,
-                  metrics=['binary_accuracy'])
+    model.compile(loss="mean_squared_error", optimizer=opt, metrics=[tf.keras.metrics.RootMeanSquaredError()])
 
     print(model.summary())
     return model
@@ -306,6 +356,7 @@ def main():
     x_data = pd.read_csv('assembled_stat_matrix.csv')
     na_enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
     x_data, ohe = ohe_data(x_data, na_enc, 0)
+
     #loads the ylabel matrix,
     y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
     #transposes y_label
@@ -314,20 +365,38 @@ def main():
     y_label = y_t_label.to_numpy()
     #removes the first row, as its not an accruate outcome label, its just a row label
     y_label = np.delete(y_label, 0, 0)
+
+    #loads margin as the y_label
+    margin_label = pd.read_csv('assembled_margin_ymatrix.csv')
+    margin_t_label = margin_label.T
+    margin_label = margin_t_label.to_numpy()
+    margin_label = np.delete(margin_label, 0, 0)
+    print(margin_label)
+
+
     pda = np.zeros(shape=19)
-    #model = param_search(x_data, y_label)
-    model = pickle.load(open("xgb_model.dat", "rb"))
-    pda = run_predictions(x_data, y_label, model, ohe, teams)
-    print(pda)
-    determine_winner(14, 3, pda, teams)
-    determine_winner(4, 18, pda, teams)
-    determine_winner(11, 6, pda, teams)
-    determine_winner(1, 7, pda, teams)
-    determine_winner(5, 10, pda, teams)
-    determine_winner(2, 16, pda, teams)
-    determine_winner(12, 13, pda, teams)
-    determine_winner(9, 15, pda, teams)
-    determine_winner(17, 8, pda, teams)
+    #for predicting win
+    #model = param_search(x_data, y_label, 0)
+    #for predicting margin
+    #margin_model = param_search(x_data, margin_label, 1)
+    #pickle.dump(margin_model, open("xgb_margin_model.dat", "wb"))
+    margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
+    dnn_model = build_DNN_model(x_data.shape[1])
+    #best_model = predict_margin(x_data, margin_label, margin_model, ohe, teams)
+    best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
+
+    # model = pickle.load(open("xgb_model.dat", "rb"))
+    # pda = run_predictions(x_data, y_label, model, ohe, teams)
+    # print(pda)
+    # determine_winner(14, 3, pda, teams)
+    # determine_winner(4, 18, pda, teams)
+    # determine_winner(11, 6, pda, teams)
+    # determine_winner(1, 7, pda, teams)
+    # determine_winner(5, 10, pda, teams)
+    # determine_winner(2, 16, pda, teams)
+    # determine_winner(12, 13, pda, teams)
+    # determine_winner(9, 15, pda, teams)
+    # determine_winner(17, 8, pda, teams)
 
 if __name__ == '__main__':
     main()
