@@ -69,6 +69,8 @@ def predict(model,home_id, away_id, round, teams, pda, ohe):
     current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
     cea = pd.DataFrame(current_example_array)
     X, na_enc = ohe_data(cea, ohe, 1)
+    #delete out if you need
+    #x = x.reshape(x.shape[0], x.shape[1], 1)
     y = model.predict(X)
     print(str(y[0]))
     if(y < 0.5):
@@ -292,6 +294,7 @@ def eval_dl(x,y,k,flag):
             best_model = model
         results.append(accuracy)
         i = i + 1
+    print("highest accuracy is: " + str(highest))
     print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
     return best_model
 
@@ -312,23 +315,19 @@ def main():
     #removes the first row, as its not an accruate outcome label, its just a row label
     y_label = np.delete(y_label, 0, 0)
     pda = np.zeros(shape=19)
-    #m = eval_dl(x_data, y_label, 10, 0)
-    m = eval_dl(x_data, y_label, 10, 1)
-    predict(m,11, 6, 1, teams, pda, ohe)
-    predict(m,6, 11, 1, teams, pda, ohe)
     #model = param_search(x_data, y_label)
-    # model = pickle.load(open("xgb_model.dat", "rb"))
-    # pda = run_predictions(x_data, y_label, model, ohe, teams)
-    # print(pda)
-    # determine_winner(14, 3, pda, teams)
-    # determine_winner(4, 18, pda, teams)
-    # determine_winner(11, 6, pda, teams)
-    # determine_winner(1, 7, pda, teams)
-    # determine_winner(5, 10, pda, teams)
-    # determine_winner(2, 16, pda, teams)
-    # determine_winner(12, 13, pda, teams)
-    # determine_winner(9, 15, pda, teams)
-    # determine_winner(17, 8, pda, teams)
+    model = pickle.load(open("xgb_model.dat", "rb"))
+    pda = run_predictions(x_data, y_label, model, ohe, teams)
+    print(pda)
+    determine_winner(14, 3, pda, teams)
+    determine_winner(4, 18, pda, teams)
+    determine_winner(11, 6, pda, teams)
+    determine_winner(1, 7, pda, teams)
+    determine_winner(5, 10, pda, teams)
+    determine_winner(2, 16, pda, teams)
+    determine_winner(12, 13, pda, teams)
+    determine_winner(9, 15, pda, teams)
+    determine_winner(17, 8, pda, teams)
 
 if __name__ == '__main__':
     main()

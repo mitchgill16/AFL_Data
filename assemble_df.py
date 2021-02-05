@@ -75,7 +75,8 @@ def determine_home_away(match_id, team1, team2, teams):
         away_id = 999
     return home_id, away_id, round
 
-def create_prev5(match_id, team_id, teams):
+def create_prev5(match_id, team_id, teams, flag):
+    margin = None
     current_team = (teams[str(team_id)])
     team_string = current_team+"_stats.xlsx"
     t_df = pd.read_excel(team_string)
@@ -103,9 +104,12 @@ def create_prev5(match_id, team_id, teams):
             for element in t_df[i]:
                 if(ha_val == 3):
                     y_label = element
+                if((ha_val == 6) and (flag == 0)):
+                    margin = element
+                    print(margin)
                 ha_val = ha_val + 1
             j = 0
-    return match_array, y_label
+    return match_array, y_label, margin
 
 #combine the things + current match metadata
 #so it would go, array of metadata, append home_array, append away_array
@@ -151,8 +155,9 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
         #made the create_prev5 function also return the h/a winloss value in another variable
         #It shouldn't matter that it finds it twice as it only adds it once
         #Should be 1xM, where M is the total matches found stats for.
-        home_array, y_label = create_prev5(i, home_id, teams)
-        away_array, y_label = create_prev5(i, away_id, teams)
+        away_array, y_label, margin = create_prev5(i, away_id, teams, 1)
+        home_array, y_label, margin = create_prev5(i, home_id, teams, 0)
+        print(margin)
         if(y_label == 0.5):
             y_label = 0
         current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
@@ -161,23 +166,30 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
             if(create_from_new == 1):
                 stats_df = pd.read_csv('assembled_stat_matrix.csv', index_col = 0)
                 label_df = pd.read_csv('assembled_labelled_ymatrix.csv', index_col = 0)
+                margin_df = pd.read_csv('assembled_margin_ymatrix.csv', index_col = 0)
                 first = 1
                 stats_df[str(i)] = current_example_array
                 label_df[str(i)] = y_label
+                margin_df[str(i)] = margin
             else:
                 data = {str(i) : current_example_array}
                 label_data = {str(i): [y_label]}
+                margin_data = {str(i): [margin]}
                 stats_df = pd.DataFrame(data)
                 label_df = pd.DataFrame(label_data)
+                margin_df = pd.DataFrame(margin_data)
                 first = 1
         else:
             stats_df[str(i)] = current_example_array
             label_df[str(i)] = y_label
+            margin_df[str(i)] = margin
         i = i + 1
     stats_df.to_csv('assembled_stat_matrix.csv')
     label_df.to_csv('assembled_labelled_ymatrix.csv')
+    margin_df.to_csv('assembled_margin_ymatrix.csv')
     print(stats_df)
     print(label_df)
+    print(margin_df)
 
 #updates current local files to the most recent versions
 #have to manually check most recent game values though
@@ -187,8 +199,9 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
 def main():
     g = gad()
     teams = g.createTeamDict()
+    #only uncomment if need to scrape new match data
     #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
-    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 1)
+    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 0)
 
 if __name__ == '__main__':
     main()
