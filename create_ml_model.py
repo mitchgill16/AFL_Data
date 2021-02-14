@@ -66,39 +66,60 @@ def combine_prev5(home_id, away_id, round, home_array, away_array):
     current_example_array.extend(away_array)
     return current_example_array
 
-def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda):
+def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_flag):
     home_array = create_5_most_recent(home_id, teams)
     away_array = create_5_most_recent(away_id, teams)
     current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
     cea = pd.DataFrame(current_example_array)
     X, na_enc = ohe_data(cea, ohe, 1)
     #delete out if you need
-    #x = x.reshape(x.shape[0], x.shape[1], 1)
-    y = model.predict(X)
-    my = mm.predict(X)
-    print(str(y[0]))
-    print(str(my[0]))
-    mda[home_id] = mda[home_id] + my
-    if(y < 0.5):
-        p = (0.5-y)*2
-        print(teams[str(home_id)] + " is predicted to win")
-        pda[home_id] = pda[home_id] + 1
-    elif(y > 0.5):
-        p = (y-0.5)*2
-        print(teams[str(away_id)] + " is predicted to win")
-        pda[away_id] = pda[away_id] + 1
+    if(cnn_flag == 1):
+        X = X.reshape(X.shape[0], X.shape[1], 1)
+        my = mm.predict(X)
+        if(my > 0):
+            print(teams[str(home_id)] + "(HOME) is predicted to win by " + str(my[0]))
+            pda[home_id] = pda[home_id] + 1
+            mda[home_id] = mda[home_id] + my
+            cda[home_id] = cda[home_id] + 1
+        elif(my < 0):
+            my = -my
+            print(teams[str(away_id)] + "(AWAY) is predicted to win by " + str(my[0]))
+            pda[away_id] = pda[away_id] + 1
+            mda[away_id] = pda[away_id] + my
+            cda[away_id] = cda[away_id] + my
     else:
-        print("DRAW")
+        y = model.predict(X)
+        my = mm.predict(X)
+        if(y < 0.5):
+            p = (0.5-y)*2
+            print(teams[str(home_id)] + "(HOME) is predicted to win by " + str(my[0]))
+            pda[home_id] = pda[home_id] + 1
+            if(my[0] > 0):
+                mda[home_id] = mda[home_id] + my
+                cda[home_id] = cda[home_id] + 1
+        elif(y > 0.5):
+            p = (y-0.5)*2
+            my = -my
+            print(teams[str(away_id)] + "(AWAY) is predicted to win by " + str(my[0]))
+            pda[away_id] = pda[away_id] + 1
+            if(my[0] > 0):
+                mda[away_id] = pda[away_id] + my
+                cda[away_id] = cda[away_id] + my
+        else:
+            print("DRAW")
 
-def determine_winner(home_id, away_id, pda, teams, mda, c):
+def determine_winner(home_id, away_id, pda, teams, mda, cda):
     if(pda[home_id] > pda[away_id]):
         print(teams[str(home_id)] + " has been determined to win with a "+ str((pda[home_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
-        print("Average Margin Of: %.2f%" % (mda[home_id]/c))
+        print("Average Margin Of: %.2f%" % (mda[home_id]/cda[home_id]))
     elif(pda[away_id] > pda[home_id]):
         print(teams[str(away_id)] + " has been determined to win with a "+ str((pda[away_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
-        print("Average Margin Of: %.2f%" % (mda[away_id]/c))
+        print("Average Margin Of: %.2f%" % (mda[away_id]/cda[away_id]))
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
+        print("determine by margin")
+        print(teams[str(home_id)] + "Average Margin Of: %.2f%" % (mda[home_id]/cda[home_id]))
+        print(teams[str(away_id)] + "Average Margin Of: %.2f%" % (mda[away_id]/cda[away_id]))
 
 def param_search(x_data, y_label, class_reg):
 
@@ -178,63 +199,55 @@ def ohe_data(x_data, enc, flag):
         ohe = enc
     return x_data, ohe
 
-def run_predictions(x, y, m, my, mm, ohe, teams, games, round):
+def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
+    #prediction of wins for each team
     pda = np.zeros(shape=19)
+    #prediction of margin for each team
     mda = np.zeros(shape=19)
+    #number of times margin agreed with who will win (pda)
+    cda = np.zeros(shape=19)
     i = 1
     results = []
     error = []
-    predict_count = 0
+    count = 0
     while(i<11):
         cv = StratifiedKFold(n_splits=10, shuffle=True)
         for train,test in cv.split(x,y):
+            count = count + 1
+            print("Model: " + str(count))
             prediction = m.fit(x[train],y[train].ravel()).predict_proba(x[test])
-            margin_pred = mm.fit(x[train], my[train].ravel()).predict_proba(x[test])
+            margin_pred = mm.fit(x[train], my[train].ravel())
             print("variables for auroc curve done. Processing fold accuracy + checking best model")
             y_pred = m.predict(x[test])
+            #print(y_pred)
             m_pred = mm.predict(x[test])
+            #print(m_pred)
             predictions = [round(value) for value in y_pred]
-            margin_predctions = [round(value) for value in m_pred]
             #sees how accurate the model was when testing the test set
             accuracy = accuracy_score(y[test], predictions)
             pcent = accuracy * 100.0
             print("The accuracy of this model is" + str(pcent))
-            rmse = sqrt(mean_squared_error(margin_predctions, my[test]))
+            rmse = sqrt(mean_squared_error(m_pred, my[test]))
             print("The rmse of this model is" + str(rmse))
             results.append(pcent)
             error.append(rmse)
             #the games being played in an array. Each pair of 2 is the teams playing against each other
             g = 0
-            while (g<length(games)):
-                predict(m,games[g], games[g+1], round, teams, pda, ohe, mm, mda)
-                predict(m,games[g+1], games[g], round, teams, pda, ohe, mm, mda)
-                predict_count = predict_count + 1
+            while (g<len(games)):
+                predict(m,games[g], games[g+1], g_round, teams, pda, ohe, mm, mda,cda, 0)
+                predict(m,games[g+1], games[g], g_round, teams, pda, ohe, mm, mda,cda, 0)
                 g = g+2
 
         i = i + 1
-    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
-    print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(error), np.std(error)))
-    g = 0
-    while (g<length(games)):
-        determine_winner(games[g], games[g+1], pda, teams, mda, predict_count)
-    return pda, mda
-
-def predict_margin(x, y, m, ohe, teams):
-    results = []
-    win_results = []
-    low = 1000
-    best = m
-    j = 1
-    # while(j<10):
-    #     print("in fold: " + str(j))
+    #Do one round of CNN prediction to add a bit of a different prediction for tight games
     x = x.reshape(x.shape[0], x.shape[1], 1)
     cv = KFold(n_splits=10, shuffle=True)
     for train,test in cv.split(x,y):
-        m = build_CNN_model(x[train].shape[1])
+        cnn = build_CNN_model(x[train].shape[1])
         bs = ((x[train].shape[0])/20)
         bs = round(bs)
-        history = m.fit(x[train], y[train], validation_data=(x[test], y[test]), epochs = 20, batch_size=bs)
-        prediction = m.predict(x[test])
+        history = cnn.fit(x[train], my[train], validation_data=(x[test], my[test]), epochs = 20, batch_size=bs)
+        prediction = cnn.predict(x[test])
         print("variables for auroc curve done. Processing fold accuracy + checking best model")
         y_pred = prediction
         print(y_pred)
@@ -258,17 +271,23 @@ def predict_margin(x, y, m, ohe, teams):
         accuracy = accuracy_score(actual_wins, predicted_wins)
         pcent = accuracy * 100.0
         print("The accuracy of this model is" + str(pcent))
-        win_results.append(pcent)
+        results.append(pcent)
         rmse = sqrt(mean_squared_error(all_preds, y[test]))
         print("The rmse of this model is" + str(rmse))
-        if(rmse < low):
-            low = rmse
-            best = m
-        results.append(rmse)
-    # j = j + 1
-    print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
-    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(win_results), np.std(win_results)))
-    return best
+        error.append(rmse)
+        g = 0
+        while (g<len(games)):
+            predict(m,games[g], games[g+1], g_round, teams, pda, ohe, cnn, mda,cda, 1)
+            predict(m,games[g+1], games[g], g_round, teams, pda, ohe, cnn, mda,cda, 1)
+            g = g+2
+    print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
+    print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(error), np.std(error)))
+    g = 0
+    while (g<len(games)):
+        determine_winner(games[g], games[g+1], pda, teams, mda, cda)
+        g = g + 2
+    return pda, mda
+
 
 def build_DNN_model(x_len):
     model = Sequential()
@@ -355,6 +374,7 @@ def eval_dl(x,y,k,flag):
     return best_model
 
 def main():
+    test_num = 2
     g = gad()
     teams = g.createTeamDict()
     #makes an array that keeps track of how many wins a team has for the random run
