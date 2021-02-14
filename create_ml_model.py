@@ -66,7 +66,7 @@ def combine_prev5(home_id, away_id, round, home_array, away_array):
     current_example_array.extend(away_array)
     return current_example_array
 
-def predict(model,home_id, away_id, round, teams, pda, ohe):
+def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda):
     home_array = create_5_most_recent(home_id, teams)
     away_array = create_5_most_recent(away_id, teams)
     current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
@@ -75,7 +75,10 @@ def predict(model,home_id, away_id, round, teams, pda, ohe):
     #delete out if you need
     #x = x.reshape(x.shape[0], x.shape[1], 1)
     y = model.predict(X)
+    my = mm.predict(X)
     print(str(y[0]))
+    print(str(my[0]))
+    mda[home_id] = mda[home_id] + my
     if(y < 0.5):
         p = (0.5-y)*2
         print(teams[str(home_id)] + " is predicted to win")
@@ -87,11 +90,13 @@ def predict(model,home_id, away_id, round, teams, pda, ohe):
     else:
         print("DRAW")
 
-def determine_winner(home_id, away_id, pda, teams):
+def determine_winner(home_id, away_id, pda, teams, mda, c):
     if(pda[home_id] > pda[away_id]):
         print(teams[str(home_id)] + " has been determined to win with a "+ str((pda[home_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
+        print("Average Margin Of: %.2f%" % (mda[home_id]/c))
     elif(pda[away_id] > pda[home_id]):
         print(teams[str(away_id)] + " has been determined to win with a "+ str((pda[away_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
+        print("Average Margin Of: %.2f%" % (mda[away_id]/c))
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
 
@@ -173,45 +178,46 @@ def ohe_data(x_data, enc, flag):
         ohe = enc
     return x_data, ohe
 
-def run_predictions(x, y, m, ohe, teams):
+def run_predictions(x, y, m, my, mm, ohe, teams, games, round):
     pda = np.zeros(shape=19)
+    mda = np.zeros(shape=19)
     i = 1
     results = []
+    error = []
+    predict_count = 0
     while(i<11):
         cv = StratifiedKFold(n_splits=10, shuffle=True)
         for train,test in cv.split(x,y):
             prediction = m.fit(x[train],y[train].ravel()).predict_proba(x[test])
+            margin_pred = mm.fit(x[train], my[train].ravel()).predict_proba(x[test])
             print("variables for auroc curve done. Processing fold accuracy + checking best model")
             y_pred = m.predict(x[test])
+            m_pred = mm.predict(x[test])
             predictions = [round(value) for value in y_pred]
+            margin_predctions = [round(value) for value in m_pred]
             #sees how accurate the model was when testing the test set
             accuracy = accuracy_score(y[test], predictions)
             pcent = accuracy * 100.0
             print("The accuracy of this model is" + str(pcent))
+            rmse = sqrt(mean_squared_error(margin_predctions, my[test]))
+            print("The rmse of this model is" + str(rmse))
             results.append(pcent)
-
-            predict(m,14, 3, 1, teams, pda, ohe)
-            predict(m,3, 14, 1, teams, pda, ohe)
-            predict(m,4, 18, 1, teams, pda, ohe)
-            predict(m,18, 4, 1, teams, pda, ohe)
-            predict(m,11, 6, 1, teams, pda, ohe)
-            predict(m,6, 11, 1, teams, pda, ohe)
-            predict(m,1, 7, 1, teams, pda, ohe)
-            predict(m,7, 1, 1, teams, pda, ohe)
-            predict(m,5, 10, 1, teams, pda, ohe)
-            predict(m,10, 5, 1, teams, pda, ohe)
-            predict(m,2, 16, 1, teams, pda, ohe)
-            predict(m,16, 2, 1, teams, pda, ohe)
-            predict(m,12, 13, 1, teams, pda, ohe)
-            predict(m,13, 12, 1, teams, pda, ohe)
-            predict(m,9, 15, 1, teams, pda, ohe)
-            predict(m,15, 9, 1, teams, pda, ohe)
-            predict(m,17, 8, 1, teams, pda, ohe)
-            predict(m,8, 17, 1, teams, pda, ohe)
+            error.append(rmse)
+            #the games being played in an array. Each pair of 2 is the teams playing against each other
+            g = 0
+            while (g<length(games)):
+                predict(m,games[g], games[g+1], round, teams, pda, ohe, mm, mda)
+                predict(m,games[g+1], games[g], round, teams, pda, ohe, mm, mda)
+                predict_count = predict_count + 1
+                g = g+2
 
         i = i + 1
     print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
-    return pda
+    print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(error), np.std(error)))
+    g = 0
+    while (g<length(games)):
+        determine_winner(games[g], games[g+1], pda, teams, mda, predict_count)
+    return pda, mda
 
 def predict_margin(x, y, m, ohe, teams):
     results = []
@@ -374,29 +380,25 @@ def main():
     print(margin_label)
 
 
-    pda = np.zeros(shape=19)
+    #pda = np.zeros(shape=19)
+    #mda = np.zeros(shape=19)
     #for predicting win
     #model = param_search(x_data, y_label, 0)
     #for predicting margin
     #margin_model = param_search(x_data, margin_label, 1)
     #pickle.dump(margin_model, open("xgb_margin_model.dat", "wb"))
+    win_model = pickle.load(open("xgb_model.dat", "rb"))
     margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
-    dnn_model = build_DNN_model(x_data.shape[1])
+    #dnn_model = build_DNN_model(x_data.shape[1])
     #best_model = predict_margin(x_data, margin_label, margin_model, ohe, teams)
-    best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
+    #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
 
     # model = pickle.load(open("xgb_model.dat", "rb"))
-    # pda = run_predictions(x_data, y_label, model, ohe, teams)
-    # print(pda)
-    # determine_winner(14, 3, pda, teams)
-    # determine_winner(4, 18, pda, teams)
-    # determine_winner(11, 6, pda, teams)
-    # determine_winner(1, 7, pda, teams)
-    # determine_winner(5, 10, pda, teams)
-    # determine_winner(2, 16, pda, teams)
-    # determine_winner(12, 13, pda, teams)
-    # determine_winner(9, 15, pda, teams)
-    # determine_winner(17, 8, pda, teams)
+    games = [14,3,4,18,11,6,1,7,5,10,2,16,12,13,9,15,17,8]
+    round = 1
+    pda, mda = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
+    print(pda)
+    print(mda)
 
 if __name__ == '__main__':
     main()
