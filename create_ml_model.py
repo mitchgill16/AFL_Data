@@ -111,15 +111,15 @@ def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_fl
 def determine_winner(home_id, away_id, pda, teams, mda, cda):
     if(pda[home_id] > pda[away_id]):
         print(teams[str(home_id)] + " has been determined to win with a "+ str((pda[home_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
-        print("Average Margin Of: %.2f%" % (mda[home_id]/cda[home_id]))
+        print("Average Margin Of: " +str((mda[home_id]/cda[home_id])))
     elif(pda[away_id] > pda[home_id]):
         print(teams[str(away_id)] + " has been determined to win with a "+ str((pda[away_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
-        print("Average Margin Of: %.2f%" % (mda[away_id]/cda[away_id]))
+        print("Average Margin Of: " + str((mda[away_id]/cda[away_id])))
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
         print("determine by margin")
-        print(teams[str(home_id)] + "Average Margin Of: %.2f%" % (mda[home_id]/cda[home_id]))
-        print(teams[str(away_id)] + "Average Margin Of: %.2f%" % (mda[away_id]/cda[away_id]))
+        print(teams[str(home_id)] + "Average Margin Of: " + str((mda[home_id]/cda[home_id])))
+        print(teams[str(away_id)] + "Average Margin Of: " + str((mda[away_id]/cda[away_id])))
 
 def param_search(x_data, y_label, class_reg):
 
