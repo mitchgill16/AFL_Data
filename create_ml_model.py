@@ -79,14 +79,14 @@ def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_fl
         if(my > 0):
             print(teams[str(home_id)] + "(HOME) is predicted to win by " + str(my[0]))
             pda[home_id] = pda[home_id] + 1
-            mda[home_id] = mda[home_id] + my
+            mda[home_id] = mda[home_id] + my[0]
             cda[home_id] = cda[home_id] + 1
         elif(my < 0):
             my = -my
             print(teams[str(away_id)] + "(AWAY) is predicted to win by " + str(my[0]))
             pda[away_id] = pda[away_id] + 1
-            mda[away_id] = pda[away_id] + my
-            cda[away_id] = cda[away_id] + my
+            mda[away_id] = mda[away_id] + my[0]
+            cda[away_id] = cda[away_id] + 1
     else:
         y = model.predict(X)
         my = mm.predict(X)
@@ -95,7 +95,7 @@ def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_fl
             print(teams[str(home_id)] + "(HOME) is predicted to win by " + str(my[0]))
             pda[home_id] = pda[home_id] + 1
             if(my[0] > 0):
-                mda[home_id] = mda[home_id] + my
+                mda[home_id] = mda[home_id] + my[0]
                 cda[home_id] = cda[home_id] + 1
         elif(y > 0.5):
             p = (y-0.5)*2
@@ -103,10 +103,13 @@ def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_fl
             print(teams[str(away_id)] + "(AWAY) is predicted to win by " + str(my[0]))
             pda[away_id] = pda[away_id] + 1
             if(my[0] > 0):
-                mda[away_id] = pda[away_id] + my
-                cda[away_id] = cda[away_id] + my
+                mda[away_id] = mda[away_id] + my[0]
+                cda[away_id] = cda[away_id] + 1
         else:
             print("DRAW")
+    print(pda)
+    print(mda)
+    print(cda)
 
 def determine_winner(home_id, away_id, pda, teams, mda, cda):
     if(pda[home_id] > pda[away_id]):
@@ -253,7 +256,7 @@ def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
         print(y_pred)
         all_preds = y_pred
         i = 0
-        actual = y[test]
+        actual = my[test]
         predicted_wins = []
         actual_wins = []
         for omg in all_preds:
