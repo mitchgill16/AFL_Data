@@ -107,16 +107,13 @@ def predict(model,home_id, away_id, round, teams, pda, ohe, mm, mda, cda, cnn_fl
                 cda[away_id] = cda[away_id] + 1
         else:
             print("DRAW")
-    print(pda)
-    print(mda)
-    print(cda)
 
 def determine_winner(home_id, away_id, pda, teams, mda, cda):
     if(pda[home_id] > pda[away_id]):
-        print(teams[str(home_id)] + " has been determined to win with a "+ str((pda[home_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
+        print(teams[str(home_id)] + " has been determined to win with a "+ str((pda[home_id]/(pda[home_id]+pda[away_id]))*100)+"% chance")
         print("Average Margin Of: " +str((mda[home_id]/cda[home_id])))
     elif(pda[away_id] > pda[home_id]):
-        print(teams[str(away_id)] + " has been determined to win with a "+ str((pda[away_id]/(pda[home_id]+pda[away_id]))*100)+"% chance\n")
+        print(teams[str(away_id)] + " has been determined to win with a "+ str((pda[away_id]/(pda[home_id]+pda[away_id]))*100)+"% chance")
         print("Average Margin Of: " + str((mda[away_id]/cda[away_id])))
     else:
         print(teams[str(home_id)] + " + " + teams[str(away_id)] + " will draw!!!?!?!?\n")
@@ -213,6 +210,11 @@ def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
     results = []
     error = []
     count = 0
+    best_w = m
+    high_w = 0
+    best_m = mm
+    high_m = 100
+    cnn_check = 0
     while(i<11):
         cv = StratifiedKFold(n_splits=10, shuffle=True)
         for train,test in cv.split(x,y):
@@ -234,6 +236,15 @@ def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
             print("The rmse of this model is" + str(rmse))
             results.append(pcent)
             error.append(rmse)
+            #change the best model to equal current model
+            if(pcent > high_w):
+                print("found new best classify")
+                best_w = m
+                high_w = pcent
+            if(rmse < high_m):
+                print("found best new margin")
+                best_m = mm
+                high_m = rmse
             #the games being played in an array. Each pair of 2 is the teams playing against each other
             g = 0
             while (g<len(games)):
@@ -275,7 +286,7 @@ def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
         pcent = accuracy * 100.0
         print("The accuracy of this model is" + str(pcent))
         results.append(pcent)
-        rmse = sqrt(mean_squared_error(all_preds, y[test]))
+        rmse = sqrt(mean_squared_error(all_preds, my[test]))
         print("The rmse of this model is" + str(rmse))
         error.append(rmse)
         g = 0
@@ -286,15 +297,25 @@ def run_predictions(x, y, m, my, mm, ohe, teams, games, g_round):
     print("Training Testing Accuracy: %.2f%% (%.2f%%)" % (np.mean(results), np.std(results)))
     print("Training Testing Margins: %.2f%% (%.2f%%)" % (np.mean(error), np.std(error)))
     g = 0
+    #determine winner from random forest of predictors method
+    print("From random forest of predictor methods \n")
     while (g<len(games)):
         determine_winner(games[g], games[g+1], pda, teams, mda, cda)
         g = g + 2
-    return pda, mda
+    #determine winner from literally one prediction of the best models
+    g = 0
+
+    print("best accuracy is: " + str(high_w))
+    print("best margin error is: " + str(high_m))
+    print("from best model from all runs \n")
+    while (g<len(games)):
+        predict(best_w, games[g], games[g+1], g_round, teams, pda, ohe, best_m, mda, cda, 0)
+        g = g + 2
+    return pda, mda, best_w
 
 
 def build_DNN_model(x_len):
     model = Sequential()
-
     model.add(Dense(63, input_dim = x_len))
     model.add(Activation('relu'))
     model.add(Dropout(0.03))
@@ -377,7 +398,6 @@ def eval_dl(x,y,k,flag):
     return best_model
 
 def main():
-    test_num = 2
     g = gad()
     teams = g.createTeamDict()
     #makes an array that keeps track of how many wins a team has for the random run
@@ -403,8 +423,6 @@ def main():
     print(margin_label)
 
 
-    #pda = np.zeros(shape=19)
-    #mda = np.zeros(shape=19)
     #for predicting win
     #model = param_search(x_data, y_label, 0)
     #for predicting margin
@@ -419,9 +437,10 @@ def main():
     # model = pickle.load(open("xgb_model.dat", "rb"))
     games = [14,3,4,18,11,6,1,7,5,10,2,16,12,13,9,15,17,8]
     round = 1
-    pda, mda = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
+    pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)
+    pickle.dump(best_xgb, open("best_accuracy_xgb.dat", "rb"))
 
 if __name__ == '__main__':
     main()
