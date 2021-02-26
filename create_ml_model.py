@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from random import randint
 from Gather_AFL_Data import gatherer as gad
-from fdnn import feature_extractor as fex
+#from fdnn import feature_extractor as fex
 import skopt
 from skopt.searchcv import BayesSearchCV
 from skopt.space import Real, Categorical, Integer
