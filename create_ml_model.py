@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from random import randint
 from Gather_AFL_Data import gatherer as gad
+from fdnn import feature_extractor as fex
 import skopt
 from skopt.searchcv import BayesSearchCV
 from skopt.space import Real, Categorical, Integer
@@ -440,7 +441,8 @@ def main():
     pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)
-    pickle.dump(best_xgb, open("best_accuracy_xgb.dat", "rb"))
+    pickle.dump(best_xgb, open("best_accuracy_xgb.dat", "wb"))
+    best_xgb = pickle.load(open("best_accuracy_xgb.dat", "rb"))
 
 if __name__ == '__main__':
     main()
