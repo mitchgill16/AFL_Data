@@ -35,6 +35,8 @@ from tensorflow.keras.layers import Activation
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 from sklearn.model_selection import cross_val_score, KFold
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import GridSearchCV
 
 def load_features(m):
     #loads features with gain values in prediction
@@ -52,7 +54,7 @@ def load_features(m):
     indexes = indexes.sort_values()
     return indexes
 
-def create_DNN(x_len):
+def create_DNN(x_len = 0):
     model = Sequential()
     model.add(Dense(250, input_dim = x_len))
     model.add(Activation('relu'))
@@ -67,7 +69,7 @@ def create_DNN(x_len):
     model.add(Activation('relu'))
 
     x = 1
-    while x<51:
+    while x<11:
         model.add(Dense(32))
         model.add(Activation('relu'))
         x = x + 1
@@ -79,9 +81,9 @@ def create_DNN(x_len):
     model.add(Activation('relu'))
     #add output layer
     model.add(Dense(1, activation='sigmoid'))
-    opt = tf.keras.optimizers.Adamax(learning_rate=0.009)
+    opt = tf.keras.optimizers.Adamax(learning_rate=0.01)
 
-    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['binary_accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
     print(model.summary())
     return model
 
@@ -108,8 +110,9 @@ def create_CNN(x_len):
     model.add(Dense(1, activation='sigmoid'))
     opt = tf.keras.optimizers.Adamax(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
 
-    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['binary_accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
     print(model.summary())
+    return model
 
 def ohe_data(x_data, enc, flag):
     if (flag == 0):
@@ -182,7 +185,7 @@ def main():
     best_xgb = pickle.load(open("best_accuracy_xgb.dat", "rb"))
     f = load_features(best_xgb)
     print(f)
-    
+
     x_data = pd.read_csv('assembled_stat_matrix.csv')
     na_enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
     x_data, ohe = ohe_data(x_data, na_enc, 0)
@@ -201,12 +204,35 @@ def main():
     y_label = np.delete(y_label, 0, 0)
     print(y_label.shape)
 
-    bm, dnn_high, dnn_av = eval_dl(x_data, y_label, 10, 0)
-    c_bm, cnn_high, cnn_av = eval_dl(x_data, y_label, 10, 1)
-    print(dnn_high)
-    print(dnn_av)
-    print(cnn_high)
-    print(cnn_av)
+## optimising a DNN model by batch size and epochs
+    #model = KerasClassifier(build_fn=create_DNN, x_len = x_data.shape[1], verbose = 1)
+## optimsiing a CNN model by batch size and epochs
+    model = KerasClassifier(build_fn=create_CNN, x_len = x_data.shape[1], verbose = 1)
+    x_data = x_data.reshape(x_data.shape[0], x_data.shape[1], 1)
+
+    batch_size = [10, 20, 40, 60, 80, 100, 200]
+    epochs = [10, 25, 50, 75, 100]
+    param_grid = dict(batch_size=batch_size, epochs=epochs)
+    grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=5)
+    grid_result = grid.fit(x_data, y_label)
+    # summarize results
+    print("Best: %f using %s" % (grid_result.best_score_, grid_result.best_params_))
+    means = grid_result.cv_results_['mean_test_score']
+    stds = grid_result.cv_results_['std_test_score']
+    params = grid_result.cv_results_['params']
+    for mean, stdev, param in zip(means, stds, params):
+        print("%f (%f) with: %r" % (mean, stdev, param))
+        print(model)
+
+
+
+
+    # bm, dnn_high, dnn_av = eval_dl(x_data, y_label, 10, 0)
+    # c_bm, cnn_high, cnn_av = eval_dl(x_data, y_label, 10, 1)
+    # print(dnn_high)
+    # print(dnn_av)
+    # print(cnn_high)
+    # print(cnn_av)
 
 
 if __name__ == '__main__':
