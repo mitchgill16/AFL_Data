@@ -110,7 +110,7 @@ def create_CNN(x_len):
     model.add(Dense(1, activation='sigmoid'))
     opt = tf.keras.optimizers.Adamax(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
 
-    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['accuracy'])
+    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['acc'])
     print(model.summary())
     return model
 
@@ -209,6 +209,8 @@ def main():
 ## optimsiing a CNN model by batch size and epochs
     model = KerasClassifier(build_fn=create_CNN, x_len = x_data.shape[1], verbose = 1)
     x_data = x_data.reshape(x_data.shape[0], x_data.shape[1], 1)
+
+    #BS 60, epochs 10 are best
 
     batch_size = [10, 20, 40, 60, 80, 100, 200]
     epochs = [10, 25, 50, 75, 100]
