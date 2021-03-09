@@ -170,7 +170,7 @@ def main():
     f = load_features(best_xgb)
     print(f)
 
-    x_data = pd.read_csv('assembled_stat_matrix.csv')
+    x_data = pd.read_csv('Data/assembled_stat_matrix.csv')
     na_enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
     x_data, ohe = ohe_data(x_data, na_enc, 0)
     print(x_data.shape)
@@ -179,7 +179,7 @@ def main():
     print(x_data.shape)
 
     #loads the ylabel matrix,
-    y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
+    y_label = pd.read_csv('Data/assembled_labelled_ymatrix.csv')
     #transposes y_label
     y_t_label = y_label.T
     #converts to numpy

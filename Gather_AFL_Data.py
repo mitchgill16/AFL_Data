@@ -53,7 +53,7 @@ class gatherer:
     #if its a match_ID it only updates stats from a certain game in the text file
     def scrape_match_stats(self, teams, team_id, update_id):
         team = teams.get(str(team_id))
-        f = open(team+"_data.txt", 'r')
+        f = open("Data/"+team+"_data.txt", 'r')
         M_IDs = f.readlines()
         M_IDs = [x.rstrip() for x in M_IDs]
         count = 1
@@ -149,8 +149,10 @@ class gatherer:
             year = 2018
         elif(x >= 9721 and x <= 9927):
             year = 2019
-        elif(x >= 9928 and x <= 11000):
+        elif(x >= 9928 and x <= 10326):
             year = 2020
+        elif(x>=10327 and x <= 12000):
+            year = 2021
         return year
 
     #takes the big soup of all HTML text code labelled as 'statdata'
@@ -295,7 +297,7 @@ class gatherer:
     #along with the first set of statistics
     #otherwise it opens the existing file and adds the relevant stats into the next open column
     def write_to_excel(self, team, stat_array, match_count):
-        if(not(self.path.exists(team+'_stats.xlsx'))):
+        if(not(self.path.exists("Data/"+team+'_stats.xlsx'))):
             wb = self.Workbook()
             ws = wb.active
             labels = ['Match_ID', 'Year', 'Round', 'H/A?', 'H/A Win?', 'Points For', 'Points Against', 'Margin',
@@ -332,7 +334,7 @@ class gatherer:
             wb.save(filename = team+'_stats.xlsx')
         else:
             from openpyxl import Workbook, load_workbook
-            wb = load_workbook(team+'_stats.xlsx')
+            wb = load_workbook("Data/"+team+'_stats.xlsx')
             ws = wb.active
             j = 0
             match_count = ws.max_column
@@ -340,7 +342,7 @@ class gatherer:
                 for cell in col:
                     cell.value = stat_array[j]
                     j = j + 1
-            wb.save(filename = team+'_stats.xlsx')
+            wb.save(filename = ("Data/"+team+'_stats.xlsx')
 
     #creates a dictionary with each teams identifier on afl_tables
     def createTeamDict(self):
@@ -371,7 +373,7 @@ class gatherer:
         #gets current team we are looking at
         current_team = (team_dict[str(team_int)])
         print(current_team)
-        textfile = open(current_team+"_data.txt", 'w+')
+        textfile = open("Data/"+current_team+"_data.txt", 'w+')
         match = 1
         #round 1 2011, start of the expansion teams
         p = 5147
@@ -405,7 +407,7 @@ class gatherer:
         if(flag_num == 1):
             current_team = (teams[str(team_id)])
             print("Team in match ID: " + str(match_id) + " is " + current_team)
-            textfile = open(current_team+"_data.txt", 'a')
+            textfile = open("Data/"+current_team+"_data.txt", 'a')
             textfile.write(str(match_id)+"\n")
 
     #Updates locally stored stats update_match_files

@@ -403,12 +403,12 @@ def main():
     teams = g.createTeamDict()
     #makes an array that keeps track of how many wins a team has for the random run
     #loads the input data from the assembled matrix in assemble_df.py
-    x_data = pd.read_csv('assembled_stat_matrix.csv')
+    x_data = pd.read_csv('Data/assembled_stat_matrix.csv')
     na_enc = OneHotEncoder(handle_unknown='ignore', sparse=False)
     x_data, ohe = ohe_data(x_data, na_enc, 0)
 
     #loads the ylabel matrix,
-    y_label = pd.read_csv('assembled_labelled_ymatrix.csv')
+    y_label = pd.read_csv('Data/assembled_labelled_ymatrix.csv')
     #transposes y_label
     y_t_label = y_label.T
     #converts to numpy
@@ -417,7 +417,7 @@ def main():
     y_label = np.delete(y_label, 0, 0)
 
     #loads margin as the y_label
-    margin_label = pd.read_csv('assembled_margin_ymatrix.csv')
+    margin_label = pd.read_csv('Data/assembled_margin_ymatrix.csv')
     margin_t_label = margin_label.T
     margin_label = margin_t_label.to_numpy()
     margin_label = np.delete(margin_label, 0, 0)
@@ -425,12 +425,12 @@ def main():
 
 
     #for predicting win
-    #model = param_search(x_data, y_label, 0)
+    model = param_search(x_data, y_label, 0)
     #for predicting margin
     #margin_model = param_search(x_data, margin_label, 1)
-    #pickle.dump(margin_model, open("xgb_margin_model.dat", "wb"))
+    pickle.dump(model, open("xgb_model.dat", "wb"))
     win_model = pickle.load(open("xgb_model.dat", "rb"))
-    margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
+    #margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
     #dnn_model = build_DNN_model(x_data.shape[1])
     #best_model = predict_margin(x_data, margin_label, margin_model, ohe, teams)
     #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)

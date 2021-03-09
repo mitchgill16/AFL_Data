@@ -34,7 +34,7 @@ def find_teams_playing(match_id, teams):
     team2 = 999
     while(i<19):
         current_team = (teams[str(i)])
-        textfile = open(current_team+"_data.txt", 'r')
+        textfile = open("Data/"+current_team+"_data.txt", 'r')
         lines = textfile.readlines()
         lines = [x.strip() for x in lines]
         for line in lines:
@@ -51,7 +51,7 @@ def determine_home_away(match_id, team1, team2, teams):
     current_team = (teams[str(team1)])
     team_string = current_team+"_stats.xlsx"
     #reads the team1 excel into a dataframe
-    t1_df = pd.read_excel(team_string)
+    t1_df = pd.read_excel("Data/"+team_string)
     #every column is now a list of elements.
     col = list(t1_df)
     #iterate through each column
@@ -79,7 +79,7 @@ def create_prev5(match_id, team_id, teams, flag):
     margin = None
     current_team = (teams[str(team_id)])
     team_string = current_team+"_stats.xlsx"
-    t_df = pd.read_excel(team_string)
+    t_df = pd.read_excel("Data/"+team_string)
     col = list(t_df)
     #reversing allows us to find our current game and get the previous 5 in an easy way
     col.reverse()
@@ -164,9 +164,9 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
         if(first == 0):
             #eg. we're only updating it
             if(create_from_new == 1):
-                stats_df = pd.read_csv('assembled_stat_matrix.csv', index_col = 0)
-                label_df = pd.read_csv('assembled_labelled_ymatrix.csv', index_col = 0)
-                margin_df = pd.read_csv('assembled_margin_ymatrix.csv', index_col = 0)
+                stats_df = pd.read_csv('Data/assembled_stat_matrix.csv', index_col = 0)
+                label_df = pd.read_csv('Data/assembled_labelled_ymatrix.csv', index_col = 0)
+                margin_df = pd.read_csv('Data/assembled_margin_ymatrix.csv', index_col = 0)
                 first = 1
                 stats_df[str(i)] = current_example_array
                 label_df[str(i)] = y_label
@@ -184,9 +184,9 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
             label_df[str(i)] = y_label
             margin_df[str(i)] = margin
         i = i + 1
-    stats_df.to_csv('assembled_stat_matrix.csv')
-    label_df.to_csv('assembled_labelled_ymatrix.csv')
-    margin_df.to_csv('assembled_margin_ymatrix.csv')
+    stats_df.to_csv('Data/assembled_stat_matrix.csv')
+    label_df.to_csv('Data/assembled_labelled_ymatrix.csv')
+    margin_df.to_csv('Data/assembled_margin_ymatrix.csv')
     print(stats_df)
     print(label_df)
     print(margin_df)
@@ -200,7 +200,7 @@ def main():
     g = gad()
     teams = g.createTeamDict()
     #only uncomment if need to scrape new match data
-    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
     assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 0)
 
 if __name__ == '__main__':
