@@ -37,6 +37,7 @@ from math import sqrt
 from sklearn.model_selection import cross_val_score, KFold
 from keras.wrappers.scikit_learn import KerasClassifier
 from sklearn.model_selection import GridSearchCV
+from keras.optimizers import Adam
 
 def load_features(m):
     #loads features with gain values in prediction
@@ -54,31 +55,17 @@ def load_features(m):
     indexes = indexes.sort_values()
     return indexes
 
-def create_DNN(x_len = 0):
+def create_DNN(x_len = 0, init_mode='uniform', activation='relu', neurons = 64, neurons_2 = 16):
     model = Sequential()
-    model.add(Dense(250, input_dim = x_len))
-    model.add(Activation('relu'))
+    model.add(Dense(neurons, input_dim = x_len, kernel_initializer = init_mode))
+    model.add(Activation(activation))
     model.add(Dropout(0.03))
     model.add(BatchNormalization())
 
-    model.add(Dense(128))
-    model.add(Activation('relu'))
+    model.add(Dense(neurons_2, kernel_initializer = init_mode))
+    model.add(Activation(activation))
     model.add(Dropout(0.02))
 
-    model.add(Dense(64))
-    model.add(Activation('relu'))
-
-    x = 1
-    while x<11:
-        model.add(Dense(32))
-        model.add(Activation('relu'))
-        x = x + 1
-
-    model.add(Dense(16))
-    model.add(Activation('relu'))
-
-    model.add(Dense(8))
-    model.add(Activation('relu'))
     #add output layer
     model.add(Dense(1, activation='sigmoid'))
     opt = tf.keras.optimizers.Adamax(learning_rate=0.01)
@@ -87,7 +74,7 @@ def create_DNN(x_len = 0):
     print(model.summary())
     return model
 
-def create_CNN(x_len):
+def create_CNN(x_len):#, learn_rate=0.01, momentum=0):
     model = Sequential()
     model.add(Conv1D(filters=32, kernel_size=14,
                      input_shape=(x_len, 1)))
@@ -103,14 +90,13 @@ def create_CNN(x_len):
     model.add(MaxPooling1D(pool_size=2))
     model.add(BatchNormalization())
     model.add(Flatten())
-    model.add(Dense(64, activation='relu'))
-    model.add(Dense(32, activation='relu'))
-    model.add(Dense(16, activation='relu'))
+    model.add(Dense(16, kernel_initializer = 'glorot_normal', activation='relu'))
+    model.add(Dense(4, kernel_initializer = 'glorot_normal', activation='relu'))
     model.add(BatchNormalization())
     model.add(Dense(1, activation='sigmoid'))
-    opt = tf.keras.optimizers.Adamax(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
-
-    model.compile(loss='binary_crossentropy', optimizer=opt, metrics=['acc'])
+    #opt = tf.keras.optimizers.Adam(learning_rate=0.003)#, beta_1=0.9, beta_2=0.999, epsilon=1e-07, name="Adamax"
+    optimizer = Adam()
+    model.compile(loss='binary_crossentropy', optimizer=optimizer, metrics=['acc'])
     print(model.summary())
     return model
 
@@ -165,11 +151,9 @@ def eval_dl(x,y,k,flag):
             model = create_DNN(x[train].shape[1])
         if(flag == 1):
             x = x.reshape(x.shape[0], x.shape[1], 1)
-            model = build_CNN(x[train].shape[1])
-        bs = ((x[train].shape[0])/20)
-        bs = round(bs)
-        history = model.fit(x[train], y[train], validation_data=(x[test], y[test]), epochs = 200, batch_size=bs)
-        _, accuracy = model.evaluate(x[test], y[test], batch_size=bs, verbose=0)
+            model = create_CNN(x[train].shape[1])
+        history = model.fit(x[train], y[train], validation_data=(x[test], y[test]), epochs = 10, batch_size=60)
+        _, accuracy = model.evaluate(x[test], y[test], batch_size=60, verbose=0)
         accuracy = accuracy * 100
         print("accuracy for model " + str(i) + " is " + str(accuracy))
         if(accuracy > highest):
@@ -204,17 +188,20 @@ def main():
     y_label = np.delete(y_label, 0, 0)
     print(y_label.shape)
 
-## optimising a DNN model by batch size and epochs
+# optimising a DNN model by batch size and epochs
     #model = KerasClassifier(build_fn=create_DNN, x_len = x_data.shape[1], verbose = 1)
-## optimsiing a CNN model by batch size and epochs
+# optimsiing a CNN model by batch size and epochs
     model = KerasClassifier(build_fn=create_CNN, x_len = x_data.shape[1], verbose = 1)
     x_data = x_data.reshape(x_data.shape[0], x_data.shape[1], 1)
 
-    #BS 60, epochs 10 are best
-
-    batch_size = [10, 20, 40, 60, 80, 100, 200]
-    epochs = [10, 25, 50, 75, 100]
-    param_grid = dict(batch_size=batch_size, epochs=epochs)
+    #BS 80, epochs 10 with optimizer Adam is best
+    batch_size = [10, 20, 40, 60, 80]
+    epochs = [10, 25, 50, 75]
+    #neurons = [16]
+    #neurons_2 = [4]
+    #init_mode = ['glorot_normal']
+    #activation = ['relu']
+    param_grid = dict(batch_size=batch_size, epochs=epochs)#, init_mode = init_mode, activation = activation, neurons = neurons, neurons_2 = neurons_2)
     grid = GridSearchCV(estimator=model, param_grid=param_grid, n_jobs=-1, cv=5)
     grid_result = grid.fit(x_data, y_label)
     # summarize results
@@ -230,11 +217,11 @@ def main():
 
 
     # bm, dnn_high, dnn_av = eval_dl(x_data, y_label, 10, 0)
-    # c_bm, cnn_high, cnn_av = eval_dl(x_data, y_label, 10, 1)
+    #c_bm, cnn_high, cnn_av = eval_dl(x_data, y_label, 10, 1)
     # print(dnn_high)
     # print(dnn_av)
-    # print(cnn_high)
-    # print(cnn_av)
+    #print(cnn_high)
+    #print(cnn_av)
 
 
 if __name__ == '__main__':
