@@ -201,7 +201,7 @@ def main():
     teams = g.createTeamDict()
     #only uncomment if need to scrape new match data
     g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
-    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 0)
+    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 1)
 
 if __name__ == '__main__':
     main()

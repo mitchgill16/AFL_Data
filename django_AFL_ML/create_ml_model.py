@@ -39,7 +39,7 @@ from sklearn.model_selection import cross_val_score, KFold
 def create_5_most_recent(team_id, teams):
     current_team = (teams[str(team_id)])
     team_string = current_team+"_stats.xlsx"
-    t_df = pd.read_excel(team_string)
+    t_df = pd.read_excel("Data/"+team_string)
     col = list(t_df)
     #reversing allows us to find our current game and get the previous 5 in an easy way
     col.reverse()
@@ -427,17 +427,18 @@ def main():
     #for predicting win
     model = param_search(x_data, y_label, 0)
     #for predicting margin
-    #margin_model = param_search(x_data, margin_label, 1)
+    margin_model = param_search(x_data, margin_label, 1)
     pickle.dump(model, open("xgb_model.dat", "wb"))
+    pickle.dump(margin_model, open("xgb_margin_model.dat", "wb"))
     win_model = pickle.load(open("xgb_model.dat", "rb"))
-    #margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
+    margin_model = pickle.load(open("xgb_margin_model.dat", "rb"))
     #dnn_model = build_DNN_model(x_data.shape[1])
     #best_model = predict_margin(x_data, margin_label, margin_model, ohe, teams)
     #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
 
     # model = pickle.load(open("xgb_model.dat", "rb"))
-    games = [14,3,4,18,11,6,1,7,5,10,2,16,12,13,9,15,17,8]
-    round = 1
+    games = [3,4,7,2,16,1,13,5,15,11,8,12,10,14,18,17,6,9]
+    round = 2
     pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)

@@ -342,7 +342,7 @@ class gatherer:
                 for cell in col:
                     cell.value = stat_array[j]
                     j = j + 1
-            wb.save(filename = ("Data/"+team+'_stats.xlsx')
+            wb.save(filename = ("Data/"+team+'_stats.xlsx'))
 
     #creates a dictionary with each teams identifier on afl_tables
     def createTeamDict(self):
