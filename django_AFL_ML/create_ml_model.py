@@ -437,8 +437,8 @@ def main():
     #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
 
     # model = pickle.load(open("xgb_model.dat", "rb"))
-    games = [4,2,12,18,1,8,14,16,5,15,17,13,3,6,9,11,7,10]
-    round = 3
+    games = [16,5,13,14,18,2,15,17,4,9,8,3,12,1,6,10,11,7]
+    round = 4
     pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)
