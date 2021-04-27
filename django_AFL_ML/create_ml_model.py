@@ -155,6 +155,12 @@ def param_search(x_data, y_label, class_reg):
     xgb_bayes_search = BayesSearchCV(xgbclass, space, n_iter=60, # specify how many iterations
                                     scoring=None, n_jobs=1, cv=5, verbose=3, random_state=42, n_points=12,
                                  refit=True)
+    kk = np.isinf(X_train)
+    if True in kk:
+    	print("aaaaaaa")
+    kk = np.isinf(y_train)
+    if True in kk:
+    	print("reeeeeee")
     xgb_bayes_search.fit(X_train, y_train.ravel(), callback = on_step)
     print("BEST PARAMS ARE HERE")
     print(xgb_bayes_search.best_params_)
@@ -437,8 +443,8 @@ def main():
     #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
 
     # model = pickle.load(open("xgb_model.dat", "rb"))
-    games = [9,18,7,17,8,16,3,2,11,14,6,12,10,1,4,5,13,15]
-    round = 6
+    games = [14,18,4,8,1,9,15,10,2,13,16,7,12,11,5,3,17,6]
+    round = 7
     pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)
