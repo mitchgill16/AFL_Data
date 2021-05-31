@@ -51,7 +51,7 @@ class gatherer:
     #inputs the teams dict, current team
     #update id: if its 0 it means start from the beggining
     #if its a match_ID it only updates stats from a certain game in the text file
-    def scrape_match_stats(self, teams, team_id, update_id):
+    def scrape_match_stats(self, teams, team_id, update_id, update_end):
         team = teams.get(str(team_id))
         f = open("Data/"+team+"_data.txt", 'r')
         M_IDs = f.readlines()
@@ -60,7 +60,7 @@ class gatherer:
         found = 0
         M_IDs_toappend = []
         for mn in M_IDs:
-            if(update_id <= int(mn) or update_id == 0):
+            if((update_id <= int(mn) and int(mn) <= update_end) or update_id == 0):
                 print(mn + "made it into found")
                 M_IDs_toappend.append(mn)
 
@@ -428,7 +428,7 @@ class gatherer:
         x = M_ID_to_start_from
         #adds the added matches into the excel spreadsheet from a minimum of x
         while(i<19):
-            self.scrape_match_stats(teams, i, x)
+            self.scrape_match_stats(teams, i, x, y)
             i = i+1
 
     def main():
