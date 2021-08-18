@@ -161,7 +161,10 @@ def param_search(x_data, y_label, class_reg):
     kk = np.isinf(y_train)
     if True in kk:
     	print("reeeeeee")
-    xgb_bayes_search.fit(X_train, y_train.ravel(), callback = on_step)
+    try:
+        xgb_bayes_search.fit(X_train, y_train.ravel(), callback = on_step)
+    except:
+        xgb_bayes_search.fit(X_train, y_train.ravel(), callback = on_step)
     print("BEST PARAMS ARE HERE")
     print(xgb_bayes_search.best_params_)
     model = xgb_bayes_search.best_estimator_
@@ -443,8 +446,8 @@ def main():
     #best_model = predict_margin(x_data, margin_label, dnn_model, ohe, teams)
 
     # model = pickle.load(open("xgb_model.dat", "rb"))
-    games = [2,4,7,15,8,5,9,14,10,18,12,1,11,16,13,3,6,17]
-    round = 22
+    games = [18,13,14,10,16,8,2,17,7,11,3,9,15,6,5,4,1,12]
+    round = 23
     pda, mda, best_xgb = run_predictions(x_data, y_label, win_model, margin_label, margin_model, ohe, teams, games, round)
     print(pda)
     print(mda)
