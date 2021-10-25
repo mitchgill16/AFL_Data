@@ -75,7 +75,7 @@ def determine_home_away(match_id, team1, team2, teams):
         away_id = 999
     return home_id, away_id, round
 
-def create_prev5(match_id, team_id, teams, flag):
+def create_prev_games(match_id, team_id, teams, flag, n_games):
     margin = None
     current_team = (teams[str(team_id)])
     team_string = current_team+"_stats.xlsx"
@@ -86,10 +86,10 @@ def create_prev5(match_id, team_id, teams, flag):
     match_array = []
     j = 999
     #goes through the spreadsheet until it finds our match we want to look at
-    #then sets j as 0 to allow the program to get the stats from 5 matches
+    #then sets j as 0 to allow the program to get the stats from n_games matches
     #adds it all to the match array
     for i in col:
-        if(j>= 0 and j<5):
+        if(j>= 0 and j<n_games):
             y = 0
             for element in t_df[i]:
                 #skips adding the year the game was played in to the data
@@ -113,25 +113,21 @@ def create_prev5(match_id, team_id, teams, flag):
 
 #combine the things + current match metadata
 #so it would go, array of metadata, append home_array, append away_array
-def combine_prev5(home_id, away_id, round, home_array, away_array):
+def combine_prev_games(home_id, away_id, round, home_array, away_array):
     current_example_array = [round, home_id, away_id]
     current_example_array.extend(home_array)
     current_example_array.extend(away_array)
     return current_example_array
-
-def add_to_df(stat_df, example_m):
-    #puts the current example of 10 prev games into ongoing df
-    return stat_df
 
 #assemebles a matrix which is nxm, and a related true labelled matrix of 1xm
 # n = number of inputs, eg. stat categories of prev 5 games for each team + metadata for current game
 # m = number of matches played from 2011 to current
 #Loops through each match with the following 4 lines
 #Should identify which teams are playing through FTP method
-#Creates a home array and away aray of their previous 5 games through create_prev5
-#combines these arrays into a 10 match array with the current match metadata through combine prev5
+#Creates a home array and away aray of their previous n games through create_prev_ngames
+#combines these arrays into a n_games*2 match array with the current match metadata through combine prev games
 #adds this fully combined array into the ongoing dataframe of n*m, where m is amount of matches done
-def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_from_new):
+def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_from_new, n_games):
     #Round 7 2011, as everyteam would have played 5 games by then.
     #create_from_new, is whether to re-make the whole data frame. 0 = re-make, 1=update
     i = match_to_start_from
@@ -143,24 +139,25 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
         print(str(i))
         team1, team2 = find_teams_playing(i, teams)
         #takes into account GWS entering the league and not having 5 previous games
-        if((team1 == 9 or team2 == 9) and GWS<6 and create_from_new == 0):
+        if((team1 == 9 or team2 == 9) and GWS<(n_games+1) and create_from_new == 0):
             GWS = GWS + 1
             i = i + 1
             continue
         #match doesn't exist
         if(team1 == 999 or team2 == 999):
+            print('no_match exist')
             i = i + 1
             continue
         home_id, away_id, round = determine_home_away(i, team1, team2, teams)
         #made the create_prev5 function also return the h/a winloss value in another variable
         #It shouldn't matter that it finds it twice as it only adds it once
         #Should be 1xM, where M is the total matches found stats for.
-        away_array, y_label, margin = create_prev5(i, away_id, teams, 1)
-        home_array, y_label, margin = create_prev5(i, home_id, teams, 0)
+        away_array, y_label, margin = create_prev_games(i, away_id, teams, 1, n_games)
+        home_array, y_label, margin = create_prev_games(i, home_id, teams, 0, n_games)
         print(margin)
         if(y_label == 0.5):
             y_label = 0
-        current_example_array = combine_prev5(home_id, away_id, round, home_array, away_array)
+        current_example_array = combine_prev_games(home_id, away_id, round, home_array, away_array)
         if(first == 0):
             #eg. we're only updating it
             if(create_from_new == 1):
@@ -195,13 +192,16 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, create_f
 #have to manually check most recent game values though
 #argv 1 is where to start from
 #argv 2 is where to finish
+#teams is a dictionary for what num = team
+#arg 4 is whether to create a new dataframe
+#arg 5 is how many games to have in each teams history for each example
 #then assemebles stat matrices up until most recent values
 def main():
     g = gad()
     teams = g.createTeamDict()
-    #only uncomment if need to scrape new match data
-    g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
-    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 1)
+    #Todo make this update function its own thing...
+    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 0, 10)
 
 if __name__ == '__main__':
     main()
