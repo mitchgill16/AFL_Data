@@ -25,7 +25,7 @@ def clean_match_stats(team_dict, team_int):
                 #print(y)
                 to_remove.append(y)
     print(df.shape)
-    df.to_csv("Data/"+current_team+"_clean_stats.csv")
+    df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
 
 
 def main():

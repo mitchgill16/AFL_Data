@@ -50,9 +50,9 @@ def find_teams_playing(match_id, teams):
 
 def determine_home_away(match_id, team1, team2, teams):
     current_team = (teams[str(team1)])
-    team_string = current_team+"_stats.xlsx"
+    team_string = current_team+"_clean_stats.csv"
     #reads the team1 excel into a dataframe
-    t1_df = pd.read_excel("Data/"+team_string)
+    t1_df = pd.read_csv("Data/"+team_string)
     #every column is now a list of elements.
     col = list(t1_df)
     #iterate through each column
