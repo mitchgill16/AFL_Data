@@ -3,6 +3,28 @@ import numpy as np
 
 from Gather_AFL_Data import gatherer as gad
 
+def clean_team_ids():
+    g = gad()
+    teams = g.createTeamDict()
+
+    all_data = []
+    team_list = []
+
+    i = 1
+    while(i<19):
+        current_team = (teams[str(i)])
+        team_list.append(current_team)
+        textfile = open("Data/"+current_team+"_data.txt", 'r')
+        lines = textfile.readlines()
+        lines = [x.strip() for x in lines]
+        all_data.append(lines)
+        i = i + 1
+    print(len(all_data))
+    team_list
+    df = pd.DataFrame.from_records(all_data)
+    df = df.T
+    df.to_csv("Data/teams_match_ids.csv", header=True, index=False)
+
 def clean_match_stats(team_dict, team_int):
     current_team = (team_dict[str(team_int)])
     print(current_team)
@@ -24,6 +46,9 @@ def clean_match_stats(team_dict, team_int):
             if(y[-4] == '2'):
                 #print(y)
                 to_remove.append(y)
+    df = df.drop(to_remove,axis=1)
+    print(df.shape)
+    df = df.drop_duplicates()
     print(df.shape)
     df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
 
@@ -36,6 +61,7 @@ def main():
     while(i<19):
         clean_match_stats(teams,i)
         i = i+1
+    clean_team_ids()
 
 if __name__ == '__main__':
     main()
