@@ -72,10 +72,11 @@ def determine_home_away(match_id, team1, team2, teams):
 #finds n_games previous worth of data for a given team
 def create_prev_games(match_id, team_id, teams, flag, n_games):
     margin = None
+    ma = None
+    y_label = None
     current_team = (teams[str(team_id)])
     print(current_team)
     print(match_id)
-
     team_string = current_team+"_clean_stats.csv"
     t_df = pd.read_csv("Data/"+team_string)
     #print(t_df)
@@ -84,8 +85,9 @@ def create_prev_games(match_id, team_id, teams, flag, n_games):
     #print(idx)
     my_idx = idx[0]
     #checks to make sure there is enough games to go through
-    if(my_idx < (n_games-1)):
+    if(my_idx < (n_games)):
         print('Num of Prev Games Exceeds previous games')
+        margin = 9999
     else:
         match_array = []
         ma = np.zeros(len(t_df.loc[my_idx][2:].values))
@@ -140,7 +142,9 @@ def get_headers(n_games):
 #assemebles a matrix that goes through an either creates a new Matrix to a given match_id
 #or appends data between inclusive two match ID's
 def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games, new):
-    #Round 6 2012 (5388), to current 10543 as everyteam would have played 5 games by then.
+    #round 1 2012 (5343)
+    #Round 6 2012 (5388),
+    #to current 10543 as everyteam would have played 5 games by then.
     #create_from_new, is whether to re-make the whole data frame. 0 = re-make, 1=update
     i = match_to_start_from
     stats_df = []
@@ -159,7 +163,16 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         #margin will be perspective of home team, however will be abs for regression
         #Should be 1xM, where M is the total matches found stats for.
         away_array, y_label, margin = create_prev_games(i, away_id, teams, 1, n_games)
+        #checks to make sure you an actually get enough previous game data
+        if(margin == 9999):
+            print('too little previous examples for n_games')
+            i = i + 1
+            continue
         home_array, y_label, margin = create_prev_games(i, home_id, teams, 0, n_games)
+        if(margin == 9999):
+            print('too little previous examples for n_games')
+            i = i + 1
+            continue
         if(y_label == 0.5):
             y_label = 0
         current_example_array = combine_prev_games(home_id, away_id, round, home_array, away_array)
@@ -172,39 +185,39 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         stats_df = pd.DataFrame(stats_df)
         h = get_headers(n_games)
         stats_df.columns = h
-        stats_df.to_csv('Data/assembled_stat_matrix.csv', index = False)
+        stats_df.to_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv', index = False)
 
         label_df = pd.DataFrame(label_df)
         label_header = ['H/A Win?']
         label_df.columns = label_header
-        label_df.to_csv('Data/assembled_labelled_ymatrix.csv', index =False)
+        label_df.to_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv', index =False)
 
         margin_df = pd.DataFrame(margin_df)
         margin_header = ['Margin']
         margin_df.columns = margin_header
-        margin_df.to_csv('Data/assembled_margin_ymatrix.csv', index = False)
+        margin_df.to_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv', index = False)
     #append created df to prevously saved df
     else:
-        s_df = pd.read_csv('Data/assembled_stat_matrix.csv')
+        s_df = pd.read_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv')
         h = get_headers(n_games)
         stats_df = pd.DataFrame(stats_df)
         stats_df.columns = h
         s_df = pd.concat([s_df, stats_df], ignore_index = True)
-        s_df.to_csv('Data/assembled_stat_matrix.csv', index = False)
+        s_df.to_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv', index = False)
 
-        l_df = pd.read_csv('Data/assembled_labelled_ymatrix.csv')
+        l_df = pd.read_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv')
         label_df = pd.DataFrame(label_df)
         l_h = ['H/A Win?']
         label_df.columns = l_h
         l_df = pd.concat([l_df, label_df], ignore_index = True)
-        l_df.to_csv('Data/assembled_labelled_ymatrix.csv', index =False)
+        l_df.to_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv', index =False)
 
-        m_df = pd.read_csv('Data/assembled_margin_ymatrix.csv')
+        m_df = pd.read_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv')
         margin_df = pd.DataFrame(margin_df)
         m_h = ['Margin']
         margin_df.columns = m_h
         m_df = pd.concat([m_df, margin_df], ignore_index = True)
-        m_df.to_csv('Data/assembled_margin_ymatrix.csv', index = False)
+        m_df.to_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv', index = False)
 
     print(stats_df)
     print(label_df)
@@ -225,12 +238,12 @@ def main():
     #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
     #c.main()
     #5388 = first game Round 7 2012
-    if(len(sys.argv) == 2):
+    if(len(sys.argv) == 3):
         new = True
-        assemble_stat_matrix(5388, int(sys.argv[1]), teams, 5, new)
+        assemble_stat_matrix(5147, int(sys.argv[1]), teams, int(sys.argv[2]), new)
     else:
         new = False
-        assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, 5, new)
+        assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, int(sys.argv[3]), new)
 
 if __name__ == '__main__':
     main()
