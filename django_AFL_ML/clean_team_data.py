@@ -50,7 +50,9 @@ def clean_match_stats(team_dict, team_int):
     print(df.shape)
     df = df.drop_duplicates()
     print(df.shape)
-    df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
+    s_df = df.sort_values(["Year", "Round"], ascending = (True, True))
+    print("Dataframe was already sorted: "+str(s_df.equals(df)))
+    s_df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
 
 
 def main():
