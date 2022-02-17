@@ -1,6 +1,4 @@
-### some sort of loop that goes through each teams clean_stats
-### appends a ladder position column (R1 = 0)
-### Can be called from clean data
+###Fetches relevant ladder info from 2013
 library('fitzRoy')
 library('dplyr')
 year <- 2011
@@ -35,6 +33,6 @@ for(year in 2013:2021){
     }
   }
 }
-write.csv(x, "all_ladders.csv", row.names=FALSE)
+write.csv(x, "2013_to_2021_ladder.csv", row.names=FALSE)
 
 #do same for venue
