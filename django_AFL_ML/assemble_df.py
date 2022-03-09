@@ -236,6 +236,7 @@ def main():
     teams = g.createTeamDict()
     #Todo make this update function its own thing...
     #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    #R_code update
     #c.main()
     #5388 = first game Round 7 2012
     if(len(sys.argv) == 3):

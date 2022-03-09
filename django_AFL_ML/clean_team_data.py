@@ -3,6 +3,8 @@ import numpy as np
 
 from Gather_AFL_Data import gatherer as gad
 
+#makes a combined dataframe of each team and their team_match_ids
+#saves doing a loop through each file like old design
 def clean_team_ids():
     g = gad()
     teams = g.createTeamDict()
@@ -25,6 +27,10 @@ def clean_team_ids():
     df = df.T
     df.to_csv("Data/teams_match_ids.csv", header=True, index=False)
 
+#goes through match files with scraped data from footywire
+#transposes it to how it should be eg. rows = samples, columns = inputs
+#removes duplicate data
+#sorts based on year and round rather than match_id
 def clean_match_stats(team_dict, team_int):
     current_team = (team_dict[str(team_int)])
     print(current_team)
@@ -54,14 +60,76 @@ def clean_match_stats(team_dict, team_int):
     print("Dataframe was already sorted: "+str(s_df.equals(df)))
     s_df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
 
+#footywire team names and code gathered through R is different identifiers
+def create_R_TeamDict():
+    teams = {
+    "1" : "Adelaide Crows",
+    "2" : "Brisbane Lions",
+    "3" : "Carlton",
+    "4" : "Collingwood",
+    "5" : "Essendon",
+    "6" : "Fremantle",
+    "7" : "Geelong Cats",
+    "8" : "Gold Coast Suns",
+    "9" : "GWS Giants",
+    "10": "Hawthorn",
+    "11": "Melbourne",
+    "12": "North Melbourne",
+    "13": "Port Adelaide",
+    "14": "Richmond",
+    "15": "St Kilda",
+    "16": "Sydney Swans",
+    "17": "West Coast Eagles",
+    "18": "Western Bulldogs"
+    }
+    return teams
+
+
+##TO Finish here -- ladder pos
+##crops the clean data to be from 2013 onwards
+##adds venue and ladder to cropped team data by appending column
+##Accepts team_dict from footywire, R code and current team int
+def append_r_data(team_dict, r_dict, team_int):
+    current_team = (team_dict[str(team_int)])
+    print(current_team)
+    #load data
+    df = pd.read_csv("Data/"+current_team+'_clean_stats.csv')
+    venue = pd.read_csv("Data/2013_to_2021_venues.csv")
+    ladders = pd.read_csv("Data/2013_to_2021_ladder.csv")
+    current_r_team = (r_dict[str(team_int)])
+    team_venue = venue[venue.isin([current_r_team]).any(axis=1)]
+
+    #ladder data preprocess
+    team_ladders = ladders[ladders.isin([current_r_team]).any(axis=1)]
+    team_ladders.season = team_ladders.season.astype(float)
+    team_ladders.round_number = team_ladders.round_number.astype(float)
+    team_ladders.rename(columns={"season": "Year", "round_number": "Round"}, inplace=True)
+
+    #add venue and slice original dataframe
+    tv_rows = team_venue.shape[0]
+    #here would be a good point to exclude any game in 2020?
+    sliced_df = df[-tv_rows:]
+    sliced_df['Venue'] = team_venue['venue.name'].to_numpy()
+    print(sliced_df.iloc[0][1:3])
+
+    #merge ladder information into dataset, remove duplicate team name
+    #fills forward missing finals data with most recent season data
+    merged_df = sliced_df.merge(team_ladders, how='left', on=['Year', 'Round'])
+    merged_df.drop(['team.name'], inplace=True, axis = 1)
+    merged_df.fillna(method='ffill', inplace=True)
+
+    #saves data
+    merged_df.to_csv("Data/"+current_team+"_clean_stats.csv",header = True, index=False)
 
 def main():
     g = gad()
     teams = g.createTeamDict()
+    r_teams = create_R_TeamDict()
     i = 1
     #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
     while(i<19):
         clean_match_stats(teams,i)
+        append_r_data(teams, r_teams, i)
         i = i+1
     clean_team_ids()
 
