@@ -88,35 +88,47 @@ def create_prev_games(match_id, team_id, teams, flag, n_games):
     #splits dataframe into game data and end of round ladder data
     l_df = df.iloc[:,-5:]
     t_df = df.iloc[: , :-5]
-
-    #turns the WWWLL form column into # of W
-    n_form = []
-    for x in l_df['form']:
-        if(len(x)<n_games):
-            y=float(x.count("W"))
-            n_form.append(y)
-        else:
-            x=x[-n_games:]
-            y=float(x.count("W"))
-            n_form.append(y)
-    l_df['form'] = n_form
-
-    #checks to make sure there is enough games to go through
-    if(my_idx < (n_games)):
-        print('Num of Prev Games Exceeds previous games')
-        margin = 9999
+    current_year = t_df.loc[my_idx][1]
+    if(current_year == 2020.0):
+        print('game in 2020')
+        margin = 8888
     else:
-        #start match array with the ladder values from end of previous round (as this would be current for predicting round)
-        ma = l_df.loc[my_idx-1].values
-        #finds both labels for models
-        y_label = t_df.loc[my_idx]["H/A Win?"]
-        margin = t_df.loc[my_idx]["Margin"]
-        #start from the previous game to current game
-        i = 1
-        while i <= n_games:
-            cg = t_df.loc[my_idx-i][2:].values
-            ma = [*ma, *cg]
-            i = i + 1
+        #turns the WWWLL form column into # of W
+        n_form = []
+        for x in l_df['form']:
+            if(len(x)<n_games):
+                y=float(x.count("W"))
+                n_form.append(y)
+            else:
+                x=x[-n_games:]
+                y=float(x.count("W"))
+                n_form.append(y)
+        l_df['form'] = n_form
+
+        #checks to make sure there is enough games to go through
+        if(my_idx < (n_games)):
+            print('Num of Prev Games Exceeds previous games')
+            margin = 9999
+        else:
+            #start match array with the ladder values from end of previous round (as this would be current for predicting round)
+            ma = l_df.loc[my_idx-1].values
+            #finds both labels for models
+            y_label = t_df.loc[my_idx]["H/A Win?"]
+            margin = t_df.loc[my_idx]["Margin"]
+            #start from the previous game to current game
+            #i is to know how many games included
+            i = 1
+            #j finds the previous game and allows for 2020 exclusion
+            j = 1
+            while i <= n_games:
+                year = t_df.loc[my_idx-j][1]
+                if(year == 2020.0):
+                    j = j + 1
+                    continue
+                cg = t_df.loc[my_idx-j][2:].values
+                ma = [*ma, *cg]
+                i = i + 1
+                j = j + 1
     return ma, y_label, margin
 
 #combine the things + current match metadata
@@ -181,6 +193,10 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         #Should be 1xM, where M is the total matches found stats for.
         away_array, y_label, margin = create_prev_games(i, away_id, teams, 1, n_games)
         #checks to make sure you an actually get enough previous game data
+        if(margin == 8888):
+            print('current game is in 2020')
+            i = i + 1
+            continue
         if(margin == 9999):
             print('too little previous examples for n_games')
             i = i + 1
@@ -202,17 +218,17 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         stats_df = pd.DataFrame(stats_df)
         h = get_headers(n_games)
         stats_df.columns = h
-        stats_df.to_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv', index = False)
+        stats_df.to_csv('Data/assembled_stat_matrix_no2020'+str(n_games)+'_games.csv', index = False)
 
         label_df = pd.DataFrame(label_df)
         label_header = ['H/A Win?']
         label_df.columns = label_header
-        label_df.to_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv', index =False)
+        label_df.to_csv('Data/assembled_labelled_ymatrix_no2020'+str(n_games)+'_games.csv', index =False)
 
         margin_df = pd.DataFrame(margin_df)
         margin_header = ['Margin']
         margin_df.columns = margin_header
-        margin_df.to_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv', index = False)
+        margin_df.to_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv', index = False)
     #append created df to prevously saved df
     else:
         s_df = pd.read_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv')
