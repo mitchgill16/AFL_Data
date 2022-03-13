@@ -70,6 +70,7 @@ def determine_home_away(match_id, team1, team2, teams):
     return home_id, away_id, round_val
 
 #finds n_games previous worth of data for a given team
+#takes match_id to look back n_games from
 def create_prev_games(match_id, team_id, teams, flag, n_games):
     margin = None
     ma = None
@@ -78,32 +79,43 @@ def create_prev_games(match_id, team_id, teams, flag, n_games):
     print(current_team)
     print(match_id)
     team_string = current_team+"_clean_stats.csv"
-    t_df = pd.read_csv("Data/"+team_string)
-    #print(t_df)
+    df = pd.read_csv("Data/"+team_string)
+    #drops ladder stats
     #finds where in the dataframe the current match is
-    idx = t_df.index[t_df['Match_ID'] == match_id]
+    idx = df.index[df['Match_ID'] == match_id]
     #print(idx)
     my_idx = idx[0]
+    #splits dataframe into game data and end of round ladder data
+    l_df = df.iloc[:,-5:]
+    t_df = df.iloc[: , :-5]
+
+    #turns the WWWLL form column into # of W
+    n_form = []
+    for x in l_df['form']:
+        if(len(x)<n_games):
+            y=float(x.count("W"))
+            n_form.append(y)
+        else:
+            x=x[-n_games:]
+            y=float(x.count("W"))
+            n_form.append(y)
+    l_df['form'] = n_form
+
     #checks to make sure there is enough games to go through
     if(my_idx < (n_games)):
         print('Num of Prev Games Exceeds previous games')
         margin = 9999
     else:
-        match_array = []
-        ma = np.zeros(len(t_df.loc[my_idx][2:].values))
+        #start match array with the ladder values from end of previous round (as this would be current for predicting round)
+        ma = l_df.loc[my_idx-1].values
         #finds both labels for models
         y_label = t_df.loc[my_idx]["H/A Win?"]
         margin = t_df.loc[my_idx]["Margin"]
         #start from the previous game to current game
         i = 1
         while i <= n_games:
-            current_game = t_df.loc[my_idx-i][2:].values
-            cg = np.array(current_game)
-            if(len(match_array) == 0):
-                match_array = current_game
-                ma = np.array(match_array)
-            else:
-                ma = np.concatenate((ma,cg), axis = None)
+            cg = t_df.loc[my_idx-i][2:].values
+            ma = [*ma, *cg]
             i = i + 1
     return ma, y_label, margin
 
@@ -120,7 +132,9 @@ def get_headers(n_games):
     headers = ['Round', 'Home_Team', 'Away_Team']
     example_file = pd.read_csv('Data/Fremantle_clean_stats.csv')
     cl_h = example_file.columns
-    cl_h
+    cl_h = cl_h[:-5]
+    ladder_header = ['Ladder Pos_H', 'Form_H', 'Season Wins_H', 'Season Loss_H', 'Season Draw_H']
+    headers = [*headers, *ladder_header]
     j = 1
     while j <= n_games:
         for x in cl_h:
@@ -130,6 +144,8 @@ def get_headers(n_games):
             headers.append(x)
         j = j + 1
     j = 1
+    ladder_header = ['Ladder Pos_A', 'Form_A', 'Season Wins_A', 'Season Loss_A', 'Season Draw_A']
+    headers = [*headers, *ladder_header]
     while j <= n_games:
         for x in cl_h:
             if 'Match_ID' in x or 'Year' in x:
@@ -144,6 +160,7 @@ def get_headers(n_games):
 def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games, new):
     #round 1 2012 (5343)
     #Round 6 2012 (5388),
+    #Round 1 2013 (5550)
     #to current 10543 as everyteam would have played 5 games by then.
     #create_from_new, is whether to re-make the whole data frame. 0 = re-make, 1=update
     i = match_to_start_from
@@ -241,7 +258,7 @@ def main():
     #5388 = first game Round 7 2012
     if(len(sys.argv) == 3):
         new = True
-        assemble_stat_matrix(5147, int(sys.argv[1]), teams, int(sys.argv[2]), new)
+        assemble_stat_matrix(5550, int(sys.argv[1]), teams, int(sys.argv[2]), new)
     else:
         new = False
         assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, int(sys.argv[3]), new)
