@@ -52,6 +52,7 @@ def determine_home_away(match_id, team1, team2, teams):
     #t1_df['Match_ID'] = t1_df['Match_ID'].astype(int)
     ha_val = t1_df.loc[match_id,"H/A?"]
     round_val = t1_df.loc[match_id, "Round"]
+    venue = t1_df.loc[match_id, "Venue"]
     #print(ha_val)
     #logic that if first team is 0, then other team must be 1
     if(ha_val == 0.0):
@@ -67,7 +68,7 @@ def determine_home_away(match_id, team1, team2, teams):
         #somethings gone wrong
         home_id = 999
         away_id = 999
-    return home_id, away_id, round_val
+    return home_id, away_id, round_val, venue
 
 #finds n_games previous worth of data for a given team
 #takes match_id to look back n_games from
@@ -133,15 +134,15 @@ def create_prev_games(match_id, team_id, teams, flag, n_games):
 
 #combine the things + current match metadata
 #so it would go, array of metadata, append home_array, append away_array
-def combine_prev_games(home_id, away_id, round, home_array, away_array):
-    current_example_array = [round, home_id, away_id]
+def combine_prev_games(home_id, away_id, round, venue, home_array, away_array):
+    current_example_array = [round, home_id, away_id, venue]
     current_example_array.extend(home_array)
     current_example_array.extend(away_array)
     return current_example_array
 
 #return an array with headers
 def get_headers(n_games):
-    headers = ['Round', 'Home_Team', 'Away_Team']
+    headers = ['Round', 'Home_Team', 'Away_Team', 'Venue']
     example_file = pd.read_csv('Data/Fremantle_clean_stats.csv')
     cl_h = example_file.columns
     cl_h = cl_h[:-5]
@@ -186,7 +187,7 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
             print('no_match exist')
             i = i + 1
             continue
-        home_id, away_id, round = determine_home_away(i, team1, team2, teams)
+        home_id, away_id, round, venue = determine_home_away(i, team1, team2, teams)
         #made the create_prev5 function also return the h/a winloss value in another variable
         #It shouldn't matter that it finds it twice as it only adds it once
         #margin will be perspective of home team, however will be abs for regression
@@ -208,7 +209,7 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
             continue
         if(y_label == 0.5):
             y_label = 0
-        current_example_array = combine_prev_games(home_id, away_id, round, home_array, away_array)
+        current_example_array = combine_prev_games(home_id, away_id, round, venue, home_array, away_array)
         stats_df.append(current_example_array)
         margin_df.append(margin)
         label_df.append(y_label)
