@@ -151,8 +151,10 @@ class gatherer:
             year = 2019
         elif(x >= 9928 and x <= 10326):
             year = 2020
-        elif(x>=10327 and x <= 12000):
+        elif(x>=10327 and x <= 10543):
             year = 2021
+        elif(x>10543):
+            year = 2022
         return year
 
     #takes the big soup of all HTML text code labelled as 'statdata'
@@ -433,12 +435,13 @@ class gatherer:
 
     def main():
         teams = createTeamDict()
-        i = 18
+        self.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+        #i = 18
         #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
-        while(i<19):
-            scrape_match_stats(teams,i)
+    #    while(i<19):
+            #scrape_match_stats(teams,i)
             #clean_match_stats(teams,i)
-            i = i+1
+            #i = i+1
 
     if __name__ == '__main__':
         main()

@@ -94,8 +94,8 @@ def append_r_data(team_dict, r_dict, team_int):
     print(current_team)
     #load data
     df = pd.read_csv("Data/"+current_team+'_clean_stats.csv')
-    venue = pd.read_csv("Data/2013_to_2021_venues.csv")
-    ladders = pd.read_csv("Data/2013_to_2021_ladder.csv")
+    venue = pd.read_csv("R_Code/all_venues.csv")
+    ladders = pd.read_csv("R_Code/all_ladders.csv")
     current_r_team = (r_dict[str(team_int)])
     team_venue = venue[venue.isin([current_r_team]).any(axis=1)]
 

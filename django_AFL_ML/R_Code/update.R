@@ -1,0 +1,25 @@
+##update function
+library('fitzRoy')
+library('dplyr')
+
+args = commandArgs(trailingOnly=TRUE)
+getwd()
+test_y <- as.integer(args[1])
+test_r <- as.integer(args[2])
+
+all_ladders <- read.csv("R_Code/all_ladders.csv")
+all_venues <- read.csv("R_Code/all_venues.csv")
+
+results <- fetch_results(test_y, test_r)
+venue <- select(results, round.year, round.roundNumber,
+            match.homeTeam.name, match.awayTeam.name, venue.name)
+combined_venues <- rbind(all_venues, venue)
+
+ladders <- fetch_ladder(season=test_y, round=test_r)
+ladder <- select(ladders, season, round_number, team.name, position,form,
+            thisSeasonRecord.winLossRecord.wins, thisSeasonRecord.winLossRecord.losses,
+            thisSeasonRecord.winLossRecord.draws)
+combined_ladders <- rbind(all_ladders, ladder)
+
+write.csv(combined_venues, "R_Code/all_venues.csv", row.names=FALSE)
+write.csv(combined_ladders, "R_Code/all_ladders.csv", row.names=FALSE)
