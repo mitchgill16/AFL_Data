@@ -434,14 +434,15 @@ class gatherer:
             i = i+1
 
     def main():
-        teams = createTeamDict()
-        self.update(int(sys.argv[1]), int(sys.argv[2]),teams)
-        #i = 18
+    #    g = gatherer()
+    #    teams = g.createTeamDict()
+    #    g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+        i = 18
         #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
-    #    while(i<19):
-            #scrape_match_stats(teams,i)
-            #clean_match_stats(teams,i)
-            #i = i+1
+        while(i<19):
+            scrape_match_stats(teams,i)
+            clean_match_stats(teams,i)
+            i = i+1
 
     if __name__ == '__main__':
         main()
