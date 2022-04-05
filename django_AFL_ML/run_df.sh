@@ -1,11 +1,11 @@
 #uncomment below 2 lines, make this an argument to make this easier.
 
-#Rscript R_Code/update.R 2022 2
+Rscript R_Code/update.R 2022 3
 
-python clean_team_data.py 10553 10561
+python clean_team_data.py 10562 10570
 
-python assemble_df.py 10553 10561 1
-python assemble_df.py 10553 10561 10
+python assemble_df.py 10562 10570 1
+python assemble_df.py 10562 10570 10
 
 #python assemble_df.py 10544 10552 3
 #python assemble_df.py 10544 10552 4
