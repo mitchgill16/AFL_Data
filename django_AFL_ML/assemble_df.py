@@ -232,26 +232,26 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         margin_df.to_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv', index = False)
     #append created df to prevously saved df
     else:
-        s_df = pd.read_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv')
+        s_df = pd.read_csv('Data/assembled_stat_matrix_no2020'+str(n_games)+'_games.csv')
         h = get_headers(n_games)
         stats_df = pd.DataFrame(stats_df)
         stats_df.columns = h
         s_df = pd.concat([s_df, stats_df], ignore_index = True)
-        s_df.to_csv('Data/assembled_stat_matrix_'+str(n_games)+'_games.csv', index = False)
+        s_df.to_csv('Data/assembled_stat_matrix_no2020'+str(n_games)+'_games.csv', index = False)
 
-        l_df = pd.read_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv')
+        l_df = pd.read_csv('Data/assembled_labelled_ymatrix_no2020'+str(n_games)+'_games.csv')
         label_df = pd.DataFrame(label_df)
         l_h = ['H/A Win?']
         label_df.columns = l_h
         l_df = pd.concat([l_df, label_df], ignore_index = True)
-        l_df.to_csv('Data/assembled_labelled_ymatrix_'+str(n_games)+'_games.csv', index =False)
+        l_df.to_csv('Data/assembled_labelled_ymatrix_no2020'+str(n_games)+'_games.csv', index =False)
 
-        m_df = pd.read_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv')
+        m_df = pd.read_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv')
         margin_df = pd.DataFrame(margin_df)
         m_h = ['Margin']
         margin_df.columns = m_h
         m_df = pd.concat([m_df, margin_df], ignore_index = True)
-        m_df.to_csv('Data/assembled_margin_ymatrix_'+str(n_games)+'_games.csv', index = False)
+        m_df.to_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv', index = False)
 
     print(stats_df)
     print(label_df)
