@@ -1,0 +1,311 @@
+#Takes the information created from Gather_AFL_Data.py and
+#cleans the data with clean_team_data.py
+#produces the input matrix (X) and the labelled array (Y)
+#in a format that should be suitable for deep learning packages
+#Matrix X is of NxM where N is number of rows.
+#N is each sample match to be predicted with previous n_games of stats
+#M is each input
+#Array Y should be of 1xM, where each value is whether the home or away team Won
+#Margin array also for the margin from home team perspective (negative = loss)
+
+import numpy as np
+import pandas as pd
+import random as rand
+import sys
+from Gather_AFL_Data import gatherer as gad
+import clean_team_data
+
+#takes a match_id and two team ids
+#looks into the team_match_ids spreadsheet
+#returns col_idx which is the team id's
+def find_teams_playing(match_id, teams):
+    match_id = str(match_id)
+    df = pd.read_csv("Data/teams_match_ids.csv")
+    match_teams = ([col for col in df.columns if df[col].apply(str).str.contains(match_id).any()])
+    match_teams = [int(i) for i in match_teams]
+    match_teams = [x+1 for x in match_teams]
+    print(match_teams)
+    if(len(match_teams) != 2):
+        print("REEEEEEEEEEEEEE")
+        team1 = 999
+        team2 = 999
+    else:
+        team1 = match_teams[0]
+        team2 = match_teams[1]
+    return team1, team2
+
+#looks into the clean_stats.csv for 2 given teams
+#looks in the H/A category to figure out home/away teams
+#also returns the current round for the match_id
+def determine_home_away(match_id, team1, team2, teams):
+    #gets current team string and their stats file
+    current_team = (teams[str(team1)])
+    team_string = current_team+"_clean_stats.csv"
+    #reads the team1 excel into a dataframe, sets match_id as an index
+    t1_df = pd.read_csv("Data/"+team_string, index_col="Match_ID")
+    #turns index into str
+    t1_df.index = t1_df.index.map(int)
+    t1_df.index = t1_df.index.map(str)
+    match_id = str(match_id)
+    #print(match_id)
+    #retrieves the ha_val and round from first team excel
+    #t1_df['Match_ID'] = t1_df['Match_ID'].astype(int)
+    ha_val = t1_df.loc[match_id,"H/A?"]
+    round_val = t1_df.loc[match_id, "Round"]
+    venue = t1_df.loc[match_id, "Venue"]
+    #print(ha_val)
+    #logic that if first team is 0, then other team must be 1
+    if(ha_val == 0.0):
+        #print('ha_val is 0')
+        home_id = team1
+        away_id = team2
+    elif(ha_val == 1.0):
+        #print('ha_val is 1')
+        home_id = team2
+        away_id = team1
+    #quick indicator if somethings happened
+    else:
+        #somethings gone wrong
+        home_id = 999
+        away_id = 999
+    return home_id, away_id, round_val, venue
+
+def find_form(ct, ot, match_id):
+    g = gad()
+    teams = g.createTeamDict()
+    current_team = (teams[str(ct)])
+    team_string = current_team+"_clean_stats.csv"
+    df = pd.read_csv("Data/"+team_string)
+    idx = df.index[df['Match_ID'] == match_id]
+    my_idx = idx[0]
+    df = df.loc[0:my_idx-1,:]
+    prev_games = df.loc[(df['Team_against_ID']==ot)]
+    #return last 5 games against each other and 8th column is whether the ct won against ot
+    l = 5
+    if(prev_games.shape[0] < 5):
+        l = prev_games.shape[0]
+    if(l==0):
+        wins = 0
+    else:
+        prev_games = prev_games.iloc[-l: , 8]
+        wins = prev_games.sum()
+    return wins
+
+#finds n_games previous worth of data for a given team
+#takes match_id to look back n_games from
+def create_prev_games(match_id, team_id, teams, n_games, oppo_id):
+    margin = None
+    ma = None
+    y_label = None
+    trend_cg = []
+    current_team = (teams[str(team_id)])
+    print(current_team)
+    print(match_id)
+    team_string = current_team+"_clean_stats.csv"
+    df = pd.read_csv("Data/"+team_string)
+    #drops ladder stats
+    #finds where in the dataframe the current match is
+    idx = df.index[df['Match_ID'] == match_id]
+    #print(idx)
+    my_idx = idx[0]
+    #splits dataframe into game data and end of round ladder data
+    l_df = df.iloc[:,-5:]
+    t_df = df.iloc[: , :-5]
+    current_year = t_df.loc[my_idx][1]
+    if(current_year == 2020.0):
+        print('game in 2020')
+        margin = 8888
+    else:
+        #turns the WWWLL form column into # of W
+        n_form = []
+        for x in l_df['form']:
+            if(len(x)<n_games):
+                y=float(x.count("W"))
+                n_form.append(y)
+            else:
+                x=x[-n_games:]
+                y=float(x.count("W"))
+                n_form.append(y)
+        l_df['form'] = n_form
+        #checks to make sure there is enough games to go through
+        if(my_idx < (n_games)):
+            print('Num of Prev Games Exceeds previous games')
+            margin = 9999
+        else:
+            #start match array with the ladder values from end of previous round (as this would be current for predicting round)
+            ma = l_df.loc[my_idx-1].values
+            #finds both labels for models
+            y_label = t_df.loc[my_idx]["H/A Win?"]
+            margin = t_df.loc[my_idx]["Margin"]
+            #start from the previous game to current game
+            #i is to know how many games included
+            i = 1
+            #j finds the previous game and allows for 2020 exclusion
+            j = 1
+            while i <= n_games:
+                year = t_df.loc[my_idx-j][1]
+                if(year == 2020.0):
+                    j = j + 1
+                    continue
+                cg = t_df.loc[my_idx-j][2:].values
+                trend_cg.append(cg)
+                i = i + 1
+                j = j + 1
+            my_df = pd.DataFrame(trend_cg, columns = t_df.columns[2:])
+            my_df = my_df.iloc[:,3:-1]
+            cg = my_df.mean(axis=0)
+            ma = [*ma, *cg]
+            h_form = find_form(team_id, oppo_id, match_id)
+            o_form = find_form(oppo_id, team_id, match_id)
+            form_diff = h_form-o_form
+            ma.append(form_diff)
+    return ma, y_label, margin
+
+#combine the things + current match metadata
+#so it would go, array of metadata, append home_array, append away_array
+def combine_prev_games(home_id, away_id, round, venue, home_array, away_array):
+    current_example_array = [round, home_id, away_id, venue]
+    current_example_array.extend(home_array)
+    current_example_array.extend(away_array)
+    return current_example_array
+
+#return an array with headers
+def get_headers(n_games):
+    headers = ['Round', 'Home_Team', 'Away_Team', 'Venue']
+    example_file = pd.read_csv('Data/Fremantle_clean_stats.csv')
+    cl_h = example_file.columns
+    cl_h = cl_h[5:-6]
+    ladder_header = ['Ladder Pos_H', 'Form_H', 'Season Wins_H', 'Season Loss_H', 'Season Draw_H']
+    headers = [*headers, *ladder_header]
+    for x in cl_h:
+        if 'Match_ID' in x or 'Year' in x:
+            continue
+        x = 'H_'+ x + ' avg'
+        headers.append(x)
+    headers.append("H_Recent_Matchup_Diff")
+    ladder_header = ['Ladder Pos_A', 'Form_A', 'Season Wins_A', 'Season Loss_A', 'Season Draw_A']
+    headers = [*headers, *ladder_header]
+    for x in cl_h:
+        if 'Match_ID' in x or 'Year' in x:
+            continue
+        x = 'A_'+ x + ' avg'
+        headers.append(x)
+    headers.append("A_Recent_Matchup_Diff")
+    len(headers)
+    return headers
+
+#assemebles a matrix that goes through an either creates a new Matrix to a given match_id
+#or appends data between inclusive two match ID's
+def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games, new):
+    #round 1 2012 (5343)
+    #Round 6 2012 (5388),
+    #Round 1 2013 (5550)
+    #to current 10543 as everyteam would have played 5 games by then.
+    #create_from_new, is whether to re-make the whole data frame. 0 = re-make, 1=update
+    i = match_to_start_from
+    stats_df = []
+    label_df = []
+    margin_df = []
+    while(i<=most_recent_match):
+        print(str(i))
+        team1, team2 = find_teams_playing(i, teams)
+        if(team1 == 999 or team2 == 999):
+            print('no_match exist')
+            i = i + 1
+            continue
+        home_id, away_id, round, venue = determine_home_away(i, team1, team2, teams)
+        #made the create_prev5 function also return the h/a winloss value in another variable
+        #It shouldn't matter that it finds it twice as it only adds it once
+        #margin will be perspective of home team, however will be abs for regression
+        #Should be 1xM, where M is the total matches found stats for.
+        away_array, y_label, margin = create_prev_games(i, away_id, teams, n_games, home_id)
+        #checks to make sure you an actually get enough previous game data
+        if(margin == 8888):
+            print('current game is in 2020')
+            i = i + 1
+            continue
+        if(margin == 9999):
+            print('too little previous examples for n_games')
+            i = i + 1
+            continue
+        home_array, y_label, margin = create_prev_games(i, home_id, teams, n_games, away_id)
+        if(margin == 9999):
+            print('too little previous examples for n_games')
+            i = i + 1
+            continue
+        if(y_label == 0.5):
+            y_label = 0
+        current_example_array = combine_prev_games(home_id, away_id, round, venue, home_array, away_array)
+        stats_df.append(current_example_array)
+        margin_df.append(margin)
+        label_df.append(y_label)
+        i = i + 1
+    #create new df and save
+    if(new):
+        stats_df = pd.DataFrame(stats_df)
+        h = get_headers(n_games)
+        stats_df.columns = h
+        stats_df.to_csv('Data/trended_data_no2020_'+str(n_games)+'_games_avg.csv', index = False)
+
+        label_df = pd.DataFrame(label_df)
+        label_header = ['H/A Win?']
+        label_df.columns = label_header
+        label_df.to_csv('Data/trended_ymatrix_no2020_'+str(n_games)+'_games.csv', index =False)
+
+        margin_df = pd.DataFrame(margin_df)
+        margin_header = ['Margin']
+        margin_df.columns = margin_header
+        margin_df.to_csv('Data/trended_margin_ymatrix_no2020_'+str(n_games)+'_games.csv', index = False)
+    #append created df to prevously saved df
+    else:
+        s_df = pd.read_csv('Data/trended_data_no2020_'+str(n_games)+'_games_avg.csv')
+        h = get_headers(n_games)
+        stats_df = pd.DataFrame(stats_df)
+        stats_df.columns = h
+        s_df = pd.concat([s_df, stats_df], ignore_index = True)
+        s_df.to_csv('Data/trended_data_no2020_'+str(n_games)+'_games_avg.csv', index = False)
+
+        l_df = pd.read_csv('Data/trended_ymatrix_no2020_'+str(n_games)+'_games.csv')
+        label_df = pd.DataFrame(label_df)
+        l_h = ['H/A Win?']
+        label_df.columns = l_h
+        l_df = pd.concat([l_df, label_df], ignore_index = True)
+        l_df.to_csv('Data/trended_ymatrix_no2020_'+str(n_games)+'_games.csv', index =False)
+
+        m_df = pd.read_csv('Data/trended_margin_ymatrix_no2020_'+str(n_games)+'_games.csv')
+        margin_df = pd.DataFrame(margin_df)
+        m_h = ['Margin']
+        margin_df.columns = m_h
+        m_df = pd.concat([m_df, margin_df], ignore_index = True)
+        m_df.to_csv('Data/trended_margin_ymatrix_no2020_'+str(n_games)+'_games.csv', index = False)
+
+    print(stats_df)
+    print(label_df)
+    print(margin_df)
+
+#updates current local files to the most recent versions
+#have to manually check most recent game values though
+#argv 1 is where to start from
+#argv 2 is where to finish
+#or
+#argv 1 is where to finish if just starting again, as it will assume new df
+
+def main():
+    g = gad()
+    #c = my_cleaner()
+    teams = g.createTeamDict()
+    #Todo make this update function its own thing...
+    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    #R_code update
+    #Rscript("/R_Code/update.R,round, year)
+    #5388 = first game Round 7 2012
+    #5550 = first game round 1 2013
+    if(len(sys.argv) == 3):
+        new = True
+        assemble_stat_matrix(5550, int(sys.argv[1]), teams, int(sys.argv[2]), new)
+    else:
+        new = False
+        assemble_stat_matrix(int(sys.argv[1]), int(sys.argv[2]), teams, int(sys.argv[3]), new)
+
+if __name__ == '__main__':
+    main()
