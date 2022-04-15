@@ -106,10 +106,16 @@ def append_r_data(team_dict, r_dict, team_int):
     team_ladders.round_number = team_ladders.round_number.astype(float)
     team_ladders.rename(columns={"season": "Year", "round_number": "Round"}, inplace=True)
 
+    #pav data preprocess
+    pavs = pd.read_csv("R_Code/all_team_pavs.csv")
+    team_pavs = pavs.loc[(pavs["Team_ID"]==team_int)]
+
     #add venue and slice original dataframe
     tv_rows = team_venue.shape[0]
     #here would be a good point to exclude any game in 2020?
     sliced_df = df[-tv_rows:]
+    #add PAV total and venue name for the matches
+    sliced_df['PAV_Sum'] = team_pavs['Player_PAV_Total'].to_numpy()
     sliced_df['Venue'] = team_venue['venue.name'].to_numpy()
     print(sliced_df.iloc[0][1:3])
 
@@ -125,7 +131,7 @@ def append_r_data(team_dict, r_dict, team_int):
 def main():
     g = gad()
     teams = g.createTeamDict()
-    g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
     r_teams = create_R_TeamDict()
     i = 1
     #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
