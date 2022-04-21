@@ -274,12 +274,7 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
 
 def main():
     g = gad()
-    #c = my_cleaner()
     teams = g.createTeamDict()
-    #Todo make this update function its own thing...
-    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
-    #R_code update
-    #Rscript("/R_Code/update.R,round, year)
     #5388 = first game Round 7 2012
     #5550 = first game round 1 2013
     if(len(sys.argv) == 3):

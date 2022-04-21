@@ -131,7 +131,7 @@ def append_r_data(team_dict, r_dict, team_int):
 def main():
     g = gad()
     teams = g.createTeamDict()
-    #g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
+    g.update(int(sys.argv[1]), int(sys.argv[2]),teams)
     r_teams = create_R_TeamDict()
     i = 1
     #should go through each of the 18 teams and create an excel file with over 100 stats for each game they played in
