@@ -36,7 +36,7 @@ team,year,firstname,surname,PAV_total
 1,2012,Lewis,Johnston,0.37
 1,2012,Brad,Symes,0.36
 1,2012,Richard,Tambling,0.21
-1,2012,Sam,Kerridge,0
+1,2012,Sam,Kerridge,0.0
 2,2012,Daniel,Rich,18.14
 2,2012,Tom,Rockliff,17.91
 2,2012,Jack,Redden,16.83
@@ -106,7 +106,7 @@ team,year,firstname,surname,PAV_total
 3,2012,Andrew,McInnes,3.55
 3,2012,Robert,Warnock,3.54
 3,2012,Levi,Casboult,3.47
-3,2012,Kane,Lucas,3
+3,2012,Kane,Lucas,3.0
 3,2012,Jeremy,Laidler,2.55
 3,2012,Simon,White,2.15
 3,2012,Josh,Bootsma,1.84
@@ -303,7 +303,7 @@ team,year,firstname,surname,PAV_total
 8,2012,Nathan,Bock,2.15
 8,2012,Jeremy,Taylor,2.09
 8,2012,Alex,Sexton,2.01
-8,2012,Andrew,McQualter,2
+8,2012,Andrew,McQualter,2.0
 8,2012,Alik,Magin,1.39
 8,2012,Josh,Fraser,1.2
 8,2012,Josh,Hall,0.77
@@ -349,7 +349,7 @@ team,year,firstname,surname,PAV_total
 9,2012,Steve,Clifton,1.48
 9,2012,Josh,Bruce,1.45
 9,2012,Sam,Frost,1.24
-9,2012,Sam J,Reid,1
+9,2012,Sam J,Reid,1.0
 9,2012,Liam,Sumner,0.89
 9,2012,Setanta,OhAilpin,0.63
 9,2012,Mark,Whiley,0.55
@@ -499,7 +499,7 @@ team,year,firstname,surname,PAV_total
 13,2012,Nathan,Blee,0.66
 13,2012,Cameron,Hitchcock,0.29
 13,2012,Simon,Phillips,0.2
-13,2012,Jasper,Pittard,0
+13,2012,Jasper,Pittard,0.0
 14,2012,Trent,Cotchin,24.17
 14,2012,Brett,Deledio,23.05
 14,2012,Shane,Tuck,21.99
@@ -522,7 +522,7 @@ team,year,firstname,surname,PAV_total
 14,2012,Luke,McGuane,5.07
 14,2012,Brad,Miller,4.91
 14,2012,Dylan,Grimes,4.26
-14,2012,Ty,Vickery,4
+14,2012,Ty,Vickery,4.0
 14,2012,Matt,Dea,3.81
 14,2012,Jayden,Post,3.67
 14,2012,Ben,Griffiths,3.03
@@ -866,7 +866,7 @@ team,year,firstname,surname,PAV_total
 6,2013,David,Mundy,20.31
 6,2013,Nat,Fyfe,20.11
 6,2013,Michael,Barlow,18.76
-6,2013,Danyle,Pearce,17
+6,2013,Danyle,Pearce,17.0
 6,2013,Michael,Walters,16.37
 6,2013,Michael,Johnson,15.6
 6,2013,Chris,Mayne,14.16
@@ -922,7 +922,7 @@ team,year,firstname,surname,PAV_total
 7,2013,Cameron,Guthrie,8.15
 7,2013,Trent,West,7.38
 7,2013,Paul,Chapman,6.13
-7,2013,Billie,Smedts,6
+7,2013,Billie,Smedts,6.0
 7,2013,Nathan,Vardy,5.71
 7,2013,Taylor,Hunt,5.62
 7,2013,Josh,Hunt,5.53
@@ -941,7 +941,7 @@ team,year,firstname,surname,PAV_total
 8,2013,Dion,Prestia,18.18
 8,2013,Jaeger,OMeara,15.1
 8,2013,Rory,Thompson,14.32
-8,2013,Jarrod,Harbrow,14
+8,2013,Jarrod,Harbrow,14.0
 8,2013,Aaron,Hall,13.76
 8,2013,Trent,McKenzie,13.44
 8,2013,Harley,Bennell,12.55
@@ -1260,14 +1260,14 @@ team,year,firstname,surname,PAV_total
 16,2013,Andrejs,Everitt,10.02
 16,2013,Nick (SY),Smith,9.64
 16,2013,Adam,Goodes,9.02
-16,2013,Jesse,White,8
+16,2013,Jesse,White,8.0
 16,2013,Kurt,Tippett,7.3
 16,2013,Tom,Mitchell,7.24
 16,2013,Lewis,Jetta,7.11
 16,2013,Jed,Lamb,3.8
 16,2013,Sam,Reid,3.57
 16,2013,Brandon,Jack,3.14
-16,2013,Rhyce,Shaw,3
+16,2013,Rhyce,Shaw,3.0
 16,2013,Martin,Mattner,2.8
 16,2013,Mitch,Morton,2.13
 16,2013,Lewis,Roberts-Thomson,1.69
@@ -1405,7 +1405,7 @@ team,year,firstname,surname,PAV_total
 2,2014,Matt,Maguire,7.82
 2,2014,Daniel,Merrett,7.6
 2,2014,Darcy,Gardiner,7.01
-2,2014,Ryan,Harwood,7
+2,2014,Ryan,Harwood,7.0
 2,2014,Trent,West,6.73
 2,2014,Claye,Beams,6.47
 2,2014,Marco,Paparone,5.93
@@ -1435,7 +1435,7 @@ team,year,firstname,surname,PAV_total
 3,2014,Robert,Warnock,12.95
 3,2014,Zach,Tuohy,12.56
 3,2014,Lachie,Henderson,11.01
-3,2014,Sam,Rowe,11
+3,2014,Sam,Rowe,11.0
 3,2014,Jarrad,Waite,10.88
 3,2014,Andrejs,Everitt,10.88
 3,2014,Dale,Thomas,10.64
@@ -1871,7 +1871,7 @@ team,year,firstname,surname,PAV_total
 15,2014,Jack,Steven,12.06
 15,2014,Farren,Ray,11.9
 15,2014,Sean,Dempster,11.36
-15,2014,Rhys,Stanley,11
+15,2014,Rhys,Stanley,11.0
 15,2014,Jack,Newnes,10.68
 15,2014,Jack,Billings,9.28
 15,2014,Luke,Dunstan,8.8
@@ -2097,7 +2097,7 @@ team,year,firstname,surname,PAV_total
 3,2015,Matthew,Kreuzer,10.66
 3,2015,Zach,Tuohy,10.52
 3,2015,Ed,Curnow,10.35
-3,2015,Sam,Rowe,10
+3,2015,Sam,Rowe,10.0
 3,2015,Levi,Casboult,9.3
 3,2015,Andrew,Carrazzo,8.49
 3,2015,Lachie,Henderson,8.35
@@ -2192,7 +2192,7 @@ team,year,firstname,surname,PAV_total
 5,2015,Shaun,Edwards,3.33
 5,2015,Heath,Hocking,3.27
 5,2015,Jayden,Laverde,3.15
-5,2015,Jonathan,Giles,3
+5,2015,Jonathan,Giles,3.0
 5,2015,Orazio,Fantasia,2.53
 5,2015,Elliott,Kavanagh,2.35
 5,2015,Kyle,Langford,2.09
@@ -2204,10 +2204,10 @@ team,year,firstname,surname,PAV_total
 5,2015,Alex,Browne,0.84
 5,2015,Will,Hams,0.64
 5,2015,Jason,Winderlich,0.22
-6,2015,Nat,Fyfe,22
+6,2015,Nat,Fyfe,22.0
 6,2015,David,Mundy,22.22
 6,2015,Stephen,Hill,20.13
-6,2015,Lachie,Neale,20
+6,2015,Lachie,Neale,20.0
 6,2015,Aaron,Sandilands,18.05
 6,2015,Danyle,Pearce,16.84
 6,2015,Michael,Walters,16.57
@@ -2263,7 +2263,7 @@ team,year,firstname,surname,PAV_total
 7,2015,Mathew,Stokes,8.16
 7,2015,Jimmy,Bartel,7.18
 7,2015,Rhys,Stanley,6.08
-7,2015,Jared,Rivers,6
+7,2015,Jared,Rivers,6.0
 7,2015,Jed,Bews,5.7
 7,2015,Mitch,Clark,5.3
 7,2015,Shane,Kersten,4.81
@@ -2449,7 +2449,7 @@ team,year,firstname,surname,PAV_total
 12,2015,Ryan,Bastinac,9.1
 12,2015,Robin,Nahas,8.81
 12,2015,Ben,Jacobs,8.68
-12,2015,Luke,McDonald,6
+12,2015,Luke,McDonald,6.0
 12,2015,Kayne,Turner,5.44
 12,2015,Lachlan,Hansen,5.4
 12,2015,Taylor,Garner,3.59
@@ -2527,7 +2527,7 @@ team,year,firstname,surname,PAV_total
 14,2015,Corey,Ellis,1.7
 14,2015,Matt,Thomas,1.46
 14,2015,Reece,Conca,1.33
-14,2015,Connor,Menadue,1
+14,2015,Connor,Menadue,1.0
 14,2015,Matt,McDonough,0.95
 14,2015,Matt,Arnot,0.46
 14,2015,Ricky,Petterd,0.42
@@ -2762,7 +2762,7 @@ team,year,firstname,surname,PAV_total
 3,2016,Dale,Thomas,9.35
 3,2016,Jacob,Weitering,8.67
 3,2016,Andrew (Strawbs),Phillips,8.05
-3,2016,Simon,White,8
+3,2016,Simon,White,8.0
 3,2016,Lachie,Plowman,7.71
 3,2016,Dennis,Armfield,7.66
 3,2016,Andrejs,Everitt,7.38
@@ -2792,7 +2792,7 @@ team,year,firstname,surname,PAV_total
 4,2016,Levi,Greenwood,12.99
 4,2016,Jeremy,Howe,12.55
 4,2016,Jordan,de Goey,12.49
-4,2016,Taylor,Adams,12
+4,2016,Taylor,Adams,12.0
 4,2016,Jesse,White,11.88
 4,2016,Brayden,Maynard,10.63
 4,2016,Ben,Reid,10.45
@@ -2822,7 +2822,7 @@ team,year,firstname,surname,PAV_total
 4,2016,Tim,Broomhead,0.74
 4,2016,Corey,Gault,0.21
 4,2016,Matthew,Goodyear,0.12
-4,2016,Dane,Swan,0
+4,2016,Dane,Swan,0.0
 5,2016,Zach,Merrett,18.77
 5,2016,Joe,Daniher,16.04
 5,2016,Brendon,Goddard,13.73
@@ -3043,7 +3043,7 @@ team,year,firstname,surname,PAV_total
 10,2016,Kieran,Lovell,0.97
 10,2016,Kurt,Heatherley,0.65
 10,2016,Blake,Hardwick,0.24
-10,2016,Matthew,Spangher,0
+10,2016,Matthew,Spangher,0.0
 11,2016,Max,Gawn,21.03
 11,2016,Nathan,Jones,18.1
 11,2016,Bernie,Vince,17.62
@@ -3129,7 +3129,7 @@ team,year,firstname,surname,PAV_total
 13,2016,Jarman,Impey,10.25
 13,2016,Jared,Polec,9.98
 13,2016,Sam,Gray,9.07
-13,2016,Hamish,Hartlett,9
+13,2016,Hamish,Hartlett,9.0
 13,2016,Darcy,Byrne-Jones,8.97
 13,2016,Nathan,Krakouer,8.36
 13,2016,Jake,Neade,8.34
@@ -3304,7 +3304,7 @@ team,year,firstname,surname,PAV_total
 18,2016,Tom,Liberatore,14.68
 18,2016,Matthew,Boyd,14.67
 18,2016,Jake,Stringer,13.12
-18,2016,Luke,Dahlhaus,13
+18,2016,Luke,Dahlhaus,13.0
 18,2016,Shane,Biggs,12.93
 18,2016,Jack,Macrae,12.18
 18,2016,Caleb,Daniel,12.03
@@ -3625,7 +3625,7 @@ team,year,firstname,surname,PAV_total
 8,2017,Daniel,Currie,1.44
 8,2017,Max,Spencer,1.37
 8,2017,Josh,Schoenfeld,1.17
-8,2017,Matt,Shaw,1
+8,2017,Matt,Shaw,1.0
 8,2017,Will,Brodie,0.93
 8,2017,Jack,Scrimshaw,0.85
 8,2017,Brad,Scheer,0.8
@@ -3708,7 +3708,7 @@ team,year,firstname,surname,PAV_total
 10,2017,Jack,Fitzpatrick,0.34
 11,2017,Clayton,Oliver,17.28
 11,2017,Tom,McDonald,17.11
-11,2017,Michael,Hibberd,16
+11,2017,Michael,Hibberd,16.0
 11,2017,Jayden,Hunt,15.77
 11,2017,Christian,Petracca,14.87
 11,2017,Nathan,Jones,14.83
@@ -3767,11 +3767,11 @@ team,year,firstname,surname,PAV_total
 12,2017,Mason,Wood,4.72
 12,2017,Braydon,Preuss,4.28
 12,2017,Lindsay,Thomas,4.1
-12,2017,Sam,Durdin,4
+12,2017,Sam,Durdin,4.0
 12,2017,Jy,Simpkin,3.99
 12,2017,Majak,Daw,3.59
 12,2017,Ed,Vickers-Willis,2.62
-12,2017,Dan,Nielson,2
+12,2017,Dan,Nielson,2.0
 12,2017,Jed,Anderson,1.99
 12,2017,Cameron,Zurhaar,1.83
 12,2017,Mitchell,Hibberd,0.97
@@ -3810,7 +3810,7 @@ team,year,firstname,surname,PAV_total
 13,2017,Brett,Eddy,1.31
 13,2017,Aidyn,Johnson,1.24
 13,2017,Logan,Austin,1.14
-13,2017,Todd,Marshall,1
+13,2017,Todd,Marshall,1.0
 13,2017,Joe,Atley,0.73
 13,2017,Jimmy,Toumpas,0.44
 13,2017,Angus,Monfries,0.12
@@ -3824,7 +3824,7 @@ team,year,firstname,surname,PAV_total
 14,2017,Dion,Prestia,14.97
 14,2017,Brandon,Ellis,13.99
 14,2017,Bachar,Houli,13.87
-14,2017,Josh,Caddy,13
+14,2017,Josh,Caddy,13.0
 14,2017,Shane,Edwards,12.7
 14,2017,David,Astbury,11.8
 14,2017,Kamdyn,McIntosh,11.7
@@ -3882,7 +3882,7 @@ team,year,firstname,surname,PAV_total
 15,2017,Paddy,McCartin,2.18
 15,2017,Brandon,White,1.53
 15,2017,Ben,Long,1.03
-15,2017,David,Armitage,1
+15,2017,David,Armitage,1.0
 15,2017,Nathan,Wright,0.99
 15,2017,Rowan,Marshall,0.42
 15,2017,Josh,Battle,0.22
@@ -3903,7 +3903,7 @@ team,year,firstname,surname,PAV_total
 16,2017,George,Hewett,11.65
 16,2017,Gary,Rohan,10.45
 16,2017,Nick,Smith,10.38
-16,2017,Dean,Towers,10
+16,2017,Dean,Towers,10.0
 16,2017,Dane,Rampe,9.91
 16,2017,Lewis,Melican,8.55
 16,2017,Sam,Naismith,8.26
@@ -4136,7 +4136,7 @@ team,year,firstname,surname,PAV_total
 4,2018,Jarryd,Blair,0.75
 4,2018,Josh,Smith,0.26
 4,2018,Alex,Fasolo,0.01
-4,2018,Tim,Broomhead,0
+4,2018,Tim,Broomhead,0.0
 5,2018,Dyson,Heppell,19.33
 5,2018,Devon,Smith,18.62
 5,2018,Zach,Merrett,18.34
@@ -4159,7 +4159,7 @@ team,year,firstname,surname,PAV_total
 5,2018,Mitch,Brown,8.2
 5,2018,Shaun,McKernan,7.32
 5,2018,James,Stewart,6.15
-5,2018,Joe,Daniher,5
+5,2018,Joe,Daniher,5.0
 5,2018,Matt,Dea,3.8
 5,2018,Jayden,Laverde,3.49
 5,2018,Patrick,Ambrose,3.06
@@ -4242,7 +4242,7 @@ team,year,firstname,surname,PAV_total
 7,2018,Esava,Ratugolea,3.48
 7,2018,Ryan,Abbott,2.91
 7,2018,Quinton,Narkle,2.58
-7,2018,George,Horlin-Smith,2
+7,2018,George,Horlin-Smith,2.0
 7,2018,Zach,Guthrie,1.88
 7,2018,Stewart,Crameri,1.82
 7,2018,Zac,Smith,1.71
@@ -4307,11 +4307,11 @@ team,year,firstname,surname,PAV_total
 9,2018,Harry,Himmelberg,12.56
 9,2018,Jacob,Hopper,11.86
 9,2018,Jonathon,Patton,8.07
-9,2018,Zac,Langdon,8
+9,2018,Zac,Langdon,8.0
 9,2018,Matt,de Boer,7.77
 9,2018,Aidan,Corr,7.62
 9,2018,Ryan,Griffen,7.6
-9,2018,Sam,Reid,7
+9,2018,Sam,Reid,7.0
 9,2018,Jeremy,Finlayson,6.94
 9,2018,Toby,Greene,6.15
 9,2018,Daniel,Lloyd,5.61
@@ -4373,7 +4373,7 @@ team,year,firstname,surname,PAV_total
 11,2018,James,Harmes,15.93
 11,2018,Tom,McDonald,15.82
 11,2018,Jake,Melksham,15.1
-11,2018,Nathan,Jones,15
+11,2018,Nathan,Jones,15.0
 11,2018,Christian,Salem,14.98
 11,2018,Jesse,Hogan,13.97
 11,2018,Alex,Neal-Bullen,13.6
@@ -4470,7 +4470,7 @@ team,year,firstname,surname,PAV_total
 13,2018,Billy,Frampton,0.45
 14,2018,Dustin,Martin,23.59
 14,2018,Jack,Riewoldt,21.14
-14,2018,Toby,Nankervis,20
+14,2018,Toby,Nankervis,20.0
 14,2018,Trent,Cotchin,17.55
 14,2018,Shane,Edwards,17.2
 14,2018,Josh,Caddy,16.85
@@ -4608,7 +4608,7 @@ team,year,firstname,surname,PAV_total
 17,2018,Jackson,Nelson,3.41
 17,2018,Brendon,Ah Chee,2.84
 17,2018,Brayden,Ainsworth,1.39
-17,2018,Fraser,McInnes,1
+17,2018,Fraser,McInnes,1.0
 17,2018,Oscar,Allen,0.8
 17,2018,Jack,Petruccelle,0.6
 17,2018,Jarrod,Brander,0.24
@@ -4694,7 +4694,7 @@ team,year,firstname,surname,PAV_total
 2,2019,Mitch,Robinson,18.66
 2,2019,Alex,Witherden,12.08
 2,2019,Stefan,Martin,19.73
-2,2019,Jarrod,Berry,13
+2,2019,Jarrod,Berry,13.0
 2,2019,Luke,Hodge,10.53
 2,2019,Darcy,Gardiner,11.78
 2,2019,Lincoln,McCarthy,10.98
@@ -4726,7 +4726,7 @@ team,year,firstname,surname,PAV_total
 3,2019,Ed,Curnow,15.65
 3,2019,Marc,Murphy,14.71
 3,2019,Nic,Newman,15.6
-3,2019,Sam,Petrevski-Seton,10
+3,2019,Sam,Petrevski-Seton,10.0
 3,2019,Dale,Thomas,12.96
 3,2019,Zac,Fisher,11.41
 3,2019,Kade,Simpson,11.46
@@ -4772,7 +4772,7 @@ team,year,firstname,surname,PAV_total
 4,2019,Brody,Mihocek,15.28
 4,2019,Taylor,Adams,10.35
 4,2019,Jordan,de Goey,13.26
-4,2019,Will,Hoskin-Elliott,10
+4,2019,Will,Hoskin-Elliott,10.0
 4,2019,Jordan,Roughead,12.86
 4,2019,Darcy,Moore,11.95
 4,2019,Levi,Greenwood,5.66
@@ -4808,7 +4808,7 @@ team,year,firstname,surname,PAV_total
 5,2019,Cale,Hooker,11.18
 5,2019,Anthony,McDonald-Tipungwuti,14.65
 5,2019,Jake,Stringer,13.62
-5,2019,Matt,Guelfi,7
+5,2019,Matt,Guelfi,7.0
 5,2019,Aaron,Francis,8.02
 5,2019,Mitch,Brown,8.01
 5,2019,Patrick,Ambrose,7.91
@@ -4831,7 +4831,7 @@ team,year,firstname,surname,PAV_total
 5,2019,Michael,Hartley,1.91
 5,2019,Tom,Jok,0.34
 5,2019,Brandon,Zerk-Thatcher,0.53
-5,2019,Kobe,Mutch,0
+5,2019,Kobe,Mutch,0.0
 6,2019,Nat,Fyfe,21.84
 6,2019,Bradley,Hill,15.32
 6,2019,Ed,Langdon,14.24
@@ -4841,7 +4841,7 @@ team,year,firstname,surname,PAV_total
 6,2019,Darcy,Tucker,12.07
 6,2019,Andrew,Brayshaw,11.42
 6,2019,Luke,Ryan,11.6
-6,2019,Ethan,Hughes,9
+6,2019,Ethan,Hughes,9.0
 6,2019,Nathan,Wilson,11.57
 6,2019,Adam,Cerra,9.93
 6,2019,Connor,Blakely,7.38
@@ -4952,7 +4952,7 @@ team,year,firstname,surname,PAV_total
 9,2019,Adam,Tomlinson,11.61
 9,2019,Stephen,Coniglio,11.29
 9,2019,Sam,Reid,8.66
-9,2019,Jeremy,Cameron,20
+9,2019,Jeremy,Cameron,20.0
 9,2019,Brent,Daniels,11.04
 9,2019,Adam,Kennedy,8.48
 9,2019,Harry,Perryman,7.74
@@ -4969,7 +4969,7 @@ team,year,firstname,surname,PAV_total
 9,2019,Aidan,Corr,3.15
 9,2019,Lachlan,Keeffe,3.76
 9,2019,Bobby,Hill,2.86
-9,2019,Dawson,Simpson,6
+9,2019,Dawson,Simpson,6.0
 9,2019,Isaac,Cumming,1.53
 9,2019,Jake,Stein,2.15
 9,2019,Zac,Langdon,0.89
@@ -5052,7 +5052,7 @@ team,year,firstname,surname,PAV_total
 11,2019,Kade,Kolodjashnij,0.62
 11,2019,Declan,Keilty,0.73
 11,2019,Kade,Chandler,0.2
-12,2019,Ben,Cunnington,16
+12,2019,Ben,Cunnington,16.0
 12,2019,Jared,Polec,16.29
 12,2019,Trent,Dumont,13.35
 12,2019,Shaun,Higgins,14.63
@@ -5086,7 +5086,7 @@ team,year,firstname,surname,PAV_total
 12,2019,Tom,Campbell,0.88
 12,2019,Curtis,Taylor,0.26
 12,2019,Kyron,Hayden,0.08
-12,2019,Ed,Vickers-Willis,0
+12,2019,Ed,Vickers-Willis,0.0
 13,2019,Travis,Boak,20.15
 13,2019,Tom,Rockliff,13.56
 13,2019,Darcy,Byrne-Jones,12.93
@@ -5183,7 +5183,7 @@ team,year,firstname,surname,PAV_total
 15,2019,Jack,Lonie,6.96
 15,2019,Dean,Kent,7.26
 15,2019,Daniel,McKenzie,3.98
-15,2019,Ben,Long,8
+15,2019,Ben,Long,8.0
 15,2019,Jimmy,Webster,3.93
 15,2019,Jack,Steven,5.03
 15,2019,Nathan,Brown,8.41
@@ -5314,7 +5314,7 @@ team,year,firstname,surname,PAV_total
 1,2020, Ben,Davis,0.77
 1,2020, Tom,Doedee,5.85
 1,2020, Darcy,Fogarty,5.86
-1,2020, Billy,Frampton,3
+1,2020, Billy,Frampton,3.0
 1,2020, Bryce,Gibbs,1.14
 1,2020, Will,Hamill,2.56
 1,2020, Kyle,Hartigan,6.9
@@ -5574,7 +5574,7 @@ team,year,firstname,surname,PAV_total
 7,2020, Cameron,Guthrie,17.9
 7,2020, Zach,Guthrie,1.07
 7,2020, Tom,Hawkins,21.74
-7,2020, Lachie,Henderson,8
+7,2020, Lachie,Henderson,8.0
 7,2020, Jack,Henry,12.01
 7,2020, Ben,Jarvis,0.13
 7,2020, Josh,Jenkins,0.76
@@ -5642,10 +5642,10 @@ team,year,firstname,surname,PAV_total
 10,2020, Conor,Glass,2.33
 10,2020, Damon,Greaves,2.95
 10,2020, Jack,Gunston,18.42
-10,2020, Oliver,Hanrahan,4
+10,2020, Oliver,Hanrahan,4.0
 10,2020, Blake,Hardwick,10.99
 10,2020, Michael,Hartley,1.76
-10,2020, Ricky,Henderson,4
+10,2020, Ricky,Henderson,4.0
 10,2020, Daniel,Howe,3.52
 10,2020, Jarman,Impey,1.62
 10,2020, Changkuoth,Jiath,1.82
@@ -5655,7 +5655,7 @@ team,year,firstname,surname,PAV_total
 10,2020, Ben,McEvoy,11.99
 10,2020, Darren,Minchington,2.16
 10,2020, Tom,Mitchell,16.83
-10,2020, Dylan,Moore,2
+10,2020, Dylan,Moore,2.0
 10,2020, Josh,Morris,1.43
 10,2020, Harry,Morrison,6.65
 10,2020, Conor,Nash,0.65
@@ -5730,7 +5730,7 @@ team,year,firstname,surname,PAV_total
 12,2020, Luke,McDonald,14.2
 12,2020, Ben,McKay,6.44
 12,2020, Tom,Murphy,2.36
-12,2020, Flynn,Perez,1
+12,2020, Flynn,Perez,1.0
 12,2020, Jasper,Pittard,9.62
 12,2020, Jared,Polec,11.62
 12,2020, Bailey,Scott,6.86
@@ -5768,7 +5768,7 @@ team,year,firstname,surname,PAV_total
 13,2020, Todd,Marshall,9.49
 13,2020, Sam,Mayes,4.45
 13,2020, Trent,McKenzie,12.19
-13,2020, Steven,Motlop,9
+13,2020, Steven,Motlop,9.0
 13,2020, Sam,Powell-Pepper,15.23
 13,2020, Tom,Rockliff,15.24
 13,2020, Connor,Rozee,11.36
@@ -5867,7 +5867,7 @@ team,year,firstname,surname,PAV_total
 16,2020, Lewis,Melican,5.97
 16,2020, Callum,Mills,12.21
 16,2020, Sam,Naismith,2.6
-16,2020, Colin,ORiordan,3
+16,2020, Colin,ORiordan,3.0
 16,2020, Tom,Papley,18.19
 16,2020, Luke,Parker,19.15
 16,2020, Dane,Rampe,10.49
@@ -6136,7 +6136,7 @@ team,year,firstname,surname,PAV_total
 5,2021, Sam,Durham,3.21
 5,2021, David,Zaharakis,2.45
 5,2021, Dylan,Clarke,2.08
-5,2021, Brandon,Zerk-Thatcher,2
+5,2021, Brandon,Zerk-Thatcher,2.0
 5,2021, Jye,Caldwell,1.74
 5,2021, Martin,Gleeson,1.44
 5,2021, Ned,Cahill,0.85
@@ -6263,7 +6263,7 @@ team,year,firstname,surname,PAV_total
 9,2021, Harry,Himmelberg,14.66
 9,2021, Isaac,Cumming,14.16
 9,2021, Harry,Perryman,11.59
-9,2021, Shane,Mumford,11
+9,2021, Shane,Mumford,11.0
 9,2021, Sam,Taylor,10.89
 9,2021, Lachie,Whitfield,10.44
 9,2021, Nick,Haynes,10.06
@@ -6305,7 +6305,7 @@ team,year,firstname,surname,PAV_total
 10,2021, Liam,Shiels,11.78
 10,2021, Jack,Scrimshaw,10.92
 10,2021, Tom,Phillips,10.75
-10,2021, Jacob,Koschitzke,10
+10,2021, Jacob,Koschitzke,10.0
 10,2021, Daniel,Howe,9.95
 10,2021, Tim,OBrien,9.7
 10,2021, Sam,Frost,9.38
@@ -6438,7 +6438,7 @@ team,year,firstname,surname,PAV_total
 13,2021, Martin,Frederick,1.85
 13,2021, Tom,Rockliff,0.26
 13,2021, Dylan,Williams,0.12
-13,2021, Jed,McEntee,0
+13,2021, Jed,McEntee,0.0
 14,2021, Shai,Bolton,18.58
 14,2021, Jayden,Short,16.95
 14,2021, Jack,Riewoldt,16.93
@@ -6519,9 +6519,9 @@ team,year,firstname,surname,PAV_total
 15,2021, Jarryn,Geary,0.85
 15,2021, James,Frawley,0.76
 16,2021, Luke,Parker,22.09
-16,2021, Tom,Hickey,21
+16,2021, Tom,Hickey,21.0
 16,2021, Jordan,Dawson,19.24
-16,2021, Callum,Mills,17
+16,2021, Callum,Mills,17.0
 16,2021, Tom,Papley,16.33
 16,2021, Jake,Lloyd,15.51
 16,2021, Isaac,Heeney,15.21
@@ -6553,8 +6553,8 @@ team,year,firstname,surname,PAV_total
 16,2021, Dylan,Stephens,0.96
 16,2021, Ryan,Clarke,0.27
 16,2021, Lewis,Taylor,0.06
-16,2021, Matt,Ling,0
-16,2021, Ben,Ronke,0
+16,2021, Matt,Ling,0.0
+16,2021, Ben,Ronke,0.0
 18,2021, Marcus,Bontempelli,30.66
 18,2021, Jack,Macrae,24.77
 18,2021, Tom,Liberatore,23.17
@@ -6574,7 +6574,7 @@ team,year,firstname,surname,PAV_total
 18,2021, Zaine,Cordy,8.54
 18,2021, Cody,Weightman,8.39
 18,2021, Anthony,Scott,6.23
-18,2021, Mitch,Hannan,6
+18,2021, Mitch,Hannan,6.0
 18,2021, Easton,Wood,4.99
 18,2021, Roarke,Smith,4.55
 18,2021, Lewis,Young,4.51
@@ -6584,8 +6584,8 @@ team,year,firstname,surname,PAV_total
 18,2021, Stefan,Martin,3.42
 18,2021, Josh,Schache,3.33
 18,2021, Laitham,Vandermeer,3.25
-18,2021, Riley,Garcia,3
-18,2021, Ryan,Gardner,3
+18,2021, Riley,Garcia,3.0
+18,2021, Ryan,Gardner,3.0
 18,2021, Jordon,Sweet,2.87
 18,2021, Ed,Richards,1.81
 18,2021, Mitch,Wallis,1.8
@@ -6601,7 +6601,7 @@ team,year,firstname,surname,PAV_total
 17,2021, Tim,Kelly,16.02
 17,2021, Jack,Darling,15.44
 17,2021, Jamie,Cripps,14.79
-17,2021, Andrew,Gaff,14
+17,2021, Andrew,Gaff,14.0
 17,2021, Josh,Kennedy,13.27
 17,2021, Oscar,Allen,13.05
 17,2021, Elliot,Yeo,11.56
@@ -6633,529 +6633,614 @@ team,year,firstname,surname,PAV_total
 17,2021, Mark,Hutchings,1.08
 17,2021, Isiah,Winder,0.33
 17,2021, Brayden,Ainsworth,0.09
-1,2022, Taylor,Walker,7.39
-1,2022, Ben,Keays,22.09
-1,2022, Jordan,Dawson,18.82
-1,2022, Rory,Laird,8.88
-1,2022, Josh,Rachele,17
-1,2022, Rory,Sloane,11.89
-1,2022, Billy,Frampton,7.71
-1,2022, Reilly,OBrien,15.42
-1,2022, Brodie,Smith,15.15
-1,2022, Lachlan,Sholl,14.77
-1,2022, James,Rowe,14.19
-1,2022, Harry,Schoenberg,13.34
-1,2022, Matt,Crouch,13.32
-1,2022, Elliott,Himmelberg,12.89
-1,2022, Nick,Murray,5.87
-1,2022, Lachlan,Gollant,8.69
-1,2022, Lachlan,Murphy,5.46
-1,2022, Tom,Doedee,10.86
-1,2022, Riley,Thilthorpe,2.63
-1,2022, Mitch,Hinge,10.28
-1,2022, Jordon,Butts,10.03
-1,2022, Ned,McHenry,9.73
-1,2022, Darcy,Fogarty,6.7
-1,2022, Luke,Brown,8.67
-1,2022, Chayce,Jones,8.11
-1,2022, Andrew,McPherson,1.52
-1,2022, Brayden,Cook,4.55
-1,2022, Wayne,Milera,0.85
-1,2022, Jake,Soligo,1.32
-1,2022, Luke,Pedlar,1.16
-2,2022, Lachie,Neale,26.87
-2,2022, Jarryd,Lyons,24.25
-2,2022, Daniel,Rich,22.69
-2,2022, Zac,Bailey,20.75
-2,2022, Oscar,McInerney,15.25
-2,2022, Joe,Daniher,19.87
-2,2022, Hugh,McCluggage,16.51
-2,2022, Jarrod,Berry,16.34
-2,2022, Darcy,Fort,15.9
-2,2022, Marcus,Adams,15.08
-2,2022, Dayne,Zorko,14.44
-2,2022, Harris,Andrews,14.41
-2,2022, Lincoln,McCarthy,14.29
-2,2022, Charlie,Cameron,13.81
-2,2022, Cam,Rayner,13.37
-2,2022, Daniel,McStay,13.09
-2,2022, Darcy,Gardiner,11.79
-2,2022, Noah,Answerth,11.45
-2,2022, Nakia,Cockatoo,11.18
-2,2022, Mitch,Robinson,7.31
-2,2022, Brandon,Starcevich,7.75
-2,2022, Callum,Ah Chee,7.24
-2,2022, Tom,Fullarton,1.44
-2,2022, Harry,Sharp,2.65
-2,2022, Jaxon,Prior,0
-2,2022, Deven,Robertson,0
-3,2022, Patrick,Cripps,25.67
-3,2022, George,Hewett,19.31
-3,2022, Matthew,Kennedy,19.06
-3,2022, Adam,Cerra,12.8
-3,2022, Charlie,Curnow,16.93
-3,2022, Adam,Saad,12.44
-3,2022, Jacob,Weitering,16.18
-3,2022, Zac,Williams,15.9
-3,2022, Lewis,Young,7.29
-3,2022, Marc,Pittonet,10.81
-3,2022, Mitch,McGovern,6.91
-3,2022, Harry,McKay,13.78
-3,2022, Sam,Docherty,12.91
-3,2022, Sam,Walsh,9.65
-3,2022, Nic,Newman,11.3
-3,2022, Matthew,Owies,11.29
-3,2022, Lochie,OBrien,11.19
-3,2022, Corey,Durdin,8.25
-3,2022, Tom,De Koning,10.97
-3,2022, Jack,Silvagni,10.51
-3,2022, Will,Setterfield,10.27
-3,2022, Zac,Fisher,9.52
-3,2022, Lachie,Fogarty,4.25
-3,2022, Oscar,McDonald,3.94
-3,2022, Jack,Martin,5.25
-3,2022, Lachie,Plowman,4.36
-3,2022, Jordan,Boyd,2.09
-3,2022, Tom,Williamson,0
-4,2022, Brodie,Grundy,26.46
-4,2022, Taylor,Adams,16.62
-4,2022, Jack,Crisp,21.41
-4,2022, Jordan,de Goey,15.6
-4,2022, Patrick,Lipinski,17.72
-4,2022, Scott,Pendlebury,17.41
-4,2022, Nick,Daicos,16.17
-4,2022, Jack,Ginnivan,15.64
-4,2022, Darcy,Moore,15.51
-4,2022, Nathan,Kreuger,3.85
-4,2022, Jeremy,Howe,14.56
-4,2022, Brayden,Maynard,7.09
-4,2022, Beau,McCreery,6.82
-4,2022, Jamie,Elliott,13.24
-4,2022, Brody,Mihocek,12.93
-4,2022, Steele,Sidebottom,12.53
-4,2022, Josh,Daicos,11.4
-4,2022, Oliver,Henry,11.23
-4,2022, Callum,Brown,2.7
-4,2022, Isaac,Quaynor,10.6
-4,2022, Darcy,Cameron,7.65
-4,2022, Mason,Cox,2.21
-4,2022, Jack,Madgen,8.14
-4,2022, John,Noble,7.69
-4,2022, Tom,Wilson,3.52
-4,2022, Reef,McInnes,3.31
-4,2022, Will,Hoskin-Elliott,4.55
-4,2022, Tyler,Brown,1.83
-4,2022, Trent,Bianco,0.59
-5,2022, Peter,Wright,19.25
-5,2022, Darcy,Parish,18.96
-5,2022, Zach,Merrett,9.19
-5,2022, Sam,Draper,17.71
-5,2022, Nic,Martin,12.21
-5,2022, Dylan,Shiel,12.09
-5,2022, Andrew,McGrath,15.5
-5,2022, Tom,Cutler,11.36
-5,2022, Jake,Stringer,7.54
-5,2022, Jye,Caldwell,14.59
-5,2022, Mason,Redman,12.73
-5,2022, Andrew,Phillips,6.29
-5,2022, Nick,Hind,12.44
-5,2022, Jordan,Ridley,12.2
-5,2022, Brandon,Zerk-Thatcher,2.8
-5,2022, Archie,Perkins,11.15
-5,2022, Matt,Guelfi,10.34
-5,2022, Alec,Waterman,2.49
-5,2022, Jayden,Laverde,9.7
-5,2022, Dyson,Heppell,8.94
-5,2022, Aaron,Francis,1.96
-5,2022, Devon,Smith,7.04
-5,2022, Brayden,Ham,7.01
-5,2022, Sam,Durham,5.16
-5,2022, Jake,Kelly,6.57
-5,2022, James,Stewart,4.8
-5,2022, Nik,Cox,2.96
-5,2022, Kaine,Baldwin,1.2
-5,2022, Will,Snelling,1.11
-5,2022, Tex,Wanganeen,1.95
-5,2022, Kyle,Langford,0.17
-6,2022, Andrew,Brayshaw,22.67
-6,2022, Will,Brodie,20.95
-6,2022, Blake,Acres,18.38
-6,2022, Lloyd,Meek,13.57
-6,2022, Sean,Darcy,8.83
-6,2022, Rory,Lobb,17.5
-6,2022, Brennan,Cox,12.94
-6,2022, David,Mundy,8.5
-6,2022, Jordan,Clark,16.43
-6,2022, Luke,Ryan,15.63
-6,2022, Griffin,Logue,10.98
-6,2022, Lachie,Schultz,14.43
+2,2022, Callum,Ah Chee,7.22
+8,2022, Ben,Ainsworth,12.95
+13,2022, Karl,Amon,17.73
+2,2022, Harris,Andrews,13.98
+2,2022, Noah,Answerth,10.06
+7,2022, Tom,Atkins,11.87
+2,2022, Zac,Bailey,19.53
+14,2022, Liam,Baker,11.74
+8,2022, Charlie,Ballard,11.45
+6,2022, Bailey,Banfield,6.73
+15,2022, Josh,Battle,10.84
+2,2022, Jarrod,Berry,14.81
+16,2022, Nick,Blakey,18.7
+7,2022, Mark,Blicavs,21.5
+13,2022, Travis,Boak,22.73
+14,2022, Shai,Bolton,22.81
+11,2022, Jake,Bowey,15.14
+6,2022, Andrew,Brayshaw,21.74
+11,2022, Angus,Brayshaw,12.44
+14,2022, Nathan,Broad,13.67
+6,2022, Will,Brodie,19.86
+1,2022, Luke,Brown,7.15
+13,2022, Ryan,Burton,16.17
+13,2022, Zak,Butters,15.51
+13,2022, Darcy,Byrne-Jones,9.76
+2,2022, Charlie,Cameron,16.14
+7,2022, Jeremy,Cameron,17.89
+8,2022, Levi,Casboult,11.36
+14,2022, Jason,Castagna,10.56
+8,2022, Mabior,Chol,14.11
+6,2022, Jordan,Clark,15.87
+7,2022, Brad,Close,11.29
+8,2022, Sam,Collins,15.36
+9,2022, Stephen,Coniglio,14.41
+4,2022, Jack,Crisp,23.11
+15,2022, Brad,Crouch,18.17
+3,2022, Charlie,Curnow,21.39
+4,2022, Josh,Daicos,11.43
+4,2022, Nick,Daicos,12.7
+18,2022, Bailey,Dale,19.15
+18,2022, Caleb,Daniel,10.86
+1,2022, Jordan,Dawson,18.93
+9,2022, Matt,de Boer,6.39
+3,2022, Sam,Docherty,16.12
+1,2022, Tom,Doedee,12.04
+5,2022, Sam,Draper,17.42
+13,2022, Willem,Drew,14.66
+18,2022, Josh,Dunkley,18.3
+14,2022, Shane,Edwards,10.32
+8,2022, Brandon,Ellis,13.1
+8,2022, Brayden,Fiorini,14.07
+3,2022, Zac,Fisher,11.98
+16,2022, Oliver,Florent,13.67
+2,2022, Darcy,Fort,17.24
+11,2022, Bayley,Fritsch,14.16
+10,2022, Sam,Frost,10.34
+18,2022, Ryan,Gardner,11.83
+11,2022, Max,Gawn,25.71
+13,2022, Mitch,Georgiades,9.68
+12,2022, Todd,Goldstein,17.35
+9,2022, Tom,Green,20.15
+15,2022, Jade,Gresham,19.54
+16,2022, Errol,Gulden,17.16
+7,2022, Cameron,Guthrie,16.65
+10,2022, Blake,Hardwick,10.16
+7,2022, Tom,Hawkins,17.29
+16,2022, Will,Hayward,11.52
+16,2022, Isaac,Heeney,19.41
+5,2022, Dyson,Heppell,10.88
+9,2022, Bobby,Hill,8.58
+15,2022, Bradley,Hill,13.06
+9,2022, Harry,Himmelberg,12.38
+8,2022, Nick,Holman,8.23
+13,2022, Dan,Houston,17.26
+4,2022, Jeremy,Howe,14.12
+11,2022, Jayden,Hunt,10.52
+9,2022, Connor,Idun,9.41
+1,2022, Chayce,Jones,9.06
+11,2022, James,Jordon,11.34
+1,2022, Ben,Keays,20.35
+9,2022, Josh,Kelly,19.78
+16,2022, Josh,Kennedy,8.24
+15,2022, Max,King,17.52
+7,2022, Jake,Kolodjashnij,8.52
+11,2022, Ed,Langdon,14.98
+5,2022, Jayden,Laverde,8.96
+8,2022, Sean,Lemmens,10.78
+18,2022, Tom,Liberatore,19.77
+4,2022, Patrick,Lipinski,16.33
+14,2022, Tom,Lynch,18.59
+2,2022, Jarryd,Lyons,24.51
+18,2022, Jack,Macrae,24.77
+13,2022, Todd,Marshall,14.13
+11,2022, Steven,May,26.01
+2,2022, Lincoln,McCarthy,13.36
+16,2022, Tom,McCartin,13.9
+2,2022, Hugh,McCluggage,18.74
+12,2022, Luke,McDonald,15.14
+5,2022, Andrew,McGrath,14.13
+15,2022, Daniel,McKenzie,12.56
+15,2022, Tim,Membrey,14.45
+8,2022, Touk,Miller,23.84
+16,2022, Callum,Mills,23.72
+4,2022, Darcy,Moore,16.31
+10,2022, Dylan,Moore,18.69
+13,2022, Steven,Motlop,10.72
+17,2022, Patrick,Naish,9.91
+14,2022, Toby,Nankervis,19.39
+18,2022, Aaron,Naughton,15.56
+2,2022, Lachie,Neale,23.86
+10,2022, Jai,Newcombe,18.59
+3,2022, Nic,Newman,10.76
+4,2022, John,Noble,9.13
+11,2022, Clayton,Oliver,29.51
+10,2022, Jaeger,OMeara,16.26
+3,2022, Matthew,Owies,8.98
+7,2022, Brandan,Parfitt,16.65
+5,2022, Darcy,Parish,19.47
+16,2022, Luke,Parker,20.81
+15,2022, Ben,Paton,9.48
+5,2022, Archie,Perkins,10.74
+9,2022, Harry,Perryman,12.24
+11,2022, Christian,Petracca,27.97
+13,2022, Sam,Powell-Pepper,14.21
+4,2022, Isaac,Quaynor,11.85
+1,2022, Josh,Rachele,12.11
+16,2022, Dane,Rampe,10.51
+2,2022, Cam,Rayner,14.3
+5,2022, Mason,Redman,13.75
+2,2022, Daniel,Rich,19.17
+18,2022, Ed,Richards,11.24
+14,2022, Daniel,Rioli,12.77
+15,2022, Sebastian,Ross,15.73
+8,2022, Matt,Rowell,16.06
+13,2022, Connor,Rozee,13.75
+6,2022, Luke,Ryan,17.47
+12,2022, Bailey,Scott,8.79
+1,2022, Lachlan,Sholl,10.61
+14,2022, Jayden,Short,17.87
+10,2022, James,Sicily,20.6
+4,2022, Steele,Sidebottom,12.15
+15,2022, Jack,Sinclair,20.15
+7,2022, Isaac,Smith,17.19
+11,2022, Charlie,Spargo,11.69
+2,2022, Brandon,Starcevich,10.83
+7,2022, Tyson,Stengle,15.86
+8,2022, David,Swallow,16.71
+12,2022, Curtis,Taylor,8.7
+9,2022, Sam,Taylor,14.76
+18,2022, Adam,Treloar,17.71
+7,2022, Zach,Tuohy,15.47
+12,2022, Kayne,Turner,7.1
+9,2022, Callan,Ward,13.99
+3,2022, Jacob,Weitering,17.06
+15,2022, Callum,Wilkie,13.65
+8,2022, Jarrod,Witts,19.57
+15,2022, Mason,Wood,11.59
+5,2022, Peter,Wright,17.28
+12,2022, Lachie,Young,11.74
+12,2022, Jack,Ziebell,11.57
+2,2022, Dayne,Zorko,18.64
+6,2022, Blake,Acres,16.53
+2,2022, Marcus,Adams,12.79
+4,2022, Taylor,Adams,16.21
+6,2022, James,Aish,10.1
+8,2022, Noah,Anderson,19.2
+9,2022, Lachie,Ash,6.5
+14,2022, Noah,Balta,12.89
+11,2022, Toby,Bedford,3.33
+18,2022, Marcus,Bontempelli,21.01
+10,2022, Luke,Breust,17.01
+5,2022, Jye,Caldwell,11.82
+4,2022, Darcy,Cameron,13.72
+16,2022, Braeden,Campbell,7.96
+3,2022, Adam,Cerra,16.21
+6,2022, Travis,Colyer,10.11
+18,2022, Zaine,Cordy,7.16
+12,2022, Aidan,Corr,9.69
+14,2022, Trent,Cotchin,15.7
+6,2022, Brennan,Cox,13.97
+3,2022, Patrick,Cripps,23.15
+9,2022, Isaac,Cumming,13.68
+17,2022, Jack,Darling,10.3
+12,2022, Luke,Davies-Uniacke,12.08
+4,2022, Jordan,de Goey,19.17
+7,2022, Sam,De Koning,9.62
+3,2022, Tom,De Koning,13.68
+7,2022, Mitch,Duncan,13.34
+3,2022, Corey,Durdin,8.57
+16,2022, Lance,Franklin,13.67
+6,2022, Michael,Frederick,8.63
+2,2022, Darcy,Gardiner,9.48
+14,2022, Jack,Graham,11.8
+10,2022, Denver,Grainger-Barras,7.25
+12,2022, Hugh,Greenwood,9.14
+5,2022, Matt,Guelfi,10.07
+10,2022, Jack,Gunston,14.18
+11,2022, James,Harmes,13.88
+1,2022, Elliott,Himmelberg,11.03
+5,2022, Nick,Hind,10.55
+12,2022, Jason,Horne-Francis,11.34
+4,2022, Will,Hoskin-Elliott,8.69
+15,2022, Dougal,Howard,18.74
+11,2022, Luke,Jackson,13.84
+13,2022, Tom,Jonas,12.13
+5,2022, Jake,Kelly,5.91
+3,2022, Matthew,Kennedy,17.17
+12,2022, Nick,Larkey,13.66
+16,2022, Jake,Lloyd,14.82
+6,2022, Rory,Lobb,15.24
+10,2022, Connor,Macdonald,6.26
+4,2022, Jack,Madgen,5.34
+12,2022, Jack,Mahony,6.61
+15,2022, Rowan,Marshall,17.97
+5,2022, Nic,Martin,12.68
+16,2022, Paddy,McCartin,9.9
+11,2022, Tom,McDonald,11.83
+1,2022, Ned,McHenry,7.67
+2,2022, Oscar,McInerney,17.38
+4,2022, Brody,Mihocek,11.59
+10,2022, Tom,Mitchell,17.4
+10,2022, Harry,Morrison,11.54
+10,2022, Conor,Nash,11.44
+11,2022, Alex,Neal-Bullen,13.47
+6,2022, Alex,Pearce,7.65
+4,2022, Scott,Pendlebury,14.75
+11,2022, Kysaiah,Pickett,10.35
+8,2022, Wil,Powell,11.03
+17,2022, Jack,Redden,10.15
+11,2022, Trent,Rivers,8.35
+16,2022, James,Rowbottom,15.14
+3,2022, Adam,Saad,13.46
+6,2022, Lachie,Schultz,11.94
+10,2022, Jack,Scrimshaw,10.2
+5,2022, Dylan,Shiel,13.24
+3,2022, Jack,Silvagni,10.76
+12,2022, Jy,Simpkin,13.3
+18,2022, Bailey,Smith,21.41
+1,2022, Brodie,Smith,13.53
+11,2022, Tom,Sparrow,14.98
+15,2022, Jack,Steele,17.04
+7,2022, Tom,Stewart,17.77
+6,2022, Sam,Switkowski,13.89
+9,2022, Tim,Taranto,16.33
+12,2022, Josh,Walker,8.48
+3,2022, Sam,Walsh,14.18
+6,2022, Michael,Walters,10.11
+15,2022, Nasiah,Wanganeen-Milera,6.28
+16,2022, Chad,Warner,16.43
+17,2022, Jake,Waterman,7.15
+15,2022, Jimmy,Webster,9.3
+8,2022, Lachie,Weller,14.79
+9,2022, Lachie,Whitfield,13.23
+18,2022, Bailey,Williams,9.1
+13,2022, Ollie,Wines,17.68
+10,2022, James,Worpel,10.4
+12,2022, Cameron,Zurhaar,13.38
+7,2022, Jed,Bews,5.65
+13,2022, Riley,Bonner,9.08
+15,2022, Dan,Butler,7.75
+1,2022, Jordon,Butts,6.07
+6,2022, Heath,Chapman,9.71
+5,2022, Tom,Cutler,10.75
+7,2022, Patrick,Dangerfield,16.48
+8,2022, Alex,Davies,6.23
+17,2022, Liam,Duggan,8.59
+5,2022, Sam,Durham,5.72
+18,2022, Taylor,Duryea,7.37
+17,2022, Harry,Edwards,5.48
+13,2022, Jeremy,Finlayson,11.52
+17,2022, Luke,Foley,6.59
+14,2022, Josh,Gibcus,10.29
+4,2022, Jack,Ginnivan,13.27
+3,2022, George,Hewett,17.46
+15,2022, Jack,Higgins,12.19
+17,2022, Shannon,Hurn,7.8
+13,2022, Lachie,Jones,8.75
+9,2022, Lachlan,Keeffe,5.93
+9,2022, Adam,Kennedy,7.66
+1,2022, Rory,Laird,13.05
+15,2022, Ben,Long,7.8
+10,2022, Finn,Maginness,6.61
+4,2022, Brayden,Maynard,11.01
+17,2022, Jeremy,McGovern,11.0
+16,2022, Justin,McInerney,11.57
+14,2022, Kamdyn,McIntosh,10.01
+3,2022, Harry,McKay,12.57
+16,2022, Hayden,McLean,10.18
+2,2022, Daniel,McStay,9.27
+6,2022, David,Mundy,14.65
+17,2022, Jackson,Nelson,5.7
+3,2022, Lochie,OBrien,10.42
+1,2022, Reilly,OBrien,12.87
+8,2022, Izak,Rankine,9.56
+5,2022, Jordan,Ridley,10.82
+14,2022, Jack,Riewoldt,14.87
+14,2022, Jack,Ross,7.35
+1,2022, James,Rowe,9.19
+17,2022, Liam,Ryan,11.24
+18,2022, Anthony,Scott,8.91
+7,2022, Joel,Selwood,17.17
+6,2022, Caleb,Serong,13.78
+7,2022, Rhys,Stanley,16.77
+6,2022, Darcy,Tucker,7.46
+11,2022, Jack,Viney,15.78
+18,2022, Cody,Weightman,8.64
+3,2022, Zac,Williams,11.17
+17,2022, Alex,Witherden,9.93
+6,2022, Hayden,Young,11.06
+13,2022, Aliir,Aliir,8.71
+17,2022, Tom,Barrass,8.43
+12,2022, Atu,Bosenavulagi,2.58
+11,2022, Ben,Brown,8.77
+4,2022, Tyler,Brown,4.0
+9,2022, Tanner,Bruhn,6.99
+13,2022, Tom,Clurey,6.05
+1,2022, Brayden,Cook,4.59
+1,2022, Matt,Crouch,9.68
+16,2022, Harry,Cunningham,5.39
+7,2022, Luke,Dahlhaus,4.28
+2,2022, Joe,Daniher,11.43
+6,2022, Sean,Darcy,16.99
+10,2022, Will,Day,6.27
+17,2022, Hugh,Dixon,7.43
+9,2022, Matt,Flynn,10.23
+1,2022, Lachlan,Gollant,5.75
+13,2022, Robbie,Gray,7.92
+9,2022, Nick,Haynes,6.89
+4,2022, Oliver,Henry,9.39
+1,2022, Mitch,Hinge,7.13
+9,2022, Jesse,Hogan,9.22
+7,2022, Max,Holmes,8.13
+10,2022, Jarman,Impey,6.15
+17,2022, Jamaine,Jones,5.7
+17,2022, Tim,Kelly,12.05
+17,2022, Josh,Kennedy,9.11
+16,2022, Peter,Ladhams,11.94
+10,2022, Mitch,Lewis,13.49
+6,2022, Griffin,Logue,10.52
+3,2022, Jack,Martin,5.89
+4,2022, Beau,McCreery,7.28
+16,2022, Logan,McDonald,6.93
+18,2022, Lachlan,McNeil,5.1
+5,2022, Zach,Merrett,13.06
+7,2022, Gryan,Miers,3.8
+1,2022, Lachlan,Murphy,9.3
+7,2022, Mark,OConnor,6.66
+6,2022, Nathan,ODriscoll,8.66
+12,2022, Flynn,Perez,6.23
+14,2022, Marlion,Pickett,8.99
+14,2022, Dion,Prestia,13.35
+17,2022, Josh,Rotham,4.82
+5,2022, Devon,Smith,5.46
+18,2022, Roarke,Smith,3.65
+14,2022, Ivan,Soldo,9.12
+12,2022, Jaidyn,Stephenson,9.04
+14,2022, Robbie,Tarrant,7.68
+12,2022, Tarryn,Thomas,7.22
+6,2022, Brandon,Walker,5.5
+1,2022, Taylor,Walker,13.61
+10,2022, Josh,Ward,5.79
+17,2022, Connor,West,8.76
+15,2022, Marcus,Windhager,3.92
+10,2022, Chad,Wingard,10.62
+12,2022, Tristan,Xerri,9.36
+3,2022, Lewis,Young,7.98
+16,2022, James,Bell,4.21
+1,2022, Sam,Berry,8.19
+3,2022, Matthew,Cottrell,3.79
+17,2022, Jamie,Cripps,7.94
+13,2022, Trent,Dumont,5.37
+8,2022, Jy,Farrar,4.85
+1,2022, Billy,Frampton,9.66
+14,2022, Dylan,Grimes,4.55
+4,2022, Brodie,Grundy,14.91
+7,2022, Zach,Guthrie,7.06
+13,2022, Sam,Hayes,9.63
+5,2022, Ben,Hobbs,5.06
+10,2022, Changkuoth,Jiath,6.66
+10,2022, Jacob,Koschitzke,8.61
+11,2022, Jake,Lever,5.86
+15,2022, Jarrod,Lienert,6.36
+8,2022, Jack,Lukosius,7.62
+10,2022, Max,Lynch,7.84
+1,2022, Shane,McAdam,7.52
+12,2022, Ben,McKay,3.61
+18,2022, Tim,OBrien,6.34
+9,2022, Xavier,OHalloran,4.73
+17,2022, Sam,Petrevski-Seton,3.1
+3,2022, Lachie,Plowman,4.3
+12,2022, Tom,Powell,5.01
+9,2022, Braydon,Preuss,14.39
+2,2022, Jaxon,Prior,5.21
+9,2022, Jake,Riccardi,4.52
+17,2022, Willie,Rioli,8.66
+16,2022, Ben,Ronke,6.2
+8,2022, Malcolm,Rosas,4.99
+15,2022, Paddy,Ryder,9.8
+1,2022, Harry,Schoenberg,7.44
+3,2022, Will,Setterfield,6.02
+10,2022, Liam,Shiels,4.21
+18,2022, Jamarra,Ugle-Hagan,4.05
+18,2022, Laitham,Vandermeer,5.68
+5,2022, Alec,Waterman,5.06
+17,2022, Bailey,Williams,7.36
+14,2022, Jake,Aarts,2.21
+4,2022, Callum,Brown,2.2
+8,2022, Connor,Budarick,5.08
+15,2022, Ryan,Byrnes,1.45
+9,2022, Finn,Callaghan,4.45
+2,2022, Nakia,Cockatoo,4.38
+2,2022, Keidean,Coleman,6.0
+5,2022, Nik,Cox,2.9
+12,2022, Paul,Curtis,3.26
+14,2022, Thomson,Dow,6.34
+13,2022, Xavier,Duursma,3.15
+4,2022, Jamie,Elliott,5.62
+18,2022, Tim,English,13.45
+6,2022, Neil,Erasmus,3.74
+1,2022, Darcy,Fogarty,4.29
+17,2022, Andrew,Gaff,3.44
+9,2022, Toby,Greene,7.42
+12,2022, Aaron,Hall,8.1
+5,2022, Brayden,Ham,3.72
+1,2022, Jackson,Hately,5.81
+15,2022, Jack,Hayes,6.99
+7,2022, Jack,Henry,3.9
+16,2022, Tom,Hickey,6.8
+18,2022, Lachie,Hunter,5.46
+18,2022, Alex,Keath,5.42
+17,2022, Zac,Langdon,4.14
+8,2022, Darcy,Macpherson,1.36
+18,2022, Robbie,McComb,5.38
+4,2022, Reef,McInnes,3.22
+13,2022, Jackson,Mead,3.34
+3,2022, Jack,Newnes,6.13
+17,2022, Xavier,ONeill,3.7
+14,2022, Matthew,Parker,6.44
+11,2022, Harry,Petty,6.21
+3,2022, Marc,Pittonet,5.64
+14,2022, Hugo,Ralphsmith,5.02
+10,2022, Ned,Reeves,5.74
+2,2022, Mitch,Robinson,4.43
+8,2022, Jeremy,Sharp,2.7
+17,2022, Luke,Shuey,9.07
+11,2022, Joel,Smith,5.32
+9,2022, Jake,Stein,4.09
 6,2022, Matthew,Taberner,7.19
-6,2022, James,Aish,10.75
-6,2022, Sam,Switkowski,14.08
-6,2022, Heath,Chapman,13.03
-6,2022, Hayden,Young,13.01
-6,2022, Travis,Colyer,12.78
-6,2022, Nathan,ODriscoll,9.06
-6,2022, Caleb,Serong,5.98
-6,2022, Josh,Treacy,2.9
-6,2022, Michael,Walters,11.49
-6,2022, Michael,Frederick,10.95
-6,2022, Brandon,Walker,5.13
-6,2022, Darcy,Tucker,7.41
-6,2022, Joel,Hamling,2.34
-6,2022, Neil,Erasmus,4.36
-6,2022, Alex,Pearce,5.62
-6,2022, Liam,Henry,1.6
-6,2022, Bailey,Banfield,6.25
-8,2022, Noah,Anderson,23.81
-8,2022, Touk,Miller,22.65
-8,2022, Lachie,Weller,16.43
-8,2022, Brayden,Fiorini,18.44
-8,2022, Jarrod,Witts,17.81
-8,2022, Sam,Collins,16.03
-8,2022, Matt,Rowell,15.86
-8,2022, Izak,Rankine,7.87
-8,2022, Brandon,Ellis,15.51
-8,2022, Jack,Lukosius,15.02
-8,2022, Wil,Powell,14.99
-8,2022, Mabior,Chol,14.4
-8,2022, David,Swallow,14.16
-8,2022, Malcolm,Rosas,3.28
-8,2022, Alex,Davies,12.3
-8,2022, Levi,Casboult,12.16
-8,2022, Ben,Ainsworth,11.49
-8,2022, Charlie,Ballard,10.64
-8,2022, Caleb,Graham,7.57
-8,2022, Jeremy,Sharp,6.78
-8,2022, Rory,Atkins,6.13
-8,2022, Sean,Lemmens,7.78
-8,2022, Nick,Holman,7.66
-8,2022, Josh,Corbett,3.48
-8,2022, Alex,Sexton,2.22
-8,2022, Jy,Farrar,0.69
-8,2022, Darcy,Macpherson,0.64
-8,2022, Sam,Flanders,0.28
-7,2022, Patrick,Dangerfield,24.08
-7,2022, Tom,Stewart,15.27
-7,2022, Rhys,Stanley,19.97
-7,2022, Brandan,Parfitt,18.21
-7,2022, Joel,Selwood,13.29
-7,2022, Tom,Hawkins,17.63
-7,2022, Isaac,Smith,16.75
-7,2022, Jeremy,Cameron,16.56
-7,2022, Mark,Blicavs,16.05
-7,2022, Mark,OConnor,3.95
-7,2022, Mitch,Duncan,11.52
-7,2022, Zach,Tuohy,14.39
-7,2022, Brad,Close,14.3
-7,2022, Tyson,Stengle,14.08
-7,2022, Cameron,Guthrie,13.45
-7,2022, Shaun,Higgins,6.52
-7,2022, Max,Holmes,12.66
-7,2022, Tom,Atkins,11.97
-7,2022, Jed,Bews,7.35
-7,2022, Zach,Guthrie,7.1
-7,2022, Luke,Dahlhaus,9.28
-7,2022, Sam,De Koning,6.54
-7,2022, Gryan,Miers,1.94
-7,2022, Jake,Kolodjashnij,6.58
-7,2022, Jack,Henry,6.41
-7,2022, Esava,Ratugolea,4.49
-7,2022, Francis,Evans,1.45
-7,2022, Quinton,Narkle,2.59
-9,2022, Tom,Green,27.1
-9,2022, Braydon,Preuss,11.13
-9,2022, Tim,Taranto,22.03
-9,2022, Josh,Kelly,18.24
-9,2022, Jacob,Hopper,4.26
-9,2022, Stephen,Coniglio,16.28
-9,2022, Lachie,Whitfield,15.21
-9,2022, Isaac,Cumming,13.82
-9,2022, Harry,Himmelberg,13.64
-9,2022, Sam,Taylor,13.11
-9,2022, Jesse,Hogan,9.5
-9,2022, Harry,Perryman,12.63
-9,2022, Matt,Flynn,6.15
-9,2022, Jake,Stein,5.79
-9,2022, Callan,Ward,11.01
-9,2022, Tanner,Bruhn,10.49
-9,2022, Xavier,OHalloran,10.21
-9,2022, Jarrod,Brander,4.79
-9,2022, Phil,Davis,4.76
-9,2022, Bobby,Hill,9.4
-9,2022, Matt,de Boer,9.21
-9,2022, Connor,Idun,8.57
-9,2022, Daniel,Lloyd,3.47
-9,2022, Lachlan,Keeffe,4.95
-9,2022, Jake,Riccardi,4.82
-9,2022, Lachie,Ash,5.72
-9,2022, Nick,Haynes,2.03
-9,2022, James,Peatling,1.77
-9,2022, Adam,Kennedy,0.53
-10,2022, Luke,Breust,18.96
-10,2022, Tom,Mitchell,22.13
-10,2022, Dylan,Moore,19.79
-10,2022, Mitch,Lewis,18.97
-10,2022, Jai,Newcombe,17.22
-10,2022, James,Sicily,16.06
-10,2022, Harry,Morrison,15.41
-10,2022, Jack,Gunston,14.55
-10,2022, Jaeger,OMeara,14.38
-10,2022, James,Worpel,13.8
-10,2022, Ned,Reeves,13.1
-10,2022, Changkuoth,Jiath,13
-10,2022, Conor,Nash,12.87
-10,2022, Blake,Hardwick,12.55
-10,2022, Sam,Frost,12.42
-10,2022, Jack,Scrimshaw,10.87
-10,2022, Ben,McEvoy,2.62
-10,2022, Chad,Wingard,7.75
-10,2022, Denver,Grainger-Barras,8.88
-10,2022, Will,Day,4.4
-10,2022, Jarman,Impey,2.17
-10,2022, Josh,Ward,8.59
-10,2022, Liam,Shiels,2.1
-10,2022, Connor,Macdonald,8.35
-10,2022, Daniel,Howe,3.5
-10,2022, Tom,Phillips,3.31
-10,2022, Finn,Maginness,6.46
-10,2022, Max,Lynch,1
-11,2022, Clayton,Oliver,27.08
-11,2022, Christian,Petracca,26.99
-11,2022, Max,Gawn,26.55
-11,2022, Steven,May,26.21
-11,2022, Jack,Viney,19.18
-11,2022, Luke,Jackson,18.47
-11,2022, James,Harmes,16.68
-11,2022, Ed,Langdon,16.07
-11,2022, Tom,Sparrow,14.76
-11,2022, Alex,Neal-Bullen,14.14
-11,2022, Jake,Bowey,13.55
-11,2022, Bayley,Fritsch,13.2
-11,2022, Joel,Smith,9.11
-11,2022, Adam,Tomlinson,11.99
-11,2022, Tom,McDonald,11.13
-11,2022, Ben,Brown,5.49
-11,2022, Charlie,Spargo,10.93
-11,2022, Sam,Weideman,5.38
-11,2022, Angus,Brayshaw,10.16
-11,2022, James,Jordon,9.23
-11,2022, Jayden,Hunt,8.44
-11,2022, Kysaiah,Pickett,8.2
-11,2022, Trent,Rivers,5.74
-11,2022, Jake,Lever,0.94
-11,2022, Toby,Bedford,2.03
-11,2022, Christian,Salem,0.08
-12,2022, Aaron,Hall,18.82
-12,2022, Luke,McDonald,17.5
-12,2022, Todd,Goldstein,16.8
-12,2022, Jack,Ziebell,16.15
-12,2022, Nick,Larkey,15.29
-12,2022, Jy,Simpkin,14.65
-12,2022, Jaidyn,Stephenson,10.94
-12,2022, Jason,Horne-Francis,14.07
-12,2022, Hugh,Greenwood,12.55
-12,2022, Tristan,Xerri,12.39
-12,2022, Luke,Davies-Uniacke,8.82
-12,2022, Jack,Mahony,11.56
-12,2022, Cameron,Zurhaar,11.2
-12,2022, Josh,Walker,8.38
-12,2022, Aidan,Corr,10.84
-12,2022, Curtis,Taylor,10.48
-12,2022, Tom,Powell,6.89
-12,2022, Lachie,Young,9.01
-12,2022, Bailey,Scott,8.87
-12,2022, Tarryn,Thomas,4.35
-12,2022, Kayne,Turner,8.63
-12,2022, Flynn,Perez,1.93
-12,2022, Jared,Polec,3.67
-12,2022, Atu,Bosenavulagi,1.45
-12,2022, Ben,McKay,3.77
-12,2022, Charlie,Lazzaro,1.54
-12,2022, Callum,Coleman-Jones,0.76
+14,2022, Nick,Vlastuin,8.4
+11,2022, Sam,Weideman,4.91
+16,2022, Sam,Wicks,3.97
+8,2022, Rory,Atkins,2.25
+5,2022, Kaine,Baldwin,2.81
+12,2022, Aiden,Bonar,1.09
+3,2022, Jordan,Boyd,2.51
+10,2022, Lachlan,Bramble,3.91
+3,2022, Jack,Carroll,4.5
+12,2022, Callum,Coleman-Jones,3.38
+8,2022, Josh,Corbett,2.41
+13,2022, Kane,Farrell,7.51
+5,2022, Aaron,Francis,4.02
+1,2022, Will,Hamill,2.17
+7,2022, Shaun,Higgins,5.75
+17,2022, Brady,Hough,1.76
+10,2022, Daniel,Howe,2.48
+17,2022, Callum,Jamieson,2.9
+14,2022, Kane,Lambert,4.34
+13,2022, Scott,Lycett,7.02
+14,2022, Dustin,Martin,7.81
+6,2022, Lloyd,Meek,7.39
+1,2022, Nick,Murray,4.1
+7,2022, Quinton,Narkle,4.67
+16,2022, Tom,Papley,6.14
+5,2022, Zach,Reid,2.51
+14,2022, Maurice,Rioli,4.38
+1,2022, Rory,Sloane,5.45
+1,2022, Jake,Soligo,3.43
+5,2022, Jake,Stringer,5.72
+11,2022, Adam,Tomlinson,5.09
+6,2022, Josh,Treacy,3.63
+18,2022, Mitch,Wallis,3.33
+5,2022, Tex,Wanganeen,0.9
+17,2022, Isiah,Winder,2.69
+5,2022, Brandon,Zerk-Thatcher,3.33
+12,2022, Jed,Anderson,2.29
+4,2022, Aiden,Begg,2.41
+4,2022, Trent,Bianco,0.68
+9,2022, Jarrod,Brander,3.42
+5,2022, Nick,Bryan,2.86
+17,2022, Greg,Clark,3.48
+4,2022, Mason,Cox,1.65
+18,2022, Hayden,Crozier,2.32
+11,2022, Luke,Dunstan,4.03
+17,2022, Luke,Edwards,1.37
+7,2022, Francis,Evans,1.53
 12,2022, Eddie,Ford,0.69
-12,2022, Aiden,Bonar,0.25
-13,2022, Travis,Boak,24.54
-13,2022, Karl,Amon,17.5
-13,2022, Willem,Drew,16.97
-13,2022, Scott,Lycett,16.85
-13,2022, Dan,Houston,15.83
-13,2022, Sam,Powell-Pepper,14.82
-13,2022, Zak,Butters,14.06
-13,2022, Ollie,Wines,13.54
-13,2022, Tom,Clurey,3.37
-13,2022, Lachie,Jones,13.17
-13,2022, Tom,Jonas,12.7
-13,2022, Ryan,Burton,12.1
-13,2022, Riley,Bonner,10.7
-13,2022, Todd,Marshall,10.37
-13,2022, Aliir,Aliir,2.59
-13,2022, Mitch,Georgiades,8.98
-13,2022, Sam,Mayes,4.35
-13,2022, Jeremy,Finlayson,4.3
-13,2022, Steven,Motlop,8.09
-13,2022, Darcy,Byrne-Jones,7.98
-13,2022, Miles,Bergman,1.86
-13,2022, Connor,Rozee,7.08
-13,2022, Jackson,Mead,6.77
-13,2022, Trent,Dumont,1.67
-13,2022, Martin,Frederick,1.46
-13,2022, Sam,Skinner,2.91
-13,2022, Trent,McKenzie,3.99
-13,2022, Xavier,Duursma,2.23
-13,2022, Josh,Sinn,1.04
-13,2022, Jed,McEntee,2
-13,2022, Robbie,Gray,0.5
-14,2022, Shai,Bolton,23.83
-14,2022, Dustin,Martin,5.41
-14,2022, Jayden,Short,18.45
-14,2022, Noah,Balta,17.32
-14,2022, Tom,Lynch,17.17
-14,2022, Matthew,Parker,12.62
-14,2022, Toby,Nankervis,16.66
-14,2022, Thomson,Dow,11.62
-14,2022, Jack,Riewoldt,7.65
-14,2022, Trent,Cotchin,14.82
-14,2022, Nathan,Broad,14.5
-14,2022, Marlion,Pickett,12.93
-14,2022, Daniel,Rioli,12.88
-14,2022, Kamdyn,McIntosh,9.01
-14,2022, Liam,Baker,11.67
-14,2022, Jason,Castagna,11.5
-14,2022, Josh,Gibcus,11.49
-14,2022, Hugo,Ralphsmith,11.45
-14,2022, Dion,Prestia,5.65
-14,2022, Ivan,Soldo,8.47
-14,2022, Shane,Edwards,11.08
-14,2022, Jack,Graham,10.26
-14,2022, Robbie,Tarrant,9.71
-14,2022, Ben,Miller,4.35
-14,2022, Jack,Ross,8.51
-14,2022, Jake,Aarts,3.91
-14,2022, Dylan,Grimes,2.43
-15,2022, Jade,Gresham,25.1
-15,2022, Max,King,23.68
-15,2022, Jack,Steele,22.08
-15,2022, Jack,Sinclair,20.97
-15,2022, Brad,Crouch,18.93
-15,2022, Rowan,Marshall,18.89
-15,2022, Jack,Hayes,13.14
-15,2022, Tim,Membrey,17.15
-15,2022, Dougal,Howard,12.33
-15,2022, Jack,Higgins,12.2
-15,2022, Ben,Long,8.02
-15,2022, Bradley,Hill,15.4
-15,2022, Paddy,Ryder,7.33
-15,2022, Dan,Butler,14.05
-15,2022, Jarrod,Lienert,9.72
-15,2022, Callum,Wilkie,12.73
-15,2022, Sebastian,Ross,11.63
-15,2022, Daniel,McKenzie,11.49
-15,2022, Josh,Battle,10.99
-15,2022, Mason,Wood,10.78
-15,2022, Darragh,Joyce,2.66
-15,2022, Jimmy,Webster,10.42
-15,2022, Ben,Paton,10.23
-15,2022, Dean,Kent,1.63
-15,2022, Ryan,Byrnes,3.81
-15,2022, Marcus,Windhager,1.04
-15,2022, Nasiah,Wanganeen-Milera,3.86
-15,2022, Mitch,Owens,0.18
-15,2022, Cooper,Sharman,0
-16,2022, Callum,Mills,23.83
-16,2022, Isaac,Heeney,22.24
-16,2022, Sam,Reid,4.87
-16,2022, Nick,Blakey,18.88
-16,2022, Justin,McInerney,9.32
-16,2022, Jake,Lloyd,13.57
-16,2022, Oliver,Florent,17.57
-16,2022, Luke,Parker,16.57
-16,2022, Lance,Franklin,16.48
-16,2022, James,Rowbottom,16.38
-16,2022, Tom,Hickey,12.25
-16,2022, Chad,Warner,11.93
-16,2022, Errol,Gulden,15.2
-16,2022, Hayden,McLean,14.68
-16,2022, James,Bell,3.38
-16,2022, Tom,McCartin,13.5
-16,2022, Joel,Amartey,3.34
-16,2022, Peter,Ladhams,3.21
-16,2022, Dane,Rampe,12.65
-16,2022, Paddy,McCartin,11.49
-16,2022, Will,Hayward,10.87
-16,2022, Braeden,Campbell,10.15
-16,2022, Harry,Cunningham,9.82
-16,2022, Dylan,Stephens,7
-16,2022, Josh,Kennedy,6.84
-16,2022, Sam,Wicks,4.46
-16,2022, Ben,Ronke,2.67
-16,2022, Logan,McDonald,1.29
-16,2022, Angus,Sheldrick,1.2
-16,2022, Colin,ORiordan,0
-18,2022, Tim,English,25.4
-18,2022, Jack,Macrae,25.02
-18,2022, Marcus,Bontempelli,22.19
-18,2022, Bailey,Smith,15.16
-18,2022, Josh,Dunkley,18.17
-18,2022, Bailey,Dale,16.04
-18,2022, Tom,Liberatore,14.15
-18,2022, Adam,Treloar,13.88
-18,2022, Aaron,Naughton,11.37
-18,2022, Caleb,Daniel,11.11
-18,2022, Alex,Keath,8.18
-18,2022, Lachie,Hunter,9.79
-18,2022, Laitham,Vandermeer,9.67
-18,2022, Ryan,Gardner,8.92
-18,2022, Cody,Weightman,8.88
-18,2022, Tim,OBrien,2.18
-18,2022, Ed,Richards,8.71
-18,2022, Hayden,Crozier,4.34
-18,2022, Taylor,Duryea,5.84
-18,2022, Anthony,Scott,5.77
-18,2022, Roarke,Smith,5.45
-18,2022, Bailey,Williams,5.32
-18,2022, Zaine,Cordy,4.84
-18,2022, Jamarra,Ugle-Hagan,6.46
-18,2022, Mitch,Wallis,3.01
-18,2022, Mitch,Hannan,4.48
-18,2022, Josh,Schache,1.17
-18,2022, Louis,Butler,1.14
-18,2022, Lachlan,McNeil,0.84
-17,2022, Willie,Rioli,17.28
-17,2022, Luke,Shuey,5.27
-17,2022, Jeremy,McGovern,20.02
-17,2022, Nic,Naitanui,13.42
-17,2022, Liam,Duggan,8.25
-17,2022, Tom,Barrass,8.14
-17,2022, Tim,Kelly,4.06
-17,2022, Declan,Mountford,4.03
-17,2022, Liam,Ryan,11.7
-17,2022, Josh,Kennedy,11.1
-17,2022, Bailey,Williams,7.11
-17,2022, Alex,Witherden,10.48
-17,2022, Shannon,Hurn,13.39
-17,2022, Patrick,Naish,13.37
-17,2022, Hugh,Dixon,9.84
-17,2022, Jackson,Nelson,9.81
-17,2022, Aaron,Black,3.24
-17,2022, Jack,Darling,9.57
-17,2022, Jamaine,Jones,9.41
-17,2022, Jack,Redden,9.25
-17,2022, Andrew,Gaff,6.12
-17,2022, Jack,Petruccelle,8.75
-17,2022, Zac,Langdon,8.36
-17,2022, Jake,Waterman,7.22
-17,2022, Angus,Dewar,2.39
-17,2022, Luke,Foley,9.39
-17,2022, Xavier,ONeill,6.49
-17,2022, Connor,West,3.84
-17,2022, Josh,Rotham,5.74
-17,2022, Brady,Hough,4.88
-17,2022, Stefan,Giro,1.56
-17,2022, Harry,Edwards,2.8
-17,2022, Luke,Edwards,3.67
-17,2022, Sam,Petrevski-Seton,3.66
-17,2022, Callum,Jamieson,1.18
-17,2022, Brayden,Ainsworth,0.67
-17,2022, Jack,Williams,0.08
-17,2022, Isiah,Winder,0
+13,2022, Martin,Frederick,0.82
+8,2022, Caleb,Graham,2.78
+9,2022, Cooper,Hamilton,2.14
+18,2022, Mitch,Hannan,1.89
+15,2022, Zak,Jones,3.98
+18,2022, Buku,Khamis,2.2
+4,2022, Nathan,Kreuger,3.38
+12,2022, Charlie,Lazzaro,0.59
+8,2022, Oleg,Markov,3.05
+18,2022, Stefan,Martin,3.02
+13,2022, Jed,McEntee,0.9
+13,2022, Trent,McKenzie,2.02
+14,2022, Ben,Miller,3.36
+17,2022, Nic,Naitanui,5.23
+2,2022, Jack,Payne,3.44
+9,2022, James,Peatling,3.43
+1,2022, Luke,Pedlar,0.43
+17,2022, Jack,Petruccelle,3.72
+5,2022, Andrew,Phillips,2.66
+10,2022, Tom,Phillips,2.02
+7,2022, Esava,Ratugolea,1.9
+16,2022, Sam,Reid,3.75
+18,2022, Josh,Schache,2.16
+8,2022, Alex,Sexton,0.92
+15,2022, Cooper,Sharman,2.37
+2,2022, Harry,Sharp,1.01
+7,2022, Cooper,Stephens,2.59
+16,2022, Dylan,Stephens,2.86
+5,2022, James,Stewart,1.98
+8,2022, Rory,Thompson,1.93
+18,2022, Rhylee,West,1.72
+4,2022, Tom,Wilson,2.11
+13,2022, Miles,Bergman,1.62
+2,2022, Tom,Berry,1.11
+15,2022, Jack,Billings,2.7
+10,2022, Sam,Butler,1.2
+10,2022, Jackson,Callow,0.83
+11,2022, Kade,Chandler,-0.01
+16,2022, Ryan,Clarke,0.0
+18,2022, Luke,Cleary,1.2
+14,2022, Riley,Collier-Dawkins,1.48
+9,2022, Phil,Davis,1.87
+7,2022, Oliver,Dempsey,1.18
+3,2022, Lachie,Fogarty,1.74
+2,2022, Tom,Fullarton,2.27
+12,2022, Kyron,Hayden,0.93
+6,2022, Liam,Henry,0.99
+2,2022, Eric,Hipwood,2.42
+8,2022, Joel,Jeffrey,2.35
+3,2022, Brodie,Kemp,0.72
+7,2022, Mitch,Knevitt,1.16
+9,2022, Daniel,Lloyd,1.36
+2,2022, Kai,Lohmann,1.88
+14,2022, Rhyan,Mansell,1.62
+13,2022, Sam,Mayes,1.82
+3,2022, Oscar,McDonald,1.6
+3,2022, Mitch,McGovern,2.81
+11,2022, Jake,Melksham,2.66
+3,2022, Jesse,Motlop,1.54
+17,2022, Declan,Mountford,1.93
+16,2022, Colin,ORiordan,0.25
+3,2022, Luke,Parks,1.54
+12,2022, Jared,Polec,1.45
+16,2022, Angus,Sheldrick,0.44
+13,2022, Sam,Skinner,1.41
+14,2022, Sydney,Stack,0.81
+3,2022, Liam,Stocker,1.32
+1,2022, Kieran,Strachan,2.15
+17,2022, Luke,Strnadica,2.73
+18,2022, Jordon,Sweet,2.85
+1,2022, Riley,Thilthorpe,1.92
+17,2022, Elliot,Yeo,0.83
+17,2022, Brayden,Ainsworth,0.26
+16,2022, Joel,Amartey,1.45
+6,2022, Jye,Amiss,1.28
+12,2022, Miller,Bergman,0.16
+17,2022, Aaron,Black,1.29
+8,2022, Chris,Burgess,0.88
+18,2022, Louis,Butler,0.48
+15,2022, Tom,Campbell,1.55
+17,2022, Angus,Dewar,0.8
+3,2022, Paddy,Dow,0.0
+13,2022, Orazio,Fantasia,0.0
+8,2022, Sam,Flanders,0.09
+17,2022, Jake,Florenca,1.08
+18,2022, Riley,Garcia,0.09
+17,2022, Stefan,Giro,0.63
+6,2022, Joel,Hamling,0.98
+10,2022, Kyle,Hartigan,0.16
+9,2022, Jacob,Hopper,1.6
+15,2022, Darragh,Joyce,1.08
+15,2022, Dean,Kent,0.62
+5,2022, Kyle,Langford,0.07
+2,2022, Ryan,Lester,1.83
+5,2022, Alastair,Lord,0.0
+4,2022, Finlay,Macrae,0.42
+2,2022, James,Madden,0.32
+10,2022, Ben,McEvoy,1.02
+1,2022, Andrew,McPherson,0.59
+1,2022, Wayne,Milera,0.32
+4,2022, Nathan,Murphy,1.09
+14,2022, Bigoa,Nyuon,1.12
+15,2022, Mitch,Owens,0.08
+4,2022, Caleb,Poulter,1.33
+2,2022, Deven,Robertson,0.0
+7,2022, Gary,Rohan,0.42
+4,2022, Jordan,Roughead,0.46
+11,2022, Christian,Salem,0.04
+13,2022, Josh,Sinn,0.46
+5,2022, Will,Snelling,0.46
+9,2022, Zach,Sproule,1.49
+9,2022, Conor,Stone,0.35
+9,2022, Jacob,Wehr,0.62
+17,2022, Jack,Williams,0.0
+3,2022, Tom,Williamson,0.0
