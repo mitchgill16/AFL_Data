@@ -14,8 +14,9 @@ results <- fetch_results(test_y, test_r)
 venue <- select(results, round.year, round.roundNumber,
             match.homeTeam.name, match.awayTeam.name, venue.name)
 combined_venues <- rbind(all_venues, venue) %>% distinct()
+write.csv(combined_venues, "R_Code/all_venues.csv", row.names=FALSE)
 
-if(test_r < 24){
+if(test_r < 24 && length(args) > 2){
   ladders <- fetch_ladder(season=test_y, round=test_r)
   ladder <- select(ladders, season, round_number, team.name, position,form,
               thisSeasonRecord.winLossRecord.wins, thisSeasonRecord.winLossRecord.losses,
@@ -23,5 +24,3 @@ if(test_r < 24){
   combined_ladders <- rbind(all_ladders, ladder) %>% distinct()
   write.csv(combined_ladders, "R_Code/all_ladders.csv", row.names=FALSE)
 }
-
-write.csv(combined_venues, "R_Code/all_venues.csv", row.names=FALSE)

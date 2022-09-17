@@ -9,7 +9,7 @@
 #Arg 4 = match ID to update to
 
 #get what the final lineups were like you usually run in the notebook
-#python update_final_lineups.py $1 $2
+python predict.py $1 $2
 
 Rscript R_Code/update.R $1 $2
 
