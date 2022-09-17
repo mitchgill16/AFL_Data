@@ -276,7 +276,7 @@ class gatherer:
 
     #Example input 'Round 23, Marvel Stadium... etc' will look at either first character
     # or comma position to determine what round it is
-    # finals rounds are given 25-28 values accordingly
+    # finals rounds are given 25-28 values accordingly #fucking why Mitchell from 2020 did u do this
     def determine_round(self, round_string):
         round = 0
         if (round_string[0] == 'Q' or round_string[0] == 'E'):

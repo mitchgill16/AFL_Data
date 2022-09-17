@@ -245,6 +245,9 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         stats_df = pd.DataFrame(stats_df)
         stats_df.columns = h
         s_df = pd.concat([s_df, stats_df], ignore_index = True)
+        idx = s_df[s_df.duplicated()]
+        idx = idx.index
+        s_df.drop(idx,inplace=True)
         s_df.to_csv('Data/assembled_stat_matrix_no2020'+str(n_games)+'_games.csv', index = False)
 
         l_df = pd.read_csv('Data/assembled_labelled_ymatrix_no2020'+str(n_games)+'_games.csv')
@@ -252,6 +255,7 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         l_h = ['H/A Win?']
         label_df.columns = l_h
         l_df = pd.concat([l_df, label_df], ignore_index = True)
+        l_df.drop(idx,inplace=True)
         l_df.to_csv('Data/assembled_labelled_ymatrix_no2020'+str(n_games)+'_games.csv', index =False)
 
         m_df = pd.read_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv')
@@ -259,6 +263,7 @@ def assemble_stat_matrix(match_to_start_from, most_recent_match, teams, n_games,
         m_h = ['Margin']
         margin_df.columns = m_h
         m_df = pd.concat([m_df, margin_df], ignore_index = True)
+        m_df.drop(idx,inplace=True)
         m_df.to_csv('Data/assembled_margin_ymatrix_no2020'+str(n_games)+'_games.csv', index = False)
 
     print(stats_df)

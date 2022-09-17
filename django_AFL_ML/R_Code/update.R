@@ -13,14 +13,14 @@ all_venues <- read.csv("R_Code/all_venues.csv")
 results <- fetch_results(test_y, test_r)
 venue <- select(results, round.year, round.roundNumber,
             match.homeTeam.name, match.awayTeam.name, venue.name)
-combined_venues <- rbind(all_venues, venue)
+combined_venues <- rbind(all_venues, venue) %>% distinct()
 
 if(test_r < 24){
   ladders <- fetch_ladder(season=test_y, round=test_r)
   ladder <- select(ladders, season, round_number, team.name, position,form,
               thisSeasonRecord.winLossRecord.wins, thisSeasonRecord.winLossRecord.losses,
               thisSeasonRecord.winLossRecord.draws)
-  combined_ladders <- rbind(all_ladders, ladder)
+  combined_ladders <- rbind(all_ladders, ladder) %>% distinct()
   write.csv(combined_ladders, "R_Code/all_ladders.csv", row.names=FALSE)
 }
 
