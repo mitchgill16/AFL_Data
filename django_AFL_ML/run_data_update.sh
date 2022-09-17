@@ -20,9 +20,9 @@ python assemble_df.py $3 $4 10
 python assemble_df.py $3 $4 3
 
 
-#python assemble_df.py 10615 4
-#python assemble_df.py 10615 5
-#python assemble_df.py 10615 6
-#python assemble_df.py 10615 7
-#python assemble_df.py 10615 8
-#python assemble_df.py 10615 9
+#python assemble_df.py $4 4
+#python assemble_df.py $4 5
+#python assemble_df.py $4 6
+#python assemble_df.py $4 7
+#python assemble_df.py $4 8
+#python assemble_df.py $4 9

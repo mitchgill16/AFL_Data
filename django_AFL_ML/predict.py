@@ -207,13 +207,14 @@ def predict(home_id, away_id, venue, round_num, h_pav, a_pav, n, teams):
         p = yp[:,0]*100
         p = str(p)
         #Could somehow make this print statement into a javascript thing for django?
-        print(teams[str(home_id)] + "(HOME) is predicted to win against "+teams[str(away_id)]+" with a "+p[1:-1]+"% chance by " + str(my[0]) +" points")
+        #print(teams[str(home_id)] + "(HOME) is predicted to win against "+teams[str(away_id)]+" with a "+p[1:-1]+"% chance by " + str(my[0]) +" points")
     elif(y > 0.5):
         p = yp[:,1]*100
         p = str(p)
-        print(teams[str(away_id)] + "(AWAY) is predicted to win against "+teams[str(home_id)]+"  with a "+p[1:-1]+"% chance by " + str(my[0]) +" points")
+        #print(teams[str(away_id)] + "(AWAY) is predicted to win against "+teams[str(home_id)]+"  with a "+p[1:-1]+"% chance by " + str(my[0]) +" points")
     else:
         print("DRAW")
+    return y, my[0]
 
 def calc_sum_pav(year, rnd, team_int):
     #do calc
@@ -415,6 +416,8 @@ def main():
     all_pav_df = all_pav_df.sort_values(["Year", "Round"], ascending = (True, True))
     all_pav_df.to_csv("R_Code/all_team_pavs.csv", header=True, index=False)
 
+    tip_array = []
+    margin_tip_array = []
     predict_round_num = round_num
 
     #Run the predictions
@@ -431,7 +434,9 @@ def main():
         away_pav = get_pav(season, round_num, away_id)
 
         venue = venues[i]
-        predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip_array.append(tip[0])
+        margin_tip_array.append(margin_tip)
         i = i + 1
 
     i = start_match
@@ -445,7 +450,9 @@ def main():
         away_pav = get_pav(season, round_num, away_id)
 
         venue = venues[i]
-        predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip_array.append(tip[0])
+        margin_tip_array.append(margin_tip)
         i = i + 1
 
     i = start_match
@@ -459,8 +466,30 @@ def main():
         away_pav = get_pav(season, round_num, away_id)
 
         venue = venues[i]
-        predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        tip_array.append(tip[0])
+        margin_tip_array.append(margin_tip)
         i = i + 1
+
+    l = len(tip_array)
+    tip_df = pd.DataFrame({'n=2': tip_array[0:l:3], 'n=3':tip_array[1:l:3], 'n=10':tip_array[2:l:3]})
+    tip_df['mean'] = tip_df.mean(axis=1)
+    margin_df = pd.DataFrame({'n=2': margin_tip_array[0:l:3], 'n=3':margin_tip_array[1:l:3], 'n=10':margin_tip_array[2:l:3]})
+    margin_df['mean'] = margin_df.mean(axis=1)
+
+    i=start_match
+    while i<end_match:
+        home_id = home_teams[i]
+        away_id = away_teams[i]
+        winner = (tip_df['mean'][i])
+        winner_margin = margin_df['mean'][i]
+        i = i + 1
+        if(winner < 0.5):
+            print(teams[str(home_id)] + "(HOME) is predicted to win against "+teams[str(away_id)]+"by " + str(winner_margin) +" points")
+        elif(winner > 0.5):
+            print(teams[str(away_id)] + "(AWAY) is predicted to win against "+teams[str(home_id)]+" by " + str(winner_margin) +" points")
+        else:
+            print("DRAW")
 
 if __name__ == '__main__':
     main()
