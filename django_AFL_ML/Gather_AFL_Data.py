@@ -128,6 +128,7 @@ class gatherer:
             count = count + 1
 
     #takes match number and determines whether it what year that was
+    #cbf making something that figures this out, just update once a year
     def determine_year(self, x):
         x = int(x)
         year = 9999
