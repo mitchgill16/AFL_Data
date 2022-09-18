@@ -8,10 +8,10 @@ How to run the project.
 2. cd into the main folder (django_AFL_ML)
 3. Install the python packages required in a conda environment from requirements.txt
 
-  .a This might take a little bit as since I've been experimenting with a lot of random things during the development the packages built up
+      .a This might take a little bit as since I've been experimenting with a lot of random things during the development the packages built up
 4. Make sure R is installed and the tidyverse packages have been installed.
 
-  .a along with the fitzRoy R package available here: https://github.com/jimmyday12/fitzRoy
+      .a along with the fitzRoy R package available here: https://github.com/jimmyday12/fitzRoy
   
 5. Predict the upcoming round after teams have been announced (usually on thursday at 6:40pm AEST) by running the following command in the main folder
   
