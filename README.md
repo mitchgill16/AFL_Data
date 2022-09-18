@@ -15,7 +15,7 @@ How to run the project.
   
 5. Predict the upcoming round after teams have been announced (usually on thursday at 6:40pm AEST) by running the following command in the main folder
   
-  bash run_predict.sh <year> <round> 
+  bash run_predict.sh input_year input_round 
   
   NOTE: rounds 1-23 are straight forward.
   Finals week 1 (Qualifying and Elimination Finals) = 24
@@ -28,7 +28,7 @@ How to run the project.
     
 6. Once The round is over update the match information and data. This step is necessary as the models work by using previous games data to make their predictions. Use the run_data_update.sh script to achieve this
  
- bash run_data_update.sh <year> <round>
+ bash run_data_update.sh input_year input_round
   
 I intend to intend to continue updating the matches into 2023, so you can always skip step 6 and just reclone the repository whenever you want to make
 a prediction 
