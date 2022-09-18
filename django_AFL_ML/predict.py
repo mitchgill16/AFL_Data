@@ -423,7 +423,6 @@ def main():
     #Run the predictions
     # n is which n_games model
     n = 2
-    print("Mitchell's Crackhead Model Tips \n")
 
     i=start_match
     while i<end_match:
@@ -441,7 +440,6 @@ def main():
 
     i = start_match
     n = 10
-    print("\n\n\nRebeccas's Tips \n")
     while i<end_match:
         home_id = home_teams[i]
         away_id = away_teams[i]
@@ -457,7 +455,6 @@ def main():
 
     i = start_match
     n = 3
-    print("\n\n\nTie Breaker Tips \n")
     while i<end_match:
         home_id = home_teams[i]
         away_id = away_teams[i]
@@ -485,7 +482,7 @@ def main():
         winner_margin = margin_df['mean'][i]
         i = i + 1
         if(winner < 0.5):
-            print(teams[str(home_id)] + "(HOME) is predicted to win against "+teams[str(away_id)]+"by " + str(winner_margin) +" points")
+            print(teams[str(home_id)] + "(HOME) is predicted to win against "+teams[str(away_id)]+" by " + str(winner_margin) +" points")
         elif(winner > 0.5):
             print(teams[str(away_id)] + "(AWAY) is predicted to win against "+teams[str(home_id)]+" by " + str(winner_margin) +" points")
         else:

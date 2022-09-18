@@ -4,5 +4,5 @@
 #Arg 2 = Upcoming Round
 
 #put a third arg here so we know not to bother updating ladder
-Rscript Data/update.R $1 $2 1
+Rscript R_Code/get_upcoming_games.R $1 $2
 python predict.py $1 $2
