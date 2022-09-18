@@ -91,7 +91,6 @@ def create_R_TeamDict():
     }
     return teams
 
-
 ##TO Finish here -- ladder pos
 ##crops the clean data to be from 2013 onwards
 ##adds venue and ladder to cropped team data by appending column

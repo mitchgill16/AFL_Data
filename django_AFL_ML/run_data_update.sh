@@ -4,6 +4,8 @@
 
 #Get these args from a py_script which goes to the season and round on footywire
   #and extracts match id to update from and to
+python check_update.py $1 $2 || exit
+
 python get_match_ids.py $1 $2
 
 n=1
