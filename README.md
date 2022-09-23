@@ -1,6 +1,6 @@
 # AFL_Data
 
-Read about the project here: Under Construction.
+Read about the project here: https://mitchgill16.github.io/AFL_Data/
 
 How to run the project.
 
