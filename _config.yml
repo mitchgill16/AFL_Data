@@ -1,2 +1,6 @@
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
 markdown: kramdown
+title: Predicting AFL Games with Machine Learning
+tagline: How I Predicted AFL Matches for the 2022 Season
+author: Mitchell Gill
+email: mitchgill16@gmail.com
