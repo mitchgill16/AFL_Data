@@ -1,6 +1,3 @@
-**Predicting The 2022 AFL Season with Machine Learning**
-
-<br />
 
 # Contents
 {:.no_toc}
@@ -22,7 +19,7 @@ At the start of 2020 knew I was going to be working on a machine learning (ML) p
 ## Acquiring the Data & Making the Dataset
 The step in this project was to gather data sources for each game that has been played, to build a dataset. I decided to build (a fairly naive) webscraper which scraped every match from 2013 onwards (as both expansion teams have had been in the competition for at least 1 year by this point), from the [footywire website](https://www.footywire.com/) and stored them in team spreadsheets for both basic stats and advanced stats available on the website. I later added in data from the FitzRoy package to acquire the venue, ladder and lineup information for each of these games. And finally to account for the impact of individual players I added in a team aggregated Player Approximate Value (PAV) from [HPN footy](https://www.hpnfooty.com/) to determine a rough value system for each of the lineups for each team for each match.
 
-Once the dataset had been acquired for each game and allocated to each team, it was then time to assmeble the train/test dataset. The project works by using n previous games worth of information, along with data that is possible to know about the upcoming games. 
+Once the dataset had been acquired for each game and allocated to each team, it was then time to assmeble the train/test dataset. The project works by using n previous games worth of information, along with data that is possible to know about the upcoming games. An example row in the dataset would contain the upcoming season, upcoming roud, home team, away team, upcoming venue, ladder information before the upcoming round (eg wins, losses, ladder positions, form), PAV of home team for upcoming game, PAV of away team for upcoming game, home team prevous game statistics (from 1 game previous to n game previous, where n will equal 2,3 or 10 depending on which XGBoost model is being trained) and then away team previous games statistics (from 1 game previous to n game previous, where n will equal 2,3 or 10 depending on which XGBoost model is being trained). Each rows 'outcome' label will either be 0 for home team win or draw, or 1 for away team win. I later added in another possible outcome label which would be the margin from the home team perspective. Eg if the hometeam lost the margin would be negative. I felt doing it this way would be better than using absolute margins, as during the ESPN footy tips, tipping the wrong team will increase your margin error. Therefore this method will make the models be more conservative with their margin tips. 
 
 **TO ADD: Diagram with logos of data sources -> into excel -> n games spreadsheet>**
       
