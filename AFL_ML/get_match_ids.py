@@ -38,7 +38,7 @@ def main():
     elif(round_num == 26):
         mids = df.iloc[204:206]
     else:
-        mids = df.iloc[206]
+        mids = df.iloc[206:207]
     min_mid = (min(mids['urls']))
     max_mid = (max(mids['urls']))
     print(min_mid)

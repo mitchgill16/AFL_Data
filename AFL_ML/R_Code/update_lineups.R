@@ -8,7 +8,7 @@ getwd()
 year <- as.integer(args[1])
 rnd <- as.integer(args[2])
 
-x <- read.csv('~/Documents/Mitch/AFL_Data/AFL_Data/django_AFL_ML/R_Code/all_lineups.csv')
+x <- read.csv('R_Code/all_lineups.csv')
 test <- fetch_lineup(source="AFL", season=year, round_number = rnd)
 test <- select(test, teamName, round.roundNumber, player.playerName.givenName, player.playerName.surname)
 test$year <- year
@@ -27,4 +27,4 @@ for (team in c("Adelaide Crows", "Brisbane Lions", "Carlton", "Collingwood", "Es
 }
 
 
-write.csv(x, "/home/chris/Documents/Mitch/AFL_Data/AFL_Data/django_AFL_ML/R_Code/all_lineups.csv", row.names=FALSE)
+write.csv(x, "R_Code/all_lineups.csv", row.names=FALSE)

@@ -32,4 +32,4 @@ for(year in 2022:2022){
   }
 }
 
-write.csv(x, "/home/chris/Documents/Mitch/AFL_Data/AFL_Data/django_AFL_ML/R_Code/all_lineups.csv", row.names=FALSE)
+write.csv(x, "R_Code/all_lineups.csv", row.names=FALSE)

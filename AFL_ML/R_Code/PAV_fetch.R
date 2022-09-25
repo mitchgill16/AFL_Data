@@ -25,4 +25,4 @@ for(year_num in 2012:2019){
     }
   }
 }
-write.csv(x, "/home/chris/Documents/Mitch/AFL_Data/AFL_Data/django_AFL_ML/R_Code/all_PAVs.csv", row.names=FALSE)
+write.csv(x, "R_Code/all_PAVs.csv", row.names=FALSE)
