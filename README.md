@@ -5,10 +5,10 @@ Read about the project here: https://mitchgill16.github.io/AFL_Data/
 How to run the project.
 
 1. Clone the repository
-2. cd into the main folder (django_AFL_ML)
+2. cd into the main folder (AFL_ML)
 3. Install the python packages required in a conda environment from requirements.txt
 
-      .a This might take a little bit as since I've been experimenting with a lot of random things during the development the packages built up
+      .a This might take a little bit as since I've been experimenting with a lot of random things during the development and this casued the packages to build up
 4. Make sure R is installed and the tidyverse packages have been installed.
 
       .a along with the fitzRoy R package available here: https://github.com/jimmyday12/fitzRoy
