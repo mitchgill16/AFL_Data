@@ -25,6 +25,7 @@ The first step in this project was to gather data sources for each game that has
 
 Once the dataset had been acquired for each game and allocated to each team, it was then time to assmeble the train/test dataset. The project works by using n previous games worth of information, along with data that is possible to know about the upcoming games. An example row in the dataset would contain the upcoming season, upcoming roud, home team, away team, upcoming venue, ladder information before the upcoming round (eg wins, losses, ladder positions, form), PAV of home team for upcoming game, PAV of away team for upcoming game, home team prevous game statistics (from 1 game previous to n game previous, where n will equal 2,3 or 10 depending on which XGBoost model is being trained) and then away team previous games statistics (from 1 game previous to n game previous, where n will equal 2,3 or 10 depending on which XGBoost model is being trained). For the classification models, each rows 'outcome' label will either be 0 for home team win or draw, or 1 for away team win. For regression models the outcome label which would be the margin from the home team perspective. Eg if the hometeam lost the margin would be negative.
 
+Below is an example of acquiring and combining the data to make a dataset where n previous games equals 2. This process would be repeated for n=3 and n=10.
 ![My Image2](figure_2.png)
       
 ## Training the Models
