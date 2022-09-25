@@ -9,7 +9,7 @@
 ## Summary
 Using data from a variety of dedicated AFL stats datasets I was able to assemble a test and training dataset to train XGBoost models to predict the 2022 season round by round. This method resulted in 155 correct tips and ranking me 808th out of 669,173 for the ESPN footy tips competition. The XGBoost models were trained on match stats for the previous games along with data for the upcoming games. The models, code and combined dataset are available in the repository for this project.
 
-![My Image](image_1.png)
+![My Image](figure_1.png)
     
 Feel free to contact me at mitchgill16@gmail.com with any questions or view my [personal website]() (currently under development)  to check out other projects I've worked on.
     
