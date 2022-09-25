@@ -11,7 +11,7 @@ Using data from a variety of dedicated AFL stats datasets I was able to assemble
 
 ![My Image](figure_1.png)
     
-Feel free to contact me at mitchgill16@gmail.com with any questions or view my [personal website]() (currently under development)  to check out other projects I've worked on.
+Feel free to contact me at mitchgill16@gmail.com with any questions or view my personal website (currently under development, [checkout my google scholar instead](https://scholar.google.com/citations?user=EWqRussAAAAJ&hl=en)) to check out other projects I've worked on.
     
 Special thanks to my fiancée Rebecca who has listened to me ramble about this project over the last couple years and has heard the phrase ‘I’m just gonna quickly update the model’ or ‘I’m just running the predictions’ more times than anyone should hear. Additional thanks to Philipp Bayer, who is someone I look up to and was also my supervisor whilst I was at uni. During this time he helped my develop my skills for my university projects which has transferred over into to making this personal project possible. Check out his [twitter](https://twitter.com/PhilippBayer) for the cool work he’s doing at the Minderoo foundation.
 
