@@ -96,6 +96,12 @@ def create_R_TeamDict():
     }
     return teams
 
+def create_venue_alias_dict():
+    vDict = {
+        "Heritage Bank Stadium" : "Metricon Stadium"
+        }
+    return vDict
+
 ##TO Finish here -- ladder pos
 ##crops the clean data to be from 2013 onwards
 ##adds venue and ladder to cropped team data by appending column
@@ -109,6 +115,9 @@ def append_r_data(team_dict, r_dict, team_int):
     ladders = pd.read_csv("R_Code/all_ladders.csv")
     current_r_team = (r_dict[str(team_int)])
     team_venue = venue[venue.isin([current_r_team]).any(axis=1)]
+
+    #alias change venue names
+    vdict = create_venue_alias_dict()
 
     #ladder data preprocess
     team_ladders = ladders[ladders.isin([current_r_team]).any(axis=1)]
@@ -126,7 +135,15 @@ def append_r_data(team_dict, r_dict, team_int):
     sliced_df = df[-tv_rows:]
     #add PAV total and venue name for the matches
     sliced_df['PAV_Sum'] = team_pavs['Player_PAV_Total'].to_numpy()
-    sliced_df['Venue'] = team_venue['venue.name'].to_numpy()
+    venues = team_venue['venue.name'].to_numpy()
+    v_int = 0
+    while v_int < len(venues):
+        current_ven = venues[v_int]
+        if(current_ven in vdict):
+            ven_alias = vdict.get(current_ven)
+            venues[v_int] = ven_alias
+        v_int = v_int + 1
+    sliced_df['Venue'] = venues
     print(sliced_df.iloc[0][1:3])
 
     #merge ladder information into dataset, remove duplicate team name
