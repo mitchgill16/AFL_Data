@@ -57,12 +57,17 @@ def clean_match_stats(team_dict, team_int):
     print(df.shape)
     df = df.drop_duplicates()
     print(df.shape)
-    #fix my finals round error
+    #remove rows with years from 2023 onwards as there is 24 rounds
+    year_idx = df.loc[(df['Year'] > 2022)].index
+    year_df = df.loc[(df['Year'] > 2022)]
+    df.drop(year_idx, inplace=True)
+    #fix my finals + 1 error which I added for some reason
     idx = df.loc[(df['Round'] > 24)].index
     finals_df = df.loc[(df['Round'] > 24)]
     df.drop(idx,inplace=True)
     finals_df['Round'] = finals_df['Round'] - 1
     df = pd.concat([df, finals_df], ignore_index = False)
+    df = pd.concat([df, year_df], ignore_index = False)
     s_df = df.sort_values(["Year", "Round"], ascending = (True, True))
     print("Dataframe was already sorted: "+str(s_df.equals(df)))
     s_df.to_csv("Data/"+current_team+"_clean_stats.csv",index=True, header = True, index_label='Match_ID')
