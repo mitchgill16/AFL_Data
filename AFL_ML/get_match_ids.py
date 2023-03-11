@@ -19,26 +19,49 @@ def main():
     fixture = pd.read_csv("R_Code/fixture.csv")
     counts = fixture['round.roundNumber'].value_counts()
     counts = counts.sort_index()
-    bye_rounds = [i+1 for i, x in enumerate(counts) if x == 6]
+    bye_rounds = [i+1 for i, x in enumerate(counts) if (x > 4 and x < 9)]
     if(round_num < min(bye_rounds)):
-        mids = df.iloc[(round_num*9)-9:(round_num*9)-1]
-    elif(round_num >= min(bye_rounds) and round_num <= max(bye_rounds)):
+        mids = df.iloc[(round_num*9)-9:(round_num*9)]
+    elif(round_num >= min(bye_rounds) and round_num <= max(bye_rounds) and season < 2023):
         count = 0
         for x in bye_rounds:
             if(round_num == x):
                 break
             count = count + 1
         mids = df.iloc[(round_num*9)-9-(3*count):((round_num)*9)-3-(3*count)]
-    elif(round_num > max(bye_rounds) and round_num < 24):
-        mids = df.iloc[((round_num-1)*9)-9:((round_num-1)*9)-1]
-    elif(round_num == 24):
-        mids = df.iloc[198:202]
-    elif(round_num == 25):
-        mids = df.iloc[202:204]
-    elif(round_num == 26):
-        mids = df.iloc[204:206]
-    else:
-        mids = df.iloc[206:207]
+    elif(round_num >= min(bye_rounds) and round_num <= max(bye_rounds) and season > 2022):
+        #cbf doing logic, just manual enter for bye rounds
+        if(round_num == 12):
+            mids = df.iloc[99:106]
+        elif(round_num == 13):
+            mids = df.iloc[106:114]
+        elif(round_num == 14):
+            mids = df.iloc[114:120]
+        elif(round_num == 15):
+            mids = df.iloc[120:126]
+    elif(round_num > max(bye_rounds) and round_num < 24 and season < 2023):
+        mids = df.iloc[((round_num-1)*9)-9:((round_num-1)*9)]
+    elif(round_num > max(bye_rounds) and round_num < 25 and season > 2022):
+        mids = df.iloc[((round_num-1)*9)-9:((round_num-1)*9)]
+    elif(season < 2023):
+        if(round_num == 24):
+            mids = df.iloc[198:202]
+        elif(round_num == 25):
+            mids = df.iloc[202:204]
+        elif(round_num == 26):
+            mids = df.iloc[204:206]
+        else:
+            mids = df.iloc[206:207]
+    #2023 onwards
+    elif(season > 2022):
+        if(round_num == 25):
+            mids = df.iloc[207:211]
+        elif(round_num == 26):
+            mids = df.iloc[211:213]
+        elif(round_num == 27):
+            mids = df.iloc[213:215]
+        else:
+            mids = df.iloc[215:216]
     min_mid = (min(mids['urls']))
     max_mid = (max(mids['urls']))
     print(min_mid)

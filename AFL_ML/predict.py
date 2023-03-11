@@ -235,6 +235,7 @@ def calc_sum_pav(year, rnd, team_int):
     lineups['team'] = team_int
     if(rnd < 6):
         lineups['year'] = (year-1)
+        reduced = True
     lineups.columns = ['year', 'teamname', 'roundNumber', 'firstname', 'surname', 'team']
     cols = ['team', 'year', 'firstname', 'surname']
     lineups = lineups[cols]
@@ -260,7 +261,9 @@ def calc_sum_pav(year, rnd, team_int):
 
     #drop the PAV_total column
     xyz = xyz.drop(['PAV_total', 'team'], axis = 1)
-    xyz['year'] = xyz['year'] - 1
+    #so we don't subtract too many years
+    if(not reduced):
+        xyz['year'] = xyz['year'] - 1
     #merge with all_pavs but the year before incase they've previously had a PAV
     xyz = xyz.merge(all_pavs, how='inner', on=['year', 'firstname', 'surname'])
 
@@ -286,24 +289,9 @@ def calc_sum_pav(year, rnd, team_int):
     pav_array = [year, rnd, team_int, pav]
     return pav_array
 
-def create_venue_dict():
+def create_venue_alias_dict():
     vDict = {
-        "1" : "MCG",
-        "2" : "Marvel Stadium",
-        "3" : "Optus Stadium",
-        "4" : "Adelaide Oval",
-        "5" : "SCG",
-        "6" : "Gabba",
-        "7" : "Metricon Stadium",
-        "8" : "GIANTS Stadium",
-        "9" : "GMHBA Stadium",
-        "10" : "Manuka Oval",
-        "11" : "Blundstone Arena",
-        "12" : "University of Tasmania Stadium",
-        "13" : "TIO Stadium",
-        "14" : "Accor Stadium Australia",
-        "15" : "Mars Stadium",
-        "16" : "Cazalys Stadium"
+        "Heritage Bank Stadium" : "Metricon Stadium"
         }
     return vDict
 
@@ -358,6 +346,14 @@ def main():
     home_teams = home_team_ids
     away_teams = away_team_ids
     venues = venue_df['venue.name'].values
+    vdict = create_venue_alias_dict()
+    v_int = 0
+    while v_int < len(venues):
+        current_ven = venues[v_int]
+        if(current_ven in vdict):
+            ven_alias = vdict.get(current_ven)
+            venues[v_int] = ven_alias
+        v_int = v_int + 1
     print(home_team_ids)
     print(away_team_ids)
     print(venues)
@@ -372,7 +368,6 @@ def main():
     #load in dictionaries
     g = gad()
     teams = g.createTeamDict()
-    vdict = create_venue_dict()
 
     df = pd.read_csv("R_Code/all_lineups.csv")
     print(df.shape)

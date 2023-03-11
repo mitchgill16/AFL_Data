@@ -154,8 +154,10 @@ class gatherer:
             year = 2020
         elif(x>=10327 and x <= 10543):
             year = 2021
-        elif(x>10543):
+        elif(x>10543 and x <= 10750):
             year = 2022
+        elif(x>10750):
+            year = 2023
         return year
 
     #takes the big soup of all HTML text code labelled as 'statdata'
