@@ -141,6 +141,7 @@ def append_r_data(team_dict, r_dict, team_int):
         current_ven = venues[v_int]
         if(current_ven in vdict):
             ven_alias = vdict.get(current_ven)
+            print("current venue: " + str(current_ven) + " changed to: " +str(ven_alias))
             venues[v_int] = ven_alias
         v_int = v_int + 1
     sliced_df['Venue'] = venues
