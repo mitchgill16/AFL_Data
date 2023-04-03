@@ -28,7 +28,11 @@ import math
 from matplotlib import pyplot as plt
 import subprocess
 import sys
-
+from sklearn.feature_selection import SelectFromModel
+from xgboost import XGBClassifier
+from numpy import sort
+import warnings
+warnings.filterwarnings('ignore')
 #get headers
 #feed this into a bigger function which specifies the amount of games to go through
 def get_headers(n_games):
@@ -197,9 +201,20 @@ def predict(home_id, away_id, venue, round_num, h_pav, a_pav, n, teams):
     regex = re.compile(r"\[|\]|<", re.IGNORECASE)
     x_data.columns = [regex.sub("_", col) if any(x in str(col) for x in set(('[', ']', '<'))) else col for col in x_data.columns.values]
 
+    #feature select the data and load in the feature selected model
+    fs_filename = 'Models/fs_criteria_'+str(n)+'.dat'
+    selector = pickle.load(open(fs_filename, "rb"))
+    selected_x_data = selector.transform(x_data)
+    selected_x_data = pd.DataFrame(selected_x_data)
+    fs_clf = pickle.load(open("Models/best_xgb_clas_FS_no2020_"+str(n)+"_games.dat", "rb"))
 
-    y = clf.predict(x_data)
-    yp = clf.predict_proba(x_data)
+    #check selection applied
+    print("Performing Feature Selection")
+    print(x_data.shape)
+    print(selected_x_data.shape)
+
+    y = fs_clf.predict(selected_x_data)
+    yp = fs_clf.predict_proba(selected_x_data)
     my = reg.predict(x_data)
     my[0] = abs(my[0])
     my[0] = round(my[0],0)
