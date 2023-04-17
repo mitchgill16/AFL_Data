@@ -421,7 +421,7 @@ class gatherer:
         #eg. if I wanted to update every match_ID from match 9000, i'd set x as 9000
     def update(self, M_ID_to_start_from, M_ID_to_end, teams):
         y = M_ID_to_end
-        i = 1
+        i = 16
         #updates match files from x to y
         while(i<19):
             x = M_ID_to_start_from
