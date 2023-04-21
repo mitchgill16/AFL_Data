@@ -98,7 +98,10 @@ def create_R_TeamDict():
 
 def create_venue_alias_dict():
     vDict = {
-        "Heritage Bank Stadium" : "Metricon Stadium"
+        "Heritage Bank Stadium" : "Metricon Stadium",
+        "UTAS Stadium" : "University of Tasmania Statium",
+        "AAMI Stadium" : "Adelaide Oval",
+        "Domain Stadium" : "Optus Stadium"
         }
     return vDict
 

@@ -248,7 +248,9 @@ def calc_sum_pav(year, rnd, team_int):
     lineups = lineups[lineups.isin([year]).any(axis=1)]
     lineups = lineups[lineups.isin([rnd]).any(axis=1)]
     lineups['team'] = team_int
-    if(rnd < 6):
+    reduced = False
+    #still waiting on PAVS
+    if(rnd < 7):
         lineups['year'] = (year-1)
         reduced = True
     lineups.columns = ['year', 'teamname', 'roundNumber', 'firstname', 'surname', 'team']
@@ -306,7 +308,10 @@ def calc_sum_pav(year, rnd, team_int):
 
 def create_venue_alias_dict():
     vDict = {
-        "Heritage Bank Stadium" : "Metricon Stadium"
+        "Heritage Bank Stadium" : "Metricon Stadium",
+        "UTAS Stadium" : "University of Tasmania Statium",
+        "AAMI Stadium" : "Adelaide Oval",
+        "Domain Statium" : "Optus Stadium"
         }
     return vDict
 
