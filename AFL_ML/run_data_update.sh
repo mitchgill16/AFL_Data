@@ -27,6 +27,10 @@ python assemble_df.py $variable1 $variable2 2
 python assemble_df.py $variable1 $variable2 10
 python assemble_df.py $variable1 $variable2 3
 
+#update player PAVs ready for next round of predictions
+Rscript R_Code/generate_PAV.R $1
+python adjust_PAV_files.py $1
+
 #python assemble_df.py $4 4
 #python assemble_df.py $4 5
 #python assemble_df.py $4 6
