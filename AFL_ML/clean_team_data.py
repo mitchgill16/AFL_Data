@@ -107,7 +107,8 @@ def create_venue_alias_dict():
         "AAMI Stadium" : "Adelaide Oval",
         "Domain Stadium" : "Optus Stadium",
         "ENGIE Stadium" : "GIANTS Stadium",
-        "People First Stadium" : "Metricon Stadium"
+        "People First Stadium" : "Metricon Stadium",
+        "TIO Traeger Park" : "TIO Stadium"
         }
     return vDict
 
