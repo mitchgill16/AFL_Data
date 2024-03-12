@@ -1,560 +1,591 @@
 "Playing.for","firstname","surname","calculated_total_PAV"
-"Adelaide","Ben","Keays",10.9238022174001
-"Adelaide","Brodie","Smith",18.9536958075139
-"Adelaide","Chayce","Jones",10.6452850706684
-"Adelaide","Darcy","Fogarty",5.04711934119932
-"Adelaide","Elliott","Himmelberg",2.9697420208691
-"Adelaide","Harry","Schoenberg",4.96608997778605
-"Adelaide","Izak","Rankine",10.4014752981614
-"Adelaide","Jake","Soligo",14.4693053178088
-"Adelaide","Jordan","Dawson",21.4456433633417
-"Adelaide","Jordon","Butts",10.3996544198827
-"Adelaide","Josh","Rachele",12.72365182408
-"Adelaide","Lachlan","Gollant",3.04301591327584
-"Adelaide","Lachlan","Murphy",10.7812899576949
-"Adelaide","Lachlan","Sholl",9.76721204703918
-"Adelaide","Luke","Pedlar",7.40200205198055
-"Adelaide","Max","Michalanney",13.5195807233592
-"Adelaide","Mitch","Hinge",13.7145583306983
-"Adelaide","Ned","McHenry",3.35386173711727
-"Adelaide","Nick","Murray",19.8193834089802
-"Adelaide","Patrick","Parnell",0.560817619351669
-"Adelaide","Reilly","OBrien",14.8895549084103
-"Adelaide","Riley","Thilthorpe",8.89898340468413
-"Adelaide","Rory","Laird",18.9856849486353
-"Adelaide","Rory","Sloane",14.4380590713103
-"Adelaide","Sam","Berry",5.06022243840697
-"Adelaide","Shane","McAdam",0.635642265220713
-"Adelaide","Taylor","Walker",8.95309574154102
-"Adelaide","Tom","Doedee",16.2346682012089
-"Adelaide","Tyler","Brown",0.694810924949347
-"Adelaide","Wayne","Milera",11.2795743708447
-"Brisbane Lions","Brandon","Starcevich",11.8564457894866
-"Brisbane Lions","Cam","Rayner",12.4436091258551
-"Brisbane Lions","Charlie","Cameron",9.84122322854452
-"Brisbane Lions","Conor","McKenna",14.6427786605399
-"Brisbane Lions","Daniel","Rich",16.066185170666
-"Brisbane Lions","Darcy","Fort",5.07605968957049
-"Brisbane Lions","Darcy","Wilmot",10.3198695092147
-"Brisbane Lions","Darragh","Joyce",8.98531156343435
-"Brisbane Lions","Dayne","Zorko",14.0885098332936
-"Brisbane Lions","Deven","Robertson",2.95179835607242
-"Brisbane Lions","Eric","Hipwood",7.30688469185586
-"Brisbane Lions","Harris","Andrews",19.4008667746563
-"Brisbane Lions","Hugh","McCluggage",17.3056951057407
-"Brisbane Lions","Jack","Gunston",6.52099327703425
-"Brisbane Lions","Jack","Payne",18.4645106748176
-"Brisbane Lions","James","Tunstill",0.926601507979776
-"Brisbane Lions","Jarrod","Berry",15.2082722701229
-"Brisbane Lions","Jarryd","Lyons",3.07710072547622
-"Brisbane Lions","Jaxon","Prior",3.08627943203943
-"Brisbane Lions","Joe","Daniher",10.9361813623767
-"Brisbane Lions","Josh","Dunkley",18.0277152184544
-"Brisbane Lions","Keidean","Coleman",13.4327666778013
-"Brisbane Lions","Lachie","Neale",22.4135961480484
-"Brisbane Lions","Lincoln","McCarthy",10.1388512141353
-"Brisbane Lions","Noah","Answerth",1.80735132424952
-"Brisbane Lions","Oscar","McInerney",18.5556555673807
-"Brisbane Lions","Ryan","Lester",2.10232594282047
-"Brisbane Lions","Will","Ashcroft",15.3933501396162
-"Brisbane Lions","Zac","Bailey",12.2348541209954
-"Carlton","Adam","Cerra",18.2467073574466
-"Carlton","Adam","Saad",15.6099990606975
-"Carlton","Alex","Cincotta",3.40390965596035
-"Carlton","Blake","Acres",15.3390782933118
-"Carlton","Brodie","Kemp",2.54749076625396
-"Carlton","Charlie","Curnow",9.49515785415893
-"Carlton","Corey","Durdin",5.73982729664412
-"Carlton","Ed","Curnow",11.8526021193886
-"Carlton","George","Hewett",12.233492944961
-"Carlton","Harry","McKay",8.74986014260466
-"Carlton","Jack","Carroll",0.925665157972564
-"Carlton","Jack","Martin",1.0239538199725
-"Carlton","Jack","Silvagni",10.2560961788574
-"Carlton","Jacob","Weitering",18.6815706795267
-"Carlton","Jesse","Motlop",6.48871597077492
-"Carlton","Josh","Honey",4.43264612764153
-"Carlton","Lachie","Plowman",1.22896767030473
-"Carlton","Lachlan","Cowan",7.23898067837488
-"Carlton","Lewis","Young",18.0868998159866
-"Carlton","Lochie","OBrien",5.33401757868832
-"Carlton","Marc","Pittonet",10.8238187498436
-"Carlton","Matthew","Kennedy",9.2997652995629
-"Carlton","Matthew","Owies",2.20477371417541
-"Carlton","Mitch","McGovern",13.6103684758709
-"Carlton","Nic","Newman",17.0359157652154
-"Carlton","Oliver","Hollands",12.9375447629764
-"Carlton","Patrick","Cripps",20.6755705468295
-"Carlton","Sam","Docherty",10.8708467957832
-"Carlton","Sam","Walsh",6.03532870180294
-"Carlton","Tom","De Koning",10.069725292795
-"Carlton","Zac","Fisher",11.8048210725707
-"Collingwood","Ash","Johnson",5.51520344436859
-"Collingwood","Beau","McCreery",9.55200472946751
-"Collingwood","Billy","Frampton",12.9787677423709
-"Collingwood","Bobby","Hill",8.6249331895879
-"Collingwood","Brayden","Maynard",15.8865317654135
-"Collingwood","Brody","Mihocek",7.63740143029784
-"Collingwood","Daniel","McStay",6.13932506169089
-"Collingwood","Darcy","Cameron",6.78721045400627
-"Collingwood","Darcy","Moore",21.1336008102027
-"Collingwood","Isaac","Quaynor",12.7033649001038
-"Collingwood","Jack","Crisp",13.2413610759609
-"Collingwood","Jack","Ginnivan",3.95511618633599
-"Collingwood","Jamie","Elliott",8.46357508587735
-"Collingwood","Jeremy","Howe",1.80699993022688
-"Collingwood","John","Noble",17.4815078156194
-"Collingwood","Jordan","de Goey",17.5356450798931
-"Collingwood","Josh","Carmichael",0.707185149587615
-"Collingwood","Josh","Daicos",17.9119713269805
-"Collingwood","Mason","Cox",3.41000450300263
-"Collingwood","Nathan","Kreuger",1.48704772043178
-"Collingwood","Nathan","Murphy",14.3135031486747
-"Collingwood","Nick","Daicos",19.0455217732638
-"Collingwood","Oleg","Markov",6.72501856922133
-"Collingwood","Reef","McInnes",2.83765686083998
-"Collingwood","Scott","Pendlebury",14.5673359826905
-"Collingwood","Steele","Sidebottom",14.5935404173497
-"Collingwood","Taylor","Adams",11.4052880253304
-"Collingwood","Tom","Mitchell",18.2380765886845
-"Collingwood","Tom","Wilson",0.785419899093322
-"Collingwood","Trey","Ruscoe",2.46422226606227
-"Collingwood","Will","Hoskin-Elliott",10.924750720585
-"Collingwood","Will","Kelly",1.74179473780087
-"Essendon","Alwyn","Davey",6.69081822857386
-"Essendon","Andrew","McGrath",16.6423143072175
-"Essendon","Andrew","Phillips",10.8097311712779
-"Essendon","Anthony","McDonald-Tipungwuti",2.09690923868433
-"Essendon","Archie","Perkins",11.5813648036158
-"Essendon","Ben","Hobbs",2.66092123777483
-"Essendon","Brandon","Zerk-Thatcher",12.0746012130072
-"Essendon","Darcy","Parish",26.5404307050373
-"Essendon","Dylan","Shiel",19.9162924314833
-"Essendon","Dyson","Heppell",9.45916142532019
-"Essendon","Harry","Jones",6.13597710328851
-"Essendon","Jake","Kelly",12.0885796035268
-"Essendon","Jake","Stringer",9.72745799007547
-"Essendon","Jayden","Laverde",12.8841921348369
-"Essendon","Jordan","Ridley",17.3047240787057
-"Essendon","Jye","Caldwell",11.7252657067585
-"Essendon","Jye","Menzie",6.08447069625997
-"Essendon","Kyle","Langford",10.856852108444
-"Essendon","Mason","Redman",17.9856710593937
-"Essendon","Massimo","DAmbrosio",4.80161044624975
-"Essendon","Matt","Guelfi",1.15941220858287
-"Essendon","Nic","Martin",14.5881211085512
-"Essendon","Nick","Hind",3.90743667249424
-"Essendon","Sam","Draper",15.3886662071486
-"Essendon","Sam","Durham",10.8579000985929
-"Essendon","Sam","Weideman",5.49251551277822
-"Essendon","Will","Setterfield",16.8308746548394
-"Essendon","Will","Snelling",4.18786932416965
-"Essendon","Zach","Merrett",17.9295733702216
-"Fremantle","Alex","Pearce",14.045891760031
-"Fremantle","Andrew","Brayshaw",19.6145733367274
-"Fremantle","Bailey","Banfield",6.35452705601596
-"Fremantle","Brandon","Walker",4.95321516909102
-"Fremantle","Brennan","Cox",19.4538424832577
-"Fremantle","Caleb","Serong",22.9811914438517
-"Fremantle","Corey","Wagner",3.63496247877424
-"Fremantle","Ethan","Hughes",13.5754341157405
-"Fremantle","Hayden","Young",15.9782589773626
-"Fremantle","Heath","Chapman",4.46522590372859
-"Fremantle","Jaeger","OMeara",12.8835688747609
-"Fremantle","James","Aish",13.6992214976074
-"Fremantle","Jordan","Clark",13.0927886026012
-"Fremantle","Josh","Corbett",0.50775121810272
-"Fremantle","Josh","Treacy",0.719306202295172
-"Fremantle","Jye","Amiss",4.27428773139064
-"Fremantle","Lachie","Schultz",8.67841102349055
-"Fremantle","Liam","Henry",4.09720784083903
-"Fremantle","Luke","Jackson",9.67012655251218
-"Fremantle","Luke","Ryan",20.9353885936517
-"Fremantle","Matthew","Johnson",5.47539201756079
-"Fremantle","Matthew","Taberner",3.52241142805962
-"Fremantle","Michael","Frederick",7.1882124614123
-"Fremantle","Michael","Walters",5.54464035878036
-"Fremantle","Nat","Fyfe",0.85242021588731
-"Fremantle","Nathan","ODriscoll",3.67552353407513
-"Fremantle","Nathan","Wilson",7.04836973901082
-"Fremantle","Neil","Erasmus",0.683864434885478
-"Fremantle","Sam","Sturt",2.85376637834152
-"Fremantle","Sam","Switkowski",8.78490171297881
-"Fremantle","Sean","Darcy",16.9731576824412
-"Fremantle","Will","Brodie",10.6959969148152
-"Geelong","Brad","Close",10.2607072698003
-"Geelong","Brandan","Parfitt",2.78661027668617
-"Geelong","Cameron","Guthrie",13.545462726931
-"Geelong","Cooper","Whyte",0.576956120824514
-"Geelong","Esava","Ratugolea",16.5510358494193
-"Geelong","Gary","Rohan",7.04992955018953
-"Geelong","Gryan","Miers",14.0609180949872
-"Geelong","Isaac","Smith",14.7514907667495
-"Geelong","Jack","Bowes",12.2357237087437
-"Geelong","Jake","Kolodjashnij",8.36140813063409
-"Geelong","Jed","Bews",6.62529360672588
-"Geelong","Jeremy","Cameron",12.289826553591
-"Geelong","Jonathon","Ceglar",1.92066388026256
-"Geelong","Mark","Blicavs",17.37066866512
-"Geelong","Mark","OConnor",13.5764979751246
-"Geelong","Max","Holmes",16.6188458230952
-"Geelong","Mitch","Duncan",10.0146326877864
-"Geelong","Mitch","Knevitt",2.67855122851051
-"Geelong","Oliver","Henry",9.13268089535229
-"Geelong","Patrick","Dangerfield",22.4161719394218
-"Geelong","Rhys","Stanley",10.4894693704726
-"Geelong","Sam","De Koning",10.8507036322913
-"Geelong","Sam","Simpson",2.47255357256721
-"Geelong","Tanner","Bruhn",6.57104038779594
-"Geelong","Tom","Atkins",16.5600972638009
-"Geelong","Tom","Hawkins",7.37030908119596
-"Geelong","Tom","Stewart",17.7700582704271
-"Geelong","Tyson","Stengle",6.06103247975194
-"Geelong","Zach","Guthrie",11.9799688288392
-"Geelong","Zach","Tuohy",12.5705609149899
-"Gold Coast","Alex","Davies",2.20157665485589
-"Gold Coast","Alex","Sexton",3.63641601523643
-"Gold Coast","Bailey","Humphrey",3.01078616447989
-"Gold Coast","Ben","Ainsworth",9.90678476671643
-"Gold Coast","Ben","King",5.58451007299187
-"Gold Coast","Ben","Long",12.6760695415657
-"Gold Coast","Bodhi","Uwland",4.31436088525655
-"Gold Coast","Brandon","Ellis",4.54603336211874
-"Gold Coast","Brayden","Fiorini",8.58389838632981
-"Gold Coast","Charlie","Ballard",14.4648780233465
-"Gold Coast","Charlie","Constable",6.15579257248603
-"Gold Coast","Darcy","MacPherson",14.3798915984662
-"Gold Coast","David","Swallow",13.5832166014447
-"Gold Coast","Elijah","Hollands",4.60797814570997
-"Gold Coast","Hewago","Oea",2.76457265533934
-"Gold Coast","Jack","Lukosius",12.9162464430905
-"Gold Coast","Jarrod","Witts",13.8826307326904
-"Gold Coast","Joel","Jeffrey",3.86998592831802
-"Gold Coast","Jy","Farrar",4.83234921055061
-"Gold Coast","Lachie","Weller",14.5749013988013
-"Gold Coast","Levi","Casboult",6.34637341874868
-"Gold Coast","Mabior","Chol",5.10943681179962
-"Gold Coast","Mac","Andrew",5.16138615258331
-"Gold Coast","Malcolm","Rosas",5.8364314379411
-"Gold Coast","Matt","Rowell",20.3469607972075
-"Gold Coast","Ned","Moyle",3.07011756553683
-"Gold Coast","Nick","Holman",9.49429041201753
-"Gold Coast","Noah","Anderson",19.8278831162201
-"Gold Coast","Rory","Atkins",1.90281587507406
-"Gold Coast","Sam","Collins",15.9041053025099
-"Gold Coast","Sam","Flanders",2.72782467226723
-"Gold Coast","Sean","Lemmens",6.64834803249624
-"Gold Coast","Touk","Miller",18.6373870138861
-"Gold Coast","Wil","Powell",13.3746288471733
-"Greater Western Sydney","Aaron","Cadman",2.92498025782984
-"Greater Western Sydney","Adam","Kennedy",5.0775581949812
-"Greater Western Sydney","Brent","Daniels",8.85117501029029
-"Greater Western Sydney","Callan","Ward",10.9548781495924
-"Greater Western Sydney","Callum","Brown",2.63783562627907
-"Greater Western Sydney","Connor","Idun",17.6132269669138
-"Greater Western Sydney","Conor","Stone",2.64586145312078
-"Greater Western Sydney","Cooper","Hamilton",4.75619485074499
-"Greater Western Sydney","Daniel","Lloyd",7.06770583151212
-"Greater Western Sydney","Finn","Callaghan",11.4378709857659
-"Greater Western Sydney","Harrison","Himmelberg",10.5619481597599
-"Greater Western Sydney","Harry","Perryman",5.05503651705748
-"Greater Western Sydney","Harry","Rowston",6.93186850655768
-"Greater Western Sydney","Isaac","Cumming",17.2706184455469
-"Greater Western Sydney","Jack","Buckley",18.1132235988299
-"Greater Western Sydney","Jacob","Wehr",2.76371140511695
-"Greater Western Sydney","Jake","Riccardi",4.77479538160885
-"Greater Western Sydney","James","Peatling",8.38547828090398
-"Greater Western Sydney","Jesse","Hogan",8.11371480984685
-"Greater Western Sydney","Josh","Kelly",16.6151777949937
-"Greater Western Sydney","Lachie","Ash",15.6714811403792
-"Greater Western Sydney","Lachie","Whitfield",16.1020597233968
-"Greater Western Sydney","Matt","Flynn",16.2084133841988
-"Greater Western Sydney","Nick","Haynes",17.0263653214977
-"Greater Western Sydney","Ryan","Angwin",3.59710762993462
-"Greater Western Sydney","Sam","Taylor",12.2389601333076
-"Greater Western Sydney","Stephen","Coniglio",20.0275395948254
-"Greater Western Sydney","Toby","Bedford",0.778201677216076
-"Greater Western Sydney","Toby","Greene",11.3302143264963
-"Greater Western Sydney","Tom","Green",16.5400061024629
-"Greater Western Sydney","Xavier","OHalloran",5.02900383608941
-"Hawthorn","Blake","Hardwick",17.223240695311
-"Hawthorn","Cam","Mackenzie",8.57766192405142
-"Hawthorn","Chad","Wingard",5.6323531025935
-"Hawthorn","Changkuoth","Jiath",12.5736200275122
-"Hawthorn","Connor","Macdonald",6.01424329969847
-"Hawthorn","Conor","Nash",13.5137781259672
-"Hawthorn","Denver","Grainger-Barras",2.36922041914726
-"Hawthorn","Dylan","Moore",10.6819267974364
-"Hawthorn","Fergus","Greene",6.04754145669353
-"Hawthorn","Finn","Maginness",3.73033707237925
-"Hawthorn","Harry","Morrison",9.66893513304386
-"Hawthorn","Jack","Scrimshaw",5.16370793700337
-"Hawthorn","Jacob","Koschitzke",1.53346817090133
-"Hawthorn","Jai","Newcombe",17.0745951283716
-"Hawthorn","James","Blanck",2.73446721030289
-"Hawthorn","James","Sicily",21.3053897587665
-"Hawthorn","James","Worpel",18.2063499994016
-"Hawthorn","Jarman","Impey",12.000275508091
-"Hawthorn","Josh","Ward",10.8780890745847
-"Hawthorn","Josh","Weddle",0.874376848843959
-"Hawthorn","Karl","Amon",12.1522643496598
-"Hawthorn","Lachlan","Bramble",4.78600335509813
-"Hawthorn","Lloyd","Meek",8.07025393695846
-"Hawthorn","Luke","Breust",6.54861144853195
-"Hawthorn","Max","Lynch",1.43611335701586
-"Hawthorn","Max","Ramsden",0.622213228121051
-"Hawthorn","Mitch","Lewis",1.02346243540531
-"Hawthorn","Ned","Long",2.4284288197287
-"Hawthorn","Ned","Reeves",9.88081689306098
-"Hawthorn","Sam","Butler",0.520871035715585
-"Hawthorn","Sam","Frost",11.4869005027937
-"Hawthorn","Seamus","Mitchell",3.5584320613944
-"Hawthorn","Tyler","Brockman",4.64674738752709
-"Hawthorn","Will","Day",12.580905468439
-"Melbourne","Adam","Tomlinson",8.94023548288198
-"Melbourne","Alex","Neal-Bullen",11.2642648539448
-"Melbourne","Angus","Brayshaw",14.4321123423555
-"Melbourne","Bailey","Laurie",2.08370946915798
-"Melbourne","Bayley","Fritsch",7.471183429487
-"Melbourne","Ben","Brown",3.74781917160263
-"Melbourne","Brodie","Grundy",20.1415161079718
-"Melbourne","Charlie","Spargo",5.87334695614412
-"Melbourne","Christian","Petracca",22.3655351201415
-"Melbourne","Clayton","Oliver",24.2631195624149
-"Melbourne","Ed","Langdon",15.1220592512389
-"Melbourne","Harry","Petty",9.4331044523239
-"Melbourne","Jack","Viney",15.9829676196455
-"Melbourne","Jacob","van Rooyen",6.78032858250025
-"Melbourne","Jake","Bowey",15.7590929121312
-"Melbourne","Jake","Lever",12.9065862037892
-"Melbourne","Jake","Melksham",3.77914617138739
-"Melbourne","James","Harmes",3.29641742239152
-"Melbourne","James","Jordon",7.74752042318221
-"Melbourne","Josh","Schache",1.83271042953889
-"Melbourne","Judd","McVee",11.4570693082478
-"Melbourne","Kade","Chandler",9.40173477641054
-"Melbourne","Kysaiah","Pickett",8.68877503343148
-"Melbourne","Lachie","Hunter",13.9706043645402
-"Melbourne","Max","Gawn",9.27793341295533
-"Melbourne","Michael","Hibberd",9.69119370638423
-"Melbourne","Steven","May",16.015951722886
-"Melbourne","Tom","McDonald",6.12818740089247
-"Melbourne","Tom","Sparrow",13.2234359164466
-"Melbourne","Trent","Rivers",17.517661038855
-"North Melbourne","Aaron","Hall",4.80118539182722
-"North Melbourne","Aidan","Corr",13.3968695801846
-"North Melbourne","Aiden","Bonar",2.14616287101814
-"North Melbourne","Bailey","Scott",11.3831689588028
-"North Melbourne","Ben","Cunnington",13.3306058934411
-"North Melbourne","Ben","McKay",4.48783599762739
-"North Melbourne","Callum","Coleman-Jones",0.81561533499912
-"North Melbourne","Cameron","Zurhaar",12.3741577995068
-"North Melbourne","Charlie","Comben",6.74327404963838
-"North Melbourne","Curtis","Taylor",8.90575816871599
-"North Melbourne","Daniel","Howe",12.0679463180747
-"North Melbourne","Darcy","Tucker",7.10153891116673
-"North Melbourne","Griffin","Logue",10.0104955538736
-"North Melbourne","Harry","Sheezel",17.7825131052235
-"North Melbourne","Hugh","Greenwood",7.06357233873828
-"North Melbourne","Jack","Ziebell",18.4931615469152
-"North Melbourne","Jaidyn","Stephenson",7.90887263828739
-"North Melbourne","Josh","Goater",3.69279955306701
-"North Melbourne","Jy","Simpkin",11.8851727498685
-"North Melbourne","Kayne","Turner",5.91678018258662
-"North Melbourne","Liam","Shiels",11.8992571682968
-"North Melbourne","Luke","Davies-Uniacke",13.5522211506098
-"North Melbourne","Luke","McDonald",17.1443359843244
-"North Melbourne","Miller","Bergman",4.27981316769252
-"North Melbourne","Nick","Larkey",5.32500734187319
-"North Melbourne","Paul","Curtis",5.31676033464265
-"North Melbourne","Todd","Goldstein",13.2756889008642
-"North Melbourne","Tom","Powell",10.8433572217565
-"North Melbourne","Tristan","Xerri",0.860766960423133
-"North Melbourne","Will","Phillips",7.63514115083495
-"Port Adelaide","Aliir","Aliir",16.5196043023792
-"Port Adelaide","Brynn","Teakle",3.43375638595296
-"Port Adelaide","Charlie","Dixon",8.69845398617793
-"Port Adelaide","Connor","Rozee",15.81925245603
-"Port Adelaide","Dan","Houston",20.1033142312415
-"Port Adelaide","Darcy","Byrne-Jones",11.0887705288412
-"Port Adelaide","Dylan","Williams",9.0061031342856
-"Port Adelaide","Francis","Evans",0.901738639386257
-"Port Adelaide","Jackson","Mead",2.49515449391762
-"Port Adelaide","Jase","Burgoyne",2.38518539728924
-"Port Adelaide","Jason","Horne-Francis",18.8850841046131
-"Port Adelaide","Jed","McEntee",4.40767359000017
-"Port Adelaide","Jeremy","Finlayson",8.93274686707605
-"Port Adelaide","Kane","Farrell",13.9943231664996
-"Port Adelaide","Lachie","Jones",4.14733945141916
-"Port Adelaide","Miles","Bergman",17.0377352498213
-"Port Adelaide","Mitch","Georgiades",1.74224228096205
-"Port Adelaide","Ollie","Lord",2.4885706461939
-"Port Adelaide","Ollie","Wines",14.8143867012767
-"Port Adelaide","Orazio","Fantasia",2.74553762248696
-"Port Adelaide","Riley","Bonner",2.82556231397715
-"Port Adelaide","Ryan","Burton",11.1259266067416
-"Port Adelaide","Sam","Powell-Pepper",10.6031472195597
-"Port Adelaide","Scott","Lycett",9.89159179632797
-"Port Adelaide","Todd","Marshall",5.85152298574172
-"Port Adelaide","Tom","Clurey",2.47106402745707
-"Port Adelaide","Tom","Jonas",9.66926977119132
-"Port Adelaide","Travis","Boak",11.0814555511981
-"Port Adelaide","Trent","McKenzie",12.4844928383737
-"Port Adelaide","Willem","Drew",15.1416028458543
-"Port Adelaide","Willie","Rioli",8.01801070659549
-"Port Adelaide","Xavier","Duursma",10.8759262593744
-"Port Adelaide","Zak","Butters",16.1353308218022
-"Richmond","Ben","Miller",6.45243445520208
-"Richmond","Daniel","Rioli",14.6878830892301
-"Richmond","Dion","Prestia",11.2967174509099
-"Richmond","Dustin","Martin",11.3384051084828
-"Richmond","Dylan","Grimes",11.7109581556185
-"Richmond","Hugo","Ralphsmith",6.22775391644822
-"Richmond","Ivan","Soldo",1.45187864068076
-"Richmond","Jack","Graham",4.83830066509832
-"Richmond","Jack","Riewoldt",5.64512154459614
-"Richmond","Jack","Ross",4.14106745922946
-"Richmond","Jacob","Hopper",15.4106179206769
-"Richmond","Jayden","Short",9.45404484168592
-"Richmond","Judson","Clarke",6.70470107431718
-"Richmond","Kamdyn","McIntosh",11.6908928231096
-"Richmond","Liam","Baker",16.2172495120918
-"Richmond","Marlion","Pickett",12.4843069873521
-"Richmond","Maurice","Rioli",4.47813300727913
-"Richmond","Nathan","Broad",6.47647903015933
-"Richmond","Nick","Vlastuin",19.8773083944803
-"Richmond","Noah","Balta",14.7622531901175
-"Richmond","Noah","Cumberland",4.82067582980495
-"Richmond","Rhyan","Mansell",6.47415871433033
-"Richmond","Samson","Ryan",6.97354225655051
-"Richmond","Shai","Bolton",14.5785640220291
-"Richmond","Tim","Taranto",19.6270553858554
-"Richmond","Toby","Nankervis",11.0623952903455
-"Richmond","Tom","Lynch",4.29411871000375
-"Richmond","Trent","Cotchin",11.5775905192103
-"Richmond","Tylar","Young",14.8797663542743
-"Richmond","Tyler","Sonsie",3.01336865027507
-"St Kilda","Anthony","Caminiti",5.29039752887218
-"St Kilda","Ben","Paton",11.23187504558
-"St Kilda","Brad","Crouch",18.5390799071948
-"St Kilda","Bradley","Hill",10.9465261989069
-"St Kilda","Callum","Wilkie",17.7280420378249
-"St Kilda","Dan","Butler",9.09944103428973
-"St Kilda","Dougal","Howard",14.918674147251
-"St Kilda","Hunter","Clark",15.6110032633228
-"St Kilda","Jack","Bytel",3.32479437651829
-"St Kilda","Jack","Higgins",7.68821073643234
-"St Kilda","Jack","Sinclair",18.9225994572714
-"St Kilda","Jack","Steele",10.9618735210356
-"St Kilda","Jade","Gresham",9.88868350615011
-"St Kilda","Jimmy","Webster",2.86464352842523
-"St Kilda","Josh","Battle",14.6348628787131
-"St Kilda","Liam","Stocker",13.8115990729683
-"St Kilda","Marcus","Windhager",6.28957761324182
-"St Kilda","Mason","Wood",15.9897088575997
-"St Kilda","Mattaes","Phillipou",8.41188062607313
-"St Kilda","Mitch","Owens",11.2592061287749
-"St Kilda","Nasiah","Wanganeen-Milera",14.69726584434
-"St Kilda","Rowan","Marshall",21.4933535136976
-"St Kilda","Ryan","Byrnes",12.86116651626
-"St Kilda","Sebastian","Ross",16.3769904160085
-"St Kilda","Tim","Membrey",2.45213632194538
-"St Kilda","Zaine","Cordy",7.02493692384274
-"Sydney","Aaron","Francis",4.0361262246817
-"Sydney","Angus","Sheldrick",0.791393815438488
-"Sydney","Braeden","Campbell",13.7849073727075
-"Sydney","Callum","Mills",16.2250442797744
-"Sydney","Chad","Warner",18.4780507275707
-"Sydney","Corey","Warner",0.992434893434014
-"Sydney","Dane","Rampe",10.3674287877875
-"Sydney","Dylan","Stephens",12.0364285298725
-"Sydney","Errol","Gulden",20.2079049337304
-"Sydney","Harry","Cunningham",8.23149883460659
-"Sydney","Hayden","McLean",9.1955245028245
-"Sydney","Isaac","Heeney",11.9480596455365
-"Sydney","Jake","Lloyd",17.8495482945942
-"Sydney","James","Rowbottom",16.3514210725184
-"Sydney","Joel","Amartey",4.74594817571572
-"Sydney","Justin","McInerney",8.37473399482863
-"Sydney","Lance","Franklin",4.24916395770295
-"Sydney","Logan","McDonald",8.2735086738356
-"Sydney","Luke","Parker",15.8636360840979
-"Sydney","Marc","Sheather",0.731460787789053
-"Sydney","Matt","Roberts",5.64964140356387
-"Sydney","Nick","Blakey",18.0768891213649
-"Sydney","Oliver","Florent",13.3772263214688
-"Sydney","Paddy","McCartin",7.34235858087683
-"Sydney","Peter","Ladhams",19.3235088665222
-"Sydney","Robbie","Fox",5.95391996140246
-"Sydney","Ryan","Clarke",1.41730779319091
-"Sydney","Tom","McCartin",9.45105263899442
-"Sydney","Tom","Papley",12.2792219816878
-"Sydney","Will","Gould",2.98653960984434
-"Sydney","Will","Hayward",9.12647124223228
-"West Coast","Alex","Witherden",12.6307403909421
-"West Coast","Andrew","Gaff",13.0537030946746
-"West Coast","Bailey","Williams",16.7211168261798
-"West Coast","Brady","Hough",2.31566872339061
-"West Coast","Callum","Jamieson",1.02857653329431
-"West Coast","Campbell","Chesser",3.27324175181671
-"West Coast","Connor","West",4.04405921326909
-"West Coast","Dom","Sheed",6.1049217134172
-"West Coast","Elijah","Hewett",2.63235372806956
-"West Coast","Elliot","Yeo",4.14900795032008
-"West Coast","Greg","Clark",4.76374083957001
-"West Coast","Jack","Darling",7.12875414998706
-"West Coast","Jack","Petruccelle",5.25147488698951
-"West Coast","Jai","Culley",3.65939215913847
-"West Coast","Jake","Waterman",8.27625994883998
-"West Coast","Jamaine","Jones",13.6316990426351
-"West Coast","Jamie","Cripps",2.40221011584969
-"West Coast","Jayden","Hunt",15.2207945195179
-"West Coast","Jeremy","McGovern",7.74380283958232
-"West Coast","Josh","Rotham",4.85842132052907
-"West Coast","Liam","Duggan",14.8738595304429
-"West Coast","Liam","Ryan",3.6863086809271
-"West Coast","Luke","Edwards",5.79554964036909
-"West Coast","Luke","Foley",1.98982502502546
-"West Coast","Luke","Shuey",9.01127415022322
-"West Coast","Noah","Long",5.48914735619218
-"West Coast","Oscar","Allen",7.73649046886653
-"West Coast","Reuben","Ginbey",12.2335454541476
-"West Coast","Rhett","Bazzo",1.25531697457829
-"West Coast","Sam","Petrevski-Seton",7.77856921596135
-"West Coast","Shannon","Hurn",12.2779654129482
-"West Coast","Tim","Kelly",17.1196429311746
-"West Coast","Tom","Barrass",16.68883614254
-"West Coast","Tom","Cole",7.50672844336529
-"West Coast","Xavier","ONeill",3.95055711822438
-"West Coast","Zane","Trew",1.34965391359525
-"Western Bulldogs","Aaron","Naughton",8.3916954558497
-"Western Bulldogs","Adam","Treloar",15.7913741126012
-"Western Bulldogs","Alex","Keath",10.8850962712158
-"Western Bulldogs","Anthony","Scott",9.00506571035778
-"Western Bulldogs","Arthur","Jones",5.54401216575213
-"Western Bulldogs","Bailey","Dale",14.7282961924277
-"Western Bulldogs","Bailey","Smith",12.3226669561349
-"Western Bulldogs","Bailey","Williams",9.84082859747821
-"Western Bulldogs","Caleb","Daniel",15.7309877281035
-"Western Bulldogs","Cody","Weightman",3.13699392882574
-"Western Bulldogs","Ed","Richards",19.2253686608419
-"Western Bulldogs","Hayden","Crozier",5.12846094373237
-"Western Bulldogs","Jack","Macrae",18.4657890507502
-"Western Bulldogs","Jamarra","Ugle-Hagan",6.16362911088617
-"Western Bulldogs","Jason","Johannisen",10.5575501122241
-"Western Bulldogs","Josh","Bruce",7.82922847009796
-"Western Bulldogs","Lachlan","McNeil",2.49733297690892
-"Western Bulldogs","Liam","Jones",14.955689528385
-"Western Bulldogs","Marcus","Bontempelli",24.8640985685658
-"Western Bulldogs","Mitch","Hannan",2.60601814515941
-"Western Bulldogs","Oskar","Baker",10.6865259931615
-"Western Bulldogs","Rhylee","West",0.666561477934513
-"Western Bulldogs","Riley","Garcia",1.42223291130575
-"Western Bulldogs","Robbie","McComb",2.08182428571095
-"Western Bulldogs","Rory","Lobb",6.94145804903094
-"Western Bulldogs","Sam","Darcy",1.79403262876975
-"Western Bulldogs","Taylor","Duryea",8.1243592037851
-"Western Bulldogs","Tim","English",19.6516967352764
-"Western Bulldogs","Tim","OBrien",8.10631363448892
-"Western Bulldogs","Toby","McLean",4.35400242134375
-"Western Bulldogs","Tom","Liberatore",14.4796943192912
+"Adelaide","Ben","Keays",11.0864535617926
+"Adelaide","Brodie","Smith",19.357535756589
+"Adelaide","Chayce","Jones",13.0077281771009
+"Adelaide","Darcy","Fogarty",5.87774011646267
+"Adelaide","Elliott","Himmelberg",2.71934031911674
+"Adelaide","Harry","Schoenberg",3.51033285188232
+"Adelaide","Izak","Rankine",10.5919970629955
+"Adelaide","Jake","Soligo",13.6373682546261
+"Adelaide","Jordan","Dawson",20.8383300198637
+"Adelaide","Jordon","Butts",11.0680059947262
+"Adelaide","Josh","Rachele",11.1066081818433
+"Adelaide","Lachlan","Gollant",2.63919409012796
+"Adelaide","Lachlan","Murphy",11.5541737995196
+"Adelaide","Lachlan","Sholl",10.0057446361213
+"Adelaide","Luke","Pedlar",7.95453102481643
+"Adelaide","Matt","Crouch",0.603270633743213
+"Adelaide","Max","Michalanney",12.9188822960188
+"Adelaide","Mitch","Hinge",14.0864783789855
+"Adelaide","Ned","McHenry",3.1708495560584
+"Adelaide","Nick","Murray",17.7046942806237
+"Adelaide","Patrick","Parnell",2.91825126826828
+"Adelaide","Reilly","OBrien",15.6847498535505
+"Adelaide","Riley","Thilthorpe",8.08689897901924
+"Adelaide","Rory","Laird",18.8118066692167
+"Adelaide","Rory","Sloane",15.4695425407565
+"Adelaide","Sam","Berry",4.4332502263931
+"Adelaide","Shane","McAdam",0.452274589940955
+"Adelaide","Taylor","Walker",7.69645553381924
+"Adelaide","Tom","Doedee",14.6313671532048
+"Adelaide","Tyler","Brown",0.493688405350322
+"Adelaide","Wayne","Milera",12.0904486878369
+"Brisbane Lions","Brandon","Starcevich",11.6117842601847
+"Brisbane Lions","Callum","Ah Chee",0.71070100519191
+"Brisbane Lions","Cam","Rayner",12.6599232737619
+"Brisbane Lions","Charlie","Cameron",9.57740008599059
+"Brisbane Lions","Conor","McKenna",13.9676087963617
+"Brisbane Lions","Daniel","Rich",11.333333762394
+"Brisbane Lions","Darcy","Fort",3.5822785086501
+"Brisbane Lions","Darcy","Wilmot",11.3073891396651
+"Brisbane Lions","Darragh","Joyce",6.35549565043595
+"Brisbane Lions","Dayne","Zorko",12.8003816902854
+"Brisbane Lions","Deven","Robertson",2.09105452663123
+"Brisbane Lions","Eric","Hipwood",8.01349948701082
+"Brisbane Lions","Harris","Andrews",19.881902871881
+"Brisbane Lions","Harry","Sharp",3.39248732343835
+"Brisbane Lions","Hugh","McCluggage",17.0056631165153
+"Brisbane Lions","Jack","Gunston",7.55513582727543
+"Brisbane Lions","Jack","Payne",18.7678761646643
+"Brisbane Lions","James","Tunstill",0.65472022621529
+"Brisbane Lions","Jarrod","Berry",14.6463257143354
+"Brisbane Lions","Jarryd","Lyons",2.71737782023609
+"Brisbane Lions","Jaxon","Prior",2.1808650344466
+"Brisbane Lions","Joe","Daniher",11.4765295090582
+"Brisbane Lions","Josh","Dunkley",18.7443439951221
+"Brisbane Lions","Keidean","Coleman",14.1524228100356
+"Brisbane Lions","Lachie","Neale",21.3605891728402
+"Brisbane Lions","Lincoln","McCarthy",9.84170159969495
+"Brisbane Lions","Noah","Answerth",3.21292983688349
+"Brisbane Lions","Oscar","McInerney",20.2100238347475
+"Brisbane Lions","Ryan","Lester",4.52219930669263
+"Brisbane Lions","Will","Ashcroft",15.6524737885982
+"Brisbane Lions","Zac","Bailey",12.5553609373565
+"Carlton","Adam","Cerra",17.955709261275
+"Carlton","Adam","Saad",14.7798822394156
+"Carlton","Alex","Cincotta",4.86504758246945
+"Carlton","Blake","Acres",14.042202247857
+"Carlton","Brodie","Kemp",3.05884152883841
+"Carlton","Charlie","Curnow",9.45340911835711
+"Carlton","Corey","Durdin",6.21267612144443
+"Carlton","Ed","Curnow",10.9433947897445
+"Carlton","George","Hewett",11.3730529565784
+"Carlton","Harry","McKay",8.88151107320495
+"Carlton","Jack","Carroll",0.656678873652624
+"Carlton","Jack","Martin",0.723006389596259
+"Carlton","Jack","Silvagni",10.7546103630162
+"Carlton","Jacob","Weitering",18.3907270522686
+"Carlton","Jesse","Motlop",6.80920818501437
+"Carlton","Jordan","Boyd",0.954553839157361
+"Carlton","Josh","Honey",3.60326548346916
+"Carlton","Lachie","Plowman",0.868227341267894
+"Carlton","Lachlan","Cowan",5.11714713257529
+"Carlton","Lewis","Young",18.3113329096479
+"Carlton","Lochie","OBrien",3.77354820714553
+"Carlton","Marc","Pittonet",11.8848961385972
+"Carlton","Matthew","Cottrell",2.06702500805145
+"Carlton","Matthew","Kennedy",11.0549102745027
+"Carlton","Matthew","Owies",2.52883183825469
+"Carlton","Mitch","McGovern",13.9608773198051
+"Carlton","Nic","Newman",15.7415773755467
+"Carlton","Oliver","Hollands",12.0756703998472
+"Carlton","Patrick","Cripps",18.3627106282763
+"Carlton","Sam","Docherty",12.6775217417623
+"Carlton","Sam","Walsh",9.04515188585519
+"Carlton","Tom","De Koning",7.09493569877539
+"Carlton","Zac","Fisher",8.33247298798734
+"Collingwood","Ash","Johnson",5.64422307977157
+"Collingwood","Beau","McCreery",8.69154773984046
+"Collingwood","Billy","Frampton",10.9343109484277
+"Collingwood","Bobby","Hill",8.68678366334694
+"Collingwood","Brayden","Maynard",15.6849341782482
+"Collingwood","Brody","Mihocek",7.5616901650367
+"Collingwood","Daniel","McStay",4.33956239585121
+"Collingwood","Darcy","Cameron",5.85967971099618
+"Collingwood","Darcy","Moore",22.396400901208
+"Collingwood","Isaac","Quaynor",13.5574671012132
+"Collingwood","Jack","Crisp",14.1698838828508
+"Collingwood","Jack","Ginnivan",4.96158507255731
+"Collingwood","Jamie","Elliott",8.80196890709392
+"Collingwood","Jeremy","Howe",1.27880874218969
+"Collingwood","John","Noble",18.2287269398908
+"Collingwood","Jordan","de Goey",17.8826677080174
+"Collingwood","Josh","Carmichael",0.501262776025016
+"Collingwood","Josh","Daicos",16.8445609519624
+"Collingwood","Mason","Cox",5.56489352138842
+"Collingwood","Nathan","Kreuger",1.05449033523216
+"Collingwood","Nathan","Murphy",14.2277105979395
+"Collingwood","Nick","Daicos",19.0495690113986
+"Collingwood","Oleg","Markov",8.56025882096008
+"Collingwood","Reef","McInnes",2.62780668924303
+"Collingwood","Scott","Pendlebury",13.8756827481232
+"Collingwood","Steele","Sidebottom",14.9571835107776
+"Collingwood","Taylor","Adams",11.5882658163316
+"Collingwood","Tom","Mitchell",18.0328075964376
+"Collingwood","Tom","Wilson",0.555763475788455
+"Collingwood","Trey","Ruscoe",1.73951029846531
+"Collingwood","Will","Hoskin-Elliott",10.8792188546211
+"Collingwood","Will","Kelly",1.23240034550184
+"Essendon","Alwyn","Davey",6.56543148295055
+"Essendon","Andrew","McGrath",17.4632939666548
+"Essendon","Andrew","Phillips",10.9674220203791
+"Essendon","Anthony","McDonald-Tipungwuti",3.18344674583191
+"Essendon","Archie","Perkins",11.1123715150068
+"Essendon","Ben","Hobbs",5.65855360928043
+"Essendon","Brandon","Zerk-Thatcher",14.4702720937419
+"Essendon","Darcy","Parish",21.0137987128426
+"Essendon","Dylan","Shiel",16.1437037795478
+"Essendon","Dyson","Heppell",10.4147334032169
+"Essendon","Harry","Jones",4.34169967171923
+"Essendon","Jake","Kelly",9.72866725250273
+"Essendon","Jake","Stringer",10.590326278891
+"Essendon","Jayden","Laverde",9.10033545353813
+"Essendon","Jordan","Ridley",14.8941584520434
+"Essendon","Jye","Caldwell",13.0116837018158
+"Essendon","Jye","Menzie",6.12009339257573
+"Essendon","Kaine","Baldwin",2.98090312047863
+"Essendon","Kyle","Langford",10.6602779685967
+"Essendon","Mason","Redman",17.6163078493985
+"Essendon","Massimo","DAmbrosio",4.58611365246232
+"Essendon","Matt","Guelfi",0.820903426627554
+"Essendon","Nic","Martin",13.3825910724169
+"Essendon","Nick","Hind",6.6421391292845
+"Essendon","Sam","Draper",15.346844484959
+"Essendon","Sam","Durham",9.24165673499817
+"Essendon","Sam","Weideman",5.74035765520713
+"Essendon","Will","Setterfield",14.7006274554269
+"Essendon","Will","Snelling",4.28067009014255
+"Essendon","Zach","Merrett",19.1075017253773
+"Fremantle","Alex","Pearce",13.4743239760246
+"Fremantle","Andrew","Brayshaw",20.3975888448529
+"Fremantle","Bailey","Banfield",7.75604701777602
+"Fremantle","Brandon","Walker",7.3015426605686
+"Fremantle","Brennan","Cox",19.6154854250987
+"Fremantle","Caleb","Serong",23.6275267616871
+"Fremantle","Corey","Wagner",2.56627382116244
+"Fremantle","Ethan","Hughes",13.8722678195445
+"Fremantle","Hayden","Young",16.3874281477818
+"Fremantle","Heath","Chapman",3.15576705964833
+"Fremantle","Jaeger","OMeara",14.6339281261851
+"Fremantle","James","Aish",13.1767423285262
+"Fremantle","Jordan","Clark",13.529645499733
+"Fremantle","Josh","Corbett",0.361171900103976
+"Fremantle","Josh","Treacy",3.24031512124606
+"Fremantle","Jye","Amiss",5.25796474634999
+"Fremantle","Lachie","Schultz",9.51568692753428
+"Fremantle","Liam","Henry",2.89651335944644
+"Fremantle","Luke","Jackson",11.4627000819776
+"Fremantle","Luke","Ryan",19.6613644323698
+"Fremantle","Matthew","Johnson",4.60894309804946
+"Fremantle","Matthew","Taberner",2.4926798622796
+"Fremantle","Michael","Frederick",7.80089758164074
+"Fremantle","Michael","Walters",6.45412113773269
+"Fremantle","Nat","Fyfe",3.43150927247047
+"Fremantle","Nathan","ODriscoll",5.70129496397581
+"Fremantle","Nathan","Wilson",4.97358073645145
+"Fremantle","Neil","Erasmus",3.95896029203423
+"Fremantle","Sam","Sturt",2.01829830626352
+"Fremantle","Sam","Switkowski",10.0363871564132
+"Fremantle","Sean","Darcy",18.1397835838333
+"Fremantle","Will","Brodie",7.52351889834543
+"Geelong","Brad","Close",9.00389790201625
+"Geelong","Brandan","Parfitt",4.16068157679171
+"Geelong","Cameron","Guthrie",9.54898949544796
+"Geelong","Cooper","Whyte",0.410579146602719
+"Geelong","Esava","Ratugolea",16.7685502155423
+"Geelong","Gary","Rohan",4.99311445941717
+"Geelong","Gryan","Miers",13.4888581500711
+"Geelong","Isaac","Smith",14.891972685596
+"Geelong","Jack","Bowes",8.63707440821135
+"Geelong","Jack","Henry",0.747961076015598
+"Geelong","Jake","Kolodjashnij",9.73844689776606
+"Geelong","Jed","Bews",7.24297324598584
+"Geelong","Jeremy","Cameron",12.2435942004986
+"Geelong","Jhye","Clark",0.962698083408043
+"Geelong","Jonathon","Ceglar",6.83010720301104
+"Geelong","Mark","Blicavs",16.7351306981381
+"Geelong","Mark","OConnor",14.2133241474691
+"Geelong","Max","Holmes",16.6242159590333
+"Geelong","Mitch","Duncan",10.3078156116724
+"Geelong","Mitch","Knevitt",5.4382731747063
+"Geelong","Oliver","Dempsey",1.84163093639843
+"Geelong","Oliver","Henry",7.75200704250285
+"Geelong","Patrick","Dangerfield",17.3565283413158
+"Geelong","Rhys","Stanley",7.39632982141063
+"Geelong","Sam","De Koning",7.66865222493166
+"Geelong","Sam","Simpson",3.85864903085534
+"Geelong","Tanner","Bruhn",9.25795626949301
+"Geelong","Tom","Atkins",16.0707458197687
+"Geelong","Tom","Hawkins",7.09059860819387
+"Geelong","Tom","Stewart",17.1258230263906
+"Geelong","Tyson","Stengle",5.40608317009791
+"Geelong","Zach","Guthrie",12.9558573904395
+"Geelong","Zach","Tuohy",13.8713284271708
+"Gold Coast","Alex","Davies",5.6965843700028
+"Gold Coast","Alex","Sexton",2.57856846152462
+"Gold Coast","Bailey","Humphrey",6.74459184549818
+"Gold Coast","Ben","Ainsworth",7.76582982609309
+"Gold Coast","Ben","King",5.94562967559094
+"Gold Coast","Ben","Long",10.4401175777878
+"Gold Coast","Bodhi","Uwland",3.04380969402787
+"Gold Coast","Brandon","Ellis",6.47159684497163
+"Gold Coast","Brayden","Fiorini",11.3205047882599
+"Gold Coast","Charlie","Ballard",14.8730268280356
+"Gold Coast","Charlie","Constable",4.33972047250753
+"Gold Coast","Darcy","MacPherson",15.0537646911407
+"Gold Coast","David","Swallow",14.2359347266941
+"Gold Coast","Elijah","Hollands",3.25533787277142
+"Gold Coast","Hewago","Oea",3.27377659650865
+"Gold Coast","Jack","Lukosius",12.6799673679167
+"Gold Coast","James","Tsitas",1.19952983636409
+"Gold Coast","Jarrod","Witts",14.6150651204213
+"Gold Coast","Joel","Jeffrey",2.73580299223144
+"Gold Coast","Jy","Farrar",3.40840447453994
+"Gold Coast","Lachie","Weller",10.2790440982455
+"Gold Coast","Levi","Casboult",5.85433129389476
+"Gold Coast","Mabior","Chol",5.03294633949373
+"Gold Coast","Mac","Andrew",7.48989793765874
+"Gold Coast","Malcolm","Rosas",6.00443215122906
+"Gold Coast","Matt","Rowell",20.5774742173555
+"Gold Coast","Ned","Moyle",2.16402722295556
+"Gold Coast","Nick","Holman",7.44208416884477
+"Gold Coast","Noah","Anderson",20.0717372321924
+"Gold Coast","Rory","Atkins",6.27543341170445
+"Gold Coast","Sam","Collins",16.3708343567049
+"Gold Coast","Sam","Day",1.40221341441615
+"Gold Coast","Sam","Flanders",2.72559189497552
+"Gold Coast","Sean","Lemmens",7.85157196410264
+"Gold Coast","Tom","Berry",2.35664286986045
+"Gold Coast","Touk","Miller",13.1109437393222
+"Gold Coast","Wil","Powell",14.0185615231544
+"Greater Western Sydney","Aaron","Cadman",3.18902007272371
+"Greater Western Sydney","Adam","Kennedy",3.59499623849204
+"Greater Western Sydney","Brent","Daniels",8.93914796586018
+"Greater Western Sydney","Callan","Ward",10.5870992187957
+"Greater Western Sydney","Callum","Brown",3.31318388475345
+"Greater Western Sydney","Cameron","Fleeton",1.87413851862938
+"Greater Western Sydney","Connor","Idun",16.1667444473806
+"Greater Western Sydney","Conor","Stone",1.87320123533582
+"Greater Western Sydney","Cooper","Hamilton",3.36202998447455
+"Greater Western Sydney","Daniel","Lloyd",6.20704726782809
+"Greater Western Sydney","Finn","Callaghan",11.1998235498682
+"Greater Western Sydney","Harrison","Himmelberg",11.3440017946059
+"Greater Western Sydney","Harry","Perryman",8.79393050790173
+"Greater Western Sydney","Harry","Rowston",4.89961951309003
+"Greater Western Sydney","Isaac","Cumming",13.8934214993713
+"Greater Western Sydney","Jack","Buckley",18.3011520050667
+"Greater Western Sydney","Jacob","Wehr",1.95440184980748
+"Greater Western Sydney","Jake","Riccardi",4.19384807583271
+"Greater Western Sydney","James","Peatling",8.50654253390359
+"Greater Western Sydney","Jesse","Hogan",7.75032204285105
+"Greater Western Sydney","Josh","Kelly",16.7885257662437
+"Greater Western Sydney","Kieren","Briggs",2.04247014590542
+"Greater Western Sydney","Lachie","Ash",15.4889251035102
+"Greater Western Sydney","Lachie","Whitfield",16.3075562861628
+"Greater Western Sydney","Matt","Flynn",15.414147788917
+"Greater Western Sydney","Nick","Haynes",15.2489369648062
+"Greater Western Sydney","Ryan","Angwin",5.3075594675446
+"Greater Western Sydney","Sam","Taylor",8.64269659245465
+"Greater Western Sydney","Stephen","Coniglio",18.5019627351599
+"Greater Western Sydney","Toby","Bedford",3.3080259133153
+"Greater Western Sydney","Toby","Greene",9.32193452665281
+"Greater Western Sydney","Tom","Green",17.7314653243293
+"Greater Western Sydney","Xavier","OHalloran",6.35393375616494
+"Hawthorn","Blake","Hardwick",16.9334642243141
+"Hawthorn","Cam","Mackenzie",7.92939787984474
+"Hawthorn","Chad","Wingard",4.69461728904844
+"Hawthorn","Changkuoth","Jiath",10.3368594728491
+"Hawthorn","Connor","Macdonald",6.19743055118006
+"Hawthorn","Conor","Nash",15.8200942169996
+"Hawthorn","Denver","Grainger-Barras",1.6761638882579
+"Hawthorn","Dylan","Moore",10.7252327526824
+"Hawthorn","Fergus","Greene",4.7055758745741
+"Hawthorn","Finn","Maginness",2.63671300165158
+"Hawthorn","Harry","Morrison",9.18226072147795
+"Hawthorn","Jack","Scrimshaw",4.65006864198431
+"Hawthorn","Jacob","Koschitzke",2.56176740995978
+"Hawthorn","Jai","Newcombe",17.5272337901864
+"Hawthorn","James","Blanck",3.91298371817987
+"Hawthorn","James","Sicily",20.9386433424814
+"Hawthorn","James","Worpel",17.557433190222
+"Hawthorn","Jarman","Impey",11.2980175076902
+"Hawthorn","Josh","Ward",8.50546271592398
+"Hawthorn","Josh","Weddle",4.7360138219275
+"Hawthorn","Karl","Amon",12.5821346636384
+"Hawthorn","Lachlan","Bramble",6.49427658590665
+"Hawthorn","Lloyd","Meek",10.5284470521617
+"Hawthorn","Luke","Breust",6.28366496586796
+"Hawthorn","Max","Lynch",1.01316484883989
+"Hawthorn","Max","Ramsden",0.441291302920959
+"Hawthorn","Mitch","Lewis",2.85106097922438
+"Hawthorn","Ned","Long",1.71392689689734
+"Hawthorn","Ned","Reeves",9.09440015357359
+"Hawthorn","Sam","Butler",2.10986182024999
+"Hawthorn","Sam","Frost",11.6856235149885
+"Hawthorn","Seamus","Mitchell",6.94504804024447
+"Hawthorn","Tyler","Brockman",4.94410154725468
+"Hawthorn","Will","Day",13.3101703695073
+"Melbourne","Adam","Tomlinson",6.31005207624237
+"Melbourne","Alex","Neal-Bullen",11.50538069608
+"Melbourne","Angus","Brayshaw",15.1036018339325
+"Melbourne","Bailey","Laurie",1.47605577762764
+"Melbourne","Bayley","Fritsch",8.13588511423338
+"Melbourne","Ben","Brown",2.65557782482939
+"Melbourne","Brodie","Grundy",16.9256787052012
+"Melbourne","Charlie","Spargo",5.56479542064131
+"Melbourne","Christian","Petracca",22.1713187573085
+"Melbourne","Christian","Salem",1.64996913205843
+"Melbourne","Clayton","Oliver",23.5492226054995
+"Melbourne","Daniel","Turner",0.789129885981996
+"Melbourne","Ed","Langdon",13.6788250341157
+"Melbourne","Harry","Petty",8.02052127200716
+"Melbourne","Jack","Viney",15.5543538134163
+"Melbourne","Jacob","van Rooyen",7.36329204603056
+"Melbourne","Jake","Bowey",14.2045845736944
+"Melbourne","Jake","Lever",13.4355064288646
+"Melbourne","Jake","Melksham",2.68001049276062
+"Melbourne","James","Harmes",3.27224834709025
+"Melbourne","James","Jordon",8.16069701567015
+"Melbourne","Josh","Schache",1.29514367413041
+"Melbourne","Judd","McVee",11.3732626345979
+"Melbourne","Kade","Chandler",9.15363021286507
+"Melbourne","Kysaiah","Pickett",8.9346587543383
+"Melbourne","Lachie","Hunter",14.7247570205109
+"Melbourne","Max","Gawn",11.9888403496152
+"Melbourne","Michael","Hibberd",10.4216690330971
+"Melbourne","Steven","May",18.8041979372694
+"Melbourne","Tom","McDonald",4.73169296538047
+"Melbourne","Tom","Sparrow",11.5916407119549
+"Melbourne","Trent","Rivers",17.5613077908134
+"North Melbourne","Aaron","Hall",4.92953596832052
+"North Melbourne","Aidan","Corr",12.3064390940301
+"North Melbourne","Aiden","Bonar",1.52008357953365
+"North Melbourne","Bailey","Scott",13.0486348701604
+"North Melbourne","Ben","Cunnington",9.79730103444182
+"North Melbourne","Ben","McKay",6.32499696910025
+"North Melbourne","Blake","Drury",1.55852290692504
+"North Melbourne","Callum","Coleman-Jones",1.51367667407672
+"North Melbourne","Cameron","Zurhaar",10.9869055536302
+"North Melbourne","Charlie","Comben",4.76880821594904
+"North Melbourne","Charlie","Lazzaro",0.167227278813233
+"North Melbourne","Curtis","Taylor",8.20896430376907
+"North Melbourne","Daniel","Howe",9.36237988236368
+"North Melbourne","Darcy","Tucker",6.42731063111977
+"North Melbourne","Eddie","Ford",1.62390310737383
+"North Melbourne","Flynn","Perez",1.97818016658895
+"North Melbourne","George","Wardlaw",1.80602637003865
+"North Melbourne","Griffin","Logue",10.4483655177249
+"North Melbourne","Harry","Sheezel",16.4397049850233
+"North Melbourne","Hugh","Greenwood",7.43435088426579
+"North Melbourne","Jack","Mahony",1.86296348178645
+"North Melbourne","Jack","Ziebell",18.7036752598319
+"North Melbourne","Jaidyn","Stephenson",7.45878977974711
+"North Melbourne","Josh","Goater",2.61100667481118
+"North Melbourne","Jy","Simpkin",13.6244470652727
+"North Melbourne","Kayne","Turner",4.18783171684623
+"North Melbourne","Liam","Shiels",12.611268365171
+"North Melbourne","Luke","Davies-Uniacke",12.9597463774714
+"North Melbourne","Luke","McDonald",16.2148173916361
+"North Melbourne","Miller","Bergman",6.18456607742337
+"North Melbourne","Nick","Larkey",5.11005622107714
+"North Melbourne","Paul","Curtis",5.70321861063558
+"North Melbourne","Phoenix","Spicer",1.24581886094617
+"North Melbourne","Todd","Goldstein",15.4278222093155
+"North Melbourne","Tom","Powell",8.96735693527019
+"North Melbourne","Tristan","Xerri",0.60958685086169
+"North Melbourne","Will","Phillips",6.65422962954438
+"Port Adelaide","Aliir","Aliir",15.8541920584216
+"Port Adelaide","Brynn","Teakle",5.30087704890793
+"Port Adelaide","Charlie","Dixon",7.09260774378826
+"Port Adelaide","Connor","Rozee",16.9825551009955
+"Port Adelaide","Dan","Houston",21.3763494895051
+"Port Adelaide","Darcy","Byrne-Jones",9.74157056288294
+"Port Adelaide","Dylan","Williams",12.0335184842853
+"Port Adelaide","Francis","Evans",2.8099672070045
+"Port Adelaide","Jackson","Mead",3.61841711174838
+"Port Adelaide","Jase","Burgoyne",1.6858460978229
+"Port Adelaide","Jason","Horne-Francis",18.8425855020119
+"Port Adelaide","Jed","McEntee",5.59828207572801
+"Port Adelaide","Jeremy","Finlayson",10.4679687171791
+"Port Adelaide","Kane","Farrell",13.0396482220441
+"Port Adelaide","Lachie","Jones",2.9319098423691
+"Port Adelaide","Miles","Bergman",17.5329561414783
+"Port Adelaide","Mitch","Georgiades",1.23521306506848
+"Port Adelaide","Ollie","Lord",3.53299974093836
+"Port Adelaide","Ollie","Wines",15.3317780719218
+"Port Adelaide","Orazio","Fantasia",1.94539887955034
+"Port Adelaide","Riley","Bonner",5.20228341860703
+"Port Adelaide","Ryan","Burton",12.2500998032007
+"Port Adelaide","Sam","Powell-Pepper",10.7627498393455
+"Port Adelaide","Scott","Lycett",8.94996624762282
+"Port Adelaide","Todd","Marshall",6.3044106324064
+"Port Adelaide","Tom","Clurey",1.74421905948214
+"Port Adelaide","Tom","Jonas",10.2544651671606
+"Port Adelaide","Travis","Boak",10.5144035355165
+"Port Adelaide","Trent","McKenzie",12.6317466570228
+"Port Adelaide","Willem","Drew",15.7184586857787
+"Port Adelaide","Willie","Rioli",6.69867349987772
+"Port Adelaide","Xavier","Duursma",7.67889476324311
+"Port Adelaide","Zak","Butters",18.3356702493787
+"Richmond","Ben","Miller",7.75112832352524
+"Richmond","Daniel","Rioli",15.2729780167513
+"Richmond","Dion","Prestia",11.2354914197019
+"Richmond","Dustin","Martin",11.4364335897137
+"Richmond","Dylan","Grimes",12.2913902395919
+"Richmond","Hugo","Ralphsmith",7.9316709160235
+"Richmond","Ivan","Soldo",1.0228971263871
+"Richmond","Jack","Graham",5.94895459274749
+"Richmond","Jack","Riewoldt",7.03419183359089
+"Richmond","Jack","Ross",7.15470447332188
+"Richmond","Jacob","Hopper",15.0628730420312
+"Richmond","Jayden","Short",12.4448271092997
+"Richmond","Judson","Clarke",6.69993853823412
+"Richmond","Kamdyn","McIntosh",12.0982214350947
+"Richmond","Liam","Baker",15.3582735006099
+"Richmond","Marlion","Pickett",11.4542896011067
+"Richmond","Maurice","Rioli",3.16916591883168
+"Richmond","Nathan","Broad",10.3346960021768
+"Richmond","Nick","Vlastuin",19.8123875538284
+"Richmond","Noah","Balta",15.9882298064433
+"Richmond","Noah","Cumberland",4.04398323124916
+"Richmond","Rhyan","Mansell",6.69602307631563
+"Richmond","Samson","Ryan",8.8640422664188
+"Richmond","Shai","Bolton",16.0259274346278
+"Richmond","Thomson","Dow",0.975974974033773
+"Richmond","Tim","Taranto",20.5776089081505
+"Richmond","Toby","Nankervis",9.47446872904377
+"Richmond","Tom","Lynch",3.03615616708142
+"Richmond","Trent","Cotchin",9.98910384534374
+"Richmond","Tylar","Young",10.5007854718517
+"Richmond","Tyler","Sonsie",2.13035032571
+"St Kilda","Anthony","Caminiti",5.20262402018151
+"St Kilda","Ben","Paton",9.99264118221063
+"St Kilda","Brad","Crouch",17.4950764011516
+"St Kilda","Bradley","Hill",11.7890652960778
+"St Kilda","Callum","Wilkie",18.1562312434298
+"St Kilda","Cooper","Sharman",1.84921464065482
+"St Kilda","Dan","Butler",8.36556050182298
+"St Kilda","Dougal","Howard",14.9896908455928
+"St Kilda","Hunter","Clark",14.4419413486545
+"St Kilda","Jack","Bytel",3.63317408158729
+"St Kilda","Jack","Higgins",7.41695679886554
+"St Kilda","Jack","Sinclair",18.651254619802
+"St Kilda","Jack","Steele",13.2930999195119
+"St Kilda","Jade","Gresham",9.0117278769371
+"St Kilda","Jimmy","Webster",3.58142138632326
+"St Kilda","Josh","Battle",15.1392831131499
+"St Kilda","Liam","Stocker",14.079782732711
+"St Kilda","Marcus","Windhager",4.44895373387713
+"St Kilda","Mason","Wood",14.5159792716522
+"St Kilda","Mattaes","Phillipou",9.36487328318784
+"St Kilda","Max","King",0.491392993372504
+"St Kilda","Mitch","Owens",11.2740177952916
+"St Kilda","Nasiah","Wanganeen-Milera",13.939542665337
+"St Kilda","Rowan","Marshall",20.9365690209498
+"St Kilda","Ryan","Byrnes",11.9012108751952
+"St Kilda","Sebastian","Ross",16.0509943880629
+"St Kilda","Tim","Membrey",2.6814140991827
+"St Kilda","Zaine","Cordy",4.97347585714974
+"Sydney","Aaron","Francis",6.48011369472432
+"Sydney","Angus","Sheldrick",1.03706568512826
+"Sydney","Braeden","Campbell",12.5583536453476
+"Sydney","Callum","Mills",12.6804602657325
+"Sydney","Chad","Warner",18.6125840861253
+"Sydney","Corey","Warner",0.704900100626424
+"Sydney","Dane","Rampe",7.31985730666811
+"Sydney","Dylan","Stephens",9.10805259484133
+"Sydney","Errol","Gulden",20.910733119924
+"Sydney","Harry","Cunningham",8.47603135593245
+"Sydney","Hayden","McLean",10.2446062696653
+"Sydney","Isaac","Heeney",10.7945337026704
+"Sydney","Jake","Lloyd",18.3364443968226
+"Sydney","James","Rowbottom",16.8254050466744
+"Sydney","Joel","Amartey",3.35761595718146
+"Sydney","Justin","McInerney",9.38340526464468
+"Sydney","Lachlan","McAndrew",1.45158474365924
+"Sydney","Lance","Franklin",5.41957718483312
+"Sydney","Logan","McDonald",7.14890768185905
+"Sydney","Luke","Parker",17.0063530998653
+"Sydney","Marc","Sheather",1.60109598050837
+"Sydney","Matt","Roberts",3.99837084952309
+"Sydney","Nick","Blakey",18.3400450773449
+"Sydney","Oliver","Florent",13.9811792191225
+"Sydney","Paddy","McCartin",5.18971800054849
+"Sydney","Peter","Ladhams",15.2355898195586
+"Sydney","Robbie","Fox",8.52012424261381
+"Sydney","Ryan","Clarke",3.01420194438262
+"Sydney","Tom","Hickey",1.07528541380126
+"Sydney","Tom","McCartin",7.79345626857936
+"Sydney","Tom","Papley",11.5478890000606
+"Sydney","Will","Gould",5.12898458774014
+"Sydney","Will","Hayward",8.9011974243147
+"West Coast","Alex","Witherden",14.5606353234879
+"West Coast","Andrew","Gaff",11.1630774694091
+"West Coast","Bailey","Williams",15.6570203028891
+"West Coast","Brady","Hough",3.06790854137058
+"West Coast","Callum","Jamieson",2.57627341388757
+"West Coast","Campbell","Chesser",2.90365722704467
+"West Coast","Connor","West",5.18510792609741
+"West Coast","Dom","Sheed",9.31822023641106
+"West Coast","Elijah","Hewett",1.86283382718285
+"West Coast","Elliot","Yeo",2.92619515774062
+"West Coast","Greg","Clark",5.36999923183685
+"West Coast","Harry","Edwards",2.52483821458462
+"West Coast","Jack","Darling",6.30208931079013
+"West Coast","Jack","Petruccelle",6.81860950431878
+"West Coast","Jai","Culley",2.87072202866708
+"West Coast","Jake","Waterman",7.71509787795946
+"West Coast","Jamaine","Jones",12.4142963801251
+"West Coast","Jamie","Cripps",1.70278495520105
+"West Coast","Jayden","Hunt",14.4646041635461
+"West Coast","Jeremy","McGovern",5.46664829032088
+"West Coast","Josh","Rotham",7.40148797826924
+"West Coast","Liam","Duggan",15.9643175948005
+"West Coast","Liam","Ryan",2.60322373575896
+"West Coast","Luke","Edwards",5.6946865357779
+"West Coast","Luke","Foley",4.07375648013417
+"West Coast","Luke","Shuey",6.34270787230203
+"West Coast","Noah","Long",4.49010025094924
+"West Coast","Oscar","Allen",6.83703641201147
+"West Coast","Reuben","Ginbey",12.0303687524235
+"West Coast","Rhett","Bazzo",1.27471130217828
+"West Coast","Sam","Petrevski-Seton",5.49023066737797
+"West Coast","Shannon","Hurn",10.1259047274036
+"West Coast","Tim","Kelly",17.6487033316665
+"West Coast","Tom","Barrass",15.7867173493465
+"West Coast","Tom","Cole",5.29945392903252
+"West Coast","Xavier","ONeill",6.16551774509251
+"West Coast","Zane","Trew",1.64783371378594
+"Western Bulldogs","Aaron","Naughton",8.69705171338524
+"Western Bulldogs","Adam","Treloar",12.4994213141985
+"Western Bulldogs","Alex","Keath",11.0347234642549
+"Western Bulldogs","Anthony","Scott",8.89032578074171
+"Western Bulldogs","Arthur","Jones",6.39254298637672
+"Western Bulldogs","Bailey","Dale",14.6645741040222
+"Western Bulldogs","Bailey","Smith",15.4236521556997
+"Western Bulldogs","Bailey","Williams",10.4528151016628
+"Western Bulldogs","Caleb","Daniel",16.662884288913
+"Western Bulldogs","Cody","Weightman",5.15830336554333
+"Western Bulldogs","Ed","Richards",18.426573973084
+"Western Bulldogs","Hayden","Crozier",3.62197644989877
+"Western Bulldogs","Jack","Macrae",17.9902217891436
+"Western Bulldogs","Jamarra","Ugle-Hagan",6.74909517649662
+"Western Bulldogs","James","ODonnell",1.33256861158311
+"Western Bulldogs","Jason","Johannisen",11.2308814141405
+"Western Bulldogs","Josh","Bruce",5.5301728025938
+"Western Bulldogs","Lachlan","McNeil",3.24704576829812
+"Western Bulldogs","Liam","Jones",15.205323372544
+"Western Bulldogs","Marcus","Bontempelli",24.1665728352233
+"Western Bulldogs","Mitch","Hannan",1.84327809637823
+"Western Bulldogs","Oskar","Baker",11.2879107658021
+"Western Bulldogs","Rhylee","West",0.471295764252528
+"Western Bulldogs","Riley","Garcia",1.00481290346633
+"Western Bulldogs","Robbie","McComb",1.47461425891407
+"Western Bulldogs","Rory","Lobb",7.48279719085306
+"Western Bulldogs","Ryan","Gardner",4.98772815223226
+"Western Bulldogs","Sam","Darcy",1.26772070432156
+"Western Bulldogs","Taylor","Duryea",9.56317114851067
+"Western Bulldogs","Tim","English",18.5474171649533
+"Western Bulldogs","Tim","OBrien",6.6477066163078
+"Western Bulldogs","Toby","McLean",3.08041994935539
+"Western Bulldogs","Tom","Liberatore",17.7088954250246

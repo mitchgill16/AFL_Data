@@ -36,7 +36,11 @@ def clean_match_stats(team_dict, team_int):
     current_team = (team_dict[str(team_int)])
     print(current_team)
     df = pd.read_excel("Data/"+current_team+'_stats.xlsx')
+    df= df.drop(df.filter(regex='\.\d').columns, axis=1)
+    print(df.dtypes)
+    #df = df.drop_duplicates()
     df = df.T
+    print(df.tail())
     df.columns = df.iloc[0]
     df = df[1:]
     headers = []

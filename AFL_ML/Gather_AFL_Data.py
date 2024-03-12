@@ -302,6 +302,11 @@ class gatherer:
     #along with the first set of statistics
     #otherwise it opens the existing file and adds the relevant stats into the next open column
     def write_to_excel(self, team, stat_array, match_count):
+        #combine 150 + 200 game
+        stat_array[42] = stat_array[42] + stat_array[43]
+        stat_array[89] = stat_array[89] + stat_array[90]
+        stat_array.pop(43)
+        stat_array.pop(89)
         if(not(self.path.exists("Data/"+team+'_stats.xlsx'))):
             wb = self.Workbook()
             ws = wb.active
