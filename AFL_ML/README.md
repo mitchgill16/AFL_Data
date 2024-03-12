@@ -12,7 +12,6 @@ Make sure you also have R installed along with tidyverse & fitzRoy(https://githu
 - upload to GIThub
 - update gether Afl data to be for 2024
 - check logic of PAV
-- how to handle round 0 and bye rounds
-- retrain models on the most up to date data
-- check venue alias
+- manually add in round 0 and bye rounds
+- retrain models on the most up to date data from 2021 onwards only though
 - can we predict round 1
