@@ -311,7 +311,8 @@ def create_venue_alias_dict():
         "Heritage Bank Stadium" : "Metricon Stadium",
         "UTAS Stadium" : "University of Tasmania Statium",
         "AAMI Stadium" : "Adelaide Oval",
-        "Domain Statium" : "Optus Stadium"
+        "Domain Statium" : "Optus Stadium",
+        "ENGIE Stadium" : "GIANTS Stadium"
         }
     return vDict
 

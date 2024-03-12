@@ -6,3 +6,13 @@ Install conda packages within the requirements.txt
   the experimentation process
 
 Make sure you also have R installed along with tidyverse & fitzRoy(https://github.com/jimmyday12/fitzRoy)
+
+#to do
+- update remaining rounds through to finals
+- upload to GIThub
+- update gether Afl data to be for 2024
+- check logic of PAV
+- how to handle round 0 and bye rounds
+- retrain models on the most up to date data
+- check venue alias
+- can we predict round 1
