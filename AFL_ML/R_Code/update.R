@@ -18,7 +18,7 @@ combined_venues <- rbind(all_venues, venue) %>% distinct()
 combined_venues$match.homeTeam.name <- gsub("SUNS", "Suns", combined_venues$match.homeTeam.name)
 combined_venues$match.homeTeam.name <- gsub("GIANTS", "Giants", combined_venues$match.homeTeam.name)
 combined_venues$match.awayTeam.name <- gsub("SUNS", "Suns", combined_venues$match.awayTeam.name)
-combined_venues$match.awayTeam.name <- gsub("SUNS", "Giants", combined_venues$match.awayTeam.name)
+combined_venues$match.awayTeam.name <- gsub("GIANTS", "Giants", combined_venues$match.awayTeam.name)
 
 write.csv(combined_venues, "R_Code/all_venues.csv", row.names=FALSE)
 

@@ -16,7 +16,7 @@ y <- test[c(5,1:4)]
 
 #remove emergency check
 for (team in c("Adelaide Crows", "Brisbane Lions", "Carlton", "Collingwood", "Essendon", "Fremantle",
-               "Geelong Cats", "Gold Coast Suns", "GWS Giants", "Hawthorn", "Melbourne", "North Melbourne",
+               "Geelong Cats", "Gold Coast SUNS", "GWS GIANTS", "Hawthorn", "Melbourne", "North Melbourne",
                "Port Adelaide", "Richmond", "St Kilda", "Sydney Swans", "West Coast Eagles", "Western Bulldogs")){
   print(team)
   z <- y[y$teamName == team,]
@@ -26,5 +26,7 @@ for (team in c("Adelaide Crows", "Brisbane Lions", "Carlton", "Collingwood", "Es
   x <- rbind(x,z)
 }
 
+x$teamName <- gsub("SUNS", "Suns", x$teamName)
+x$teamName <- gsub("GIANTS", "Giants", x$teamName)
 
 write.csv(x, "R_Code/all_lineups.csv", row.names=FALSE)
