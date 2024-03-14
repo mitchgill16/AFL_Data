@@ -452,6 +452,8 @@ def main():
 
         venue = venues[i]
         tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        print("n = 2")
+        print(tip)
         tip_array.append(tip[0])
         margin_tip_array.append(margin_tip)
         i = i + 1
@@ -467,6 +469,8 @@ def main():
 
         venue = venues[i]
         tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        print("n = 10")
+        print(tip)
         tip_array.append(tip[0])
         margin_tip_array.append(margin_tip)
         i = i + 1
@@ -482,14 +486,22 @@ def main():
 
         venue = venues[i]
         tip, margin_tip = predict(home_id, away_id, venue, predict_round_num, home_pav, away_pav, n, teams)
+        print("n = 3")
+        print(tip)
         tip_array.append(tip[0])
         margin_tip_array.append(margin_tip)
         i = i + 1
 
     l = len(tip_array)
-    tip_df = pd.DataFrame({'n=2': tip_array[0:l:3], 'n=3':tip_array[1:l:3], 'n=10':tip_array[2:l:3]})
+    tip_games = int(l/3)
+    tip_df = pd.DataFrame({'n=2': tip_array[0:1*tip_games],
+     'n=3':tip_array[2*tip_games:3*tip_games],
+     'n=10':tip_array[1*tip_games:2*tip_games]})
     tip_df['mean'] = tip_df.mean(axis=1)
-    margin_df = pd.DataFrame({'n=2': margin_tip_array[0:l:3], 'n=3':margin_tip_array[1:l:3], 'n=10':margin_tip_array[2:l:3]})
+    print(tip_df)
+    margin_df = pd.DataFrame({'n=2': margin_tip_array[0:1*tip_games],
+     'n=3':margin_tip_array[2*tip_games:3*tip_games],
+     'n=10':margin_tip_array[1*tip_games:2*tip_games]})
     margin_df['mean'] = margin_df.mean(axis=1)
 
     i=start_match
