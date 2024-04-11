@@ -15,10 +15,10 @@ venue <- select(results, round.year, round.roundNumber,
             match.homeTeam.name, match.awayTeam.name, venue.name)
 
 
-combined_venues$match.homeTeam.name <- gsub("SUNS", "Suns", combined_venues$match.homeTeam.name)
-combined_venues$match.homeTeam.name <- gsub("GIANTS", "Giants", combined_venues$match.homeTeam.name)
-combined_venues$match.awayTeam.name <- gsub("SUNS", "Suns", combined_venues$match.awayTeam.name)
-combined_venues$match.awayTeam.name <- gsub("GIANTS", "Giants", combined_venues$match.awayTeam.name)
+venue$match.homeTeam.name <- gsub("SUNS", "Suns", venue$match.homeTeam.name)
+venue$match.homeTeam.name <- gsub("GIANTS", "Giants", venue$match.homeTeam.name)
+venue$match.awayTeam.name <- gsub("SUNS", "Suns", venue$match.awayTeam.name)
+venue$match.awayTeam.name <- gsub("GIANTS", "Giants", venue$match.awayTeam.name)
 
 combined_venues <- rbind(all_venues, venue) %>% distinct()
 

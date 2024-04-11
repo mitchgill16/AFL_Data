@@ -15,6 +15,13 @@ venue <- select(results, utcStartTime, round.roundNumber,
 venue$utcStartTime <- substr(venue$utcStartTime,0,4)
 venue <- venue %>% rename(round.year = utcStartTime, match.homeTeam.name = home.team.name, match.awayTeam.name = away.team.name)
 
+venue$match.homeTeam.name <- gsub("SUNS", "Suns", venue$match.homeTeam.name)
+venue$match.homeTeam.name <- gsub("GIANTS", "Giants", venue$match.homeTeam.name)
+venue$match.awayTeam.name <- gsub("SUNS", "Suns", venue$match.awayTeam.name)
+venue$match.awayTeam.name <- gsub("GIANTS", "Giants", venue$match.awayTeam.name)
+
+
+print(venue)
 
 combined_venues <- rbind(all_venues, venue) %>% distinct()
 

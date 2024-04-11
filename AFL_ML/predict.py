@@ -250,7 +250,7 @@ def calc_sum_pav(year, rnd, team_int):
     lineups['team'] = team_int
     reduced = False
     #still waiting on PAVS
-    if(rnd < 7):
+    if(rnd < 3):
         lineups['year'] = (year-1)
         reduced = True
     lineups.columns = ['year', 'teamname', 'roundNumber', 'firstname', 'surname', 'team']

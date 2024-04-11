@@ -4517,3 +4517,57 @@
 2024,1,"North Melbourne",16,"L",0,1,0
 2024,1,"Western Bulldogs",17,"L",0,1,0
 2024,1,"West Coast Eagles",18,"L",0,1,0
+2024,2,"GWS Giants",1,"WWW",3,0,0
+2024,2,"Sydney Swans",2,"WWW",3,0,0
+2024,2,"Port Adelaide",3,"WW",2,0,0
+2024,2,"Melbourne",4,"LWW",2,1,0
+2024,2,"Fremantle",5,"WW",2,0,0
+2024,2,"Geelong Cats",6,"WW",2,0,0
+2024,2,"Carlton",7,"WW",2,0,0
+2024,2,"Gold Coast Suns",8,"WWL",2,1,0
+2024,2,"St Kilda",9,"LW",1,1,0
+2024,2,"Western Bulldogs",10,"LW",1,1,0
+2024,2,"Essendon",11,"WL",1,1,0
+2024,2,"Brisbane Lions",12,"LL",0,2,0
+2024,2,"Adelaide Crows",13,"LL",0,2,0
+2024,2,"Richmond",14,"LLL",0,3,0
+2024,2,"Collingwood",15,"LLL",0,3,0
+2024,2,"North Melbourne",16,"LL",0,2,0
+2024,2,"Hawthorn",17,"LL",0,2,0
+2024,2,"West Coast Eagles",18,"LL",0,2,0
+2024,3,"GWS GIANTS",1,"WWW",3,0,0
+2024,3,"Fremantle",2,"WWW",3,0,0
+2024,3,"Melbourne",3,"LWWW",3,1,0
+2024,3,"Geelong Cats",4,"WWW",3,0,0
+2024,3,"Sydney Swans",5,"WWWL",3,1,0
+2024,3,"Carlton",6,"WWW",3,0,0
+2024,3,"Western Bulldogs",7,"LWW",2,1,0
+2024,3,"Port Adelaide",8,"WWL",2,1,0
+2024,3,"Essendon",9,"WLW",2,1,0
+2024,3,"Gold Coast SUNS",10,"WWL",2,1,0
+2024,3,"St Kilda",11,"LWL",1,2,0
+2024,3,"Collingwood",12,"LLLW",1,3,0
+2024,3,"Richmond",13,"LLLW",1,3,0
+2024,3,"Brisbane Lions",14,"LLL",0,3,0
+2024,3,"Adelaide Crows",15,"LLL",0,3,0
+2024,3,"North Melbourne",16,"LLL",0,3,0
+2024,3,"Hawthorn",17,"LLL",0,3,0
+2024,3,"West Coast Eagles",18,"LLL",0,3,0
+2024,4,"GWS GIANTS",1,"WWWW",4,0,0
+2024,4,"Melbourne",2,"LWWWW",4,1,0
+2024,4,"Sydney Swans",3,"WWWLW",4,1,0
+2024,4,"Carlton",4,"WWWW",4,0,0
+2024,4,"Geelong Cats",5,"WWWW",4,0,0
+2024,4,"Port Adelaide",6,"WWLW",3,1,0
+2024,4,"Fremantle",7,"WWWL",3,1,0
+2024,4,"Western Bulldogs",8,"LWWL",2,2,0
+2024,4,"St Kilda",9,"LWLW",2,2,0
+2024,4,"Gold Coast SUNS",10,"WWLL",2,2,0
+2024,4,"Collingwood",11,"LLLWW",2,3,0
+2024,4,"Essendon",12,"WLWL",2,2,0
+2024,4,"Brisbane Lions",13,"LLLW",1,3,0
+2024,4,"Richmond",14,"LLLWL",1,4,0
+2024,4,"Adelaide Crows",15,"LLLL",0,4,0
+2024,4,"Hawthorn",16,"LLLL",0,4,0
+2024,4,"North Melbourne",17,"LLLL",0,4,0
+2024,4,"West Coast Eagles",18,"LLLL",0,4,0
