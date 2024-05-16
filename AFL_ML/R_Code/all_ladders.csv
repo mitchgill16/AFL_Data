@@ -4571,3 +4571,93 @@
 2024,4,"Hawthorn",16,"LLLL",0,4,0
 2024,4,"North Melbourne",17,"LLLL",0,4,0
 2024,4,"West Coast Eagles",18,"LLLL",0,4,0
+2024,5,"GWS GIANTS",1,"WWWWW",5,0,0
+2024,5,"Geelong Cats",2,"WWWWW",5,0,0
+2024,5,"Port Adelaide",3,"WWLWW",4,1,0
+2024,5,"Sydney Swans",4,"WWWLW",4,1,0
+2024,5,"Melbourne",5,"LWWWWL",4,2,0
+2024,5,"Carlton",6,"WWWWL",4,1,0
+2024,5,"Fremantle",7,"WWWLL",3,2,0
+2024,5,"Gold Coast SUNS",8,"WWLLW",3,2,0
+2024,5,"Essendon",9,"WLWLW",3,2,0
+2024,5,"Brisbane Lions",10,"LLLWW",2,3,0
+2024,5,"Western Bulldogs",11,"LWWLL",2,3,0
+2024,5,"St Kilda",12,"LWLWL",2,3,0
+2024,5,"Collingwood",13,"LLLWW",2,3,0
+2024,5,"Adelaide Crows",14,"LLLLW",1,4,0
+2024,5,"Richmond",15,"LLLWLL",1,5,0
+2024,5,"West Coast Eagles",16,"LLLLW",1,4,0
+2024,5,"Hawthorn",17,"LLLLL",0,5,0
+2024,5,"North Melbourne",18,"LLLLL",0,5,0
+2024,6,"Geelong Cats",1,"WWWWWW",6,0,0
+2024,6,"Sydney Swans",2,"WWWLWW",5,1,0
+2024,6,"GWS GIANTS",3,"WWWWWL",5,1,0
+2024,6,"Carlton",4,"WWWWLW",5,1,0
+2024,6,"Port Adelaide",5,"WWLWWL",4,2,0
+2024,6,"Melbourne",6,"LWWWWL",4,2,0
+2024,6,"Essendon",7,"WLWLWW",4,2,0
+2024,6,"Western Bulldogs",8,"LWWLLW",3,3,0
+2024,6,"Fremantle",9,"WWWLLL",3,3,0
+2024,6,"Collingwood",10,"LLLWWW",3,3,0
+2024,6,"Gold Coast SUNS",11,"WWLLWL",3,3,0
+2024,6,"Brisbane Lions",12,"LLLWWL",2,4,0
+2024,6,"St Kilda",13,"LWLWLL",2,4,0
+2024,6,"West Coast Eagles",14,"LLLLWW",2,4,0
+2024,6,"Adelaide Crows",15,"LLLLWL",1,5,0
+2024,6,"Richmond",16,"LLLWLL",1,5,0
+2024,6,"Hawthorn",17,"LLLLLW",1,5,0
+2024,6,"North Melbourne",18,"LLLLLL",0,6,0
+2024,7,"Geelong Cats",1,"WWWWWWW",7,0,0
+2024,7,"Sydney Swans",2,"WWWLWWW",6,1,0
+2024,7,"GWS GIANTS",3,"WWWWWLW",6,1,0
+2024,7,"Melbourne",4,"LWWWWLW",5,2,0
+2024,7,"Port Adelaide",5,"WWLWWLW",5,2,0
+2024,7,"Carlton",6,"WWWWLWL",5,2,0
+2024,7,"Essendon",7,"WLWLWWD",4,2,1
+2024,7,"Fremantle",8,"WWWLLLW",4,3,0
+2024,7,"Gold Coast SUNS",9,"WWLLWLW",4,3,0
+2024,7,"Collingwood",10,"LLLWWWD",3,3,1
+2024,7,"Western Bulldogs",11,"LWWLLWL",3,4,0
+2024,7,"Adelaide Crows",12,"LLLLWLW",2,5,0
+2024,7,"Brisbane Lions",13,"LLLWWLL",2,5,0
+2024,7,"St Kilda",14,"LWLWLLL",2,5,0
+2024,7,"West Coast Eagles",15,"LLLLWWL",2,5,0
+2024,7,"Richmond",16,"LLLWLLL",1,6,0
+2024,7,"Hawthorn",17,"LLLLLWL",1,6,0
+2024,7,"North Melbourne",18,"LLLLLLL",0,7,0
+2024,8,"Sydney Swans",1,"WWWLWWWW",7,1,0
+2024,8,"Geelong Cats",2,"WWWWWWWL",7,1,0
+2024,8,"GWS GIANTS",3,"WWWWWLWL",6,2,0
+2024,8,"Melbourne",4,"LWWWWLWW",6,2,0
+2024,8,"Essendon",5,"WLWLWWDW",5,2,1
+2024,8,"Fremantle",6,"WWWLLLWW",5,3,0
+2024,8,"Port Adelaide",7,"WWLWWLWL",5,3,0
+2024,8,"Carlton",8,"WWWWLWLL",5,3,0
+2024,8,"Collingwood",9,"LLLWWWDW",4,3,1
+2024,8,"Gold Coast SUNS",10,"WWLLWLWL",4,4,0
+2024,8,"Western Bulldogs",11,"LWWLLWLL",3,5,0
+2024,8,"Adelaide Crows",12,"LLLLWLWW",3,5,0
+2024,8,"Brisbane Lions",13,"LLLWWLLW",3,5,0
+2024,8,"St Kilda",14,"LWLWLLLW",3,5,0
+2024,8,"West Coast Eagles",15,"LLLLWWLL",2,6,0
+2024,8,"Hawthorn",16,"LLLLLWLW",2,6,0
+2024,8,"Richmond",17,"LLLWLLLL",1,7,0
+2024,8,"North Melbourne",18,"LLLLLLLL",0,8,0
+2024,9,"Sydney Swans",1,"WWWLWWWWW",8,1,0
+2024,9,"Geelong Cats",2,"WWWWWWWLL",7,2,0
+2024,9,"Essendon",3,"WLWLWWDWW",6,2,1
+2024,9,"Melbourne",4,"LWWWWLWWL",6,3,0
+2024,9,"GWS GIANTS",5,"WWWWWLWLL",6,3,0
+2024,9,"Port Adelaide",6,"WWLWWLWLW",6,3,0
+2024,9,"Carlton",7,"WWWWLWLLW",6,3,0
+2024,9,"Collingwood",8,"LLLWWWDWW",5,3,1
+2024,9,"Fremantle",9,"WWWLLLWWL",5,4,0
+2024,9,"Gold Coast SUNS",10,"WWLLWLWLW",5,4,0
+2024,9,"Western Bulldogs",11,"LWWLLWLLW",4,5,0
+2024,9,"Adelaide Crows",12,"LLLLWLWWD",3,5,1
+2024,9,"Brisbane Lions",13,"LLLWWLLWD",3,5,1
+2024,9,"St Kilda",14,"LWLWLLLWL",3,6,0
+2024,9,"Hawthorn",15,"LLLLLWLWW",3,6,0
+2024,9,"West Coast Eagles",16,"LLLLWWLLL",2,7,0
+2024,9,"Richmond",17,"LLLWLLLLL",1,8,0
+2024,9,"North Melbourne",18,"LLLLLLLLL",0,9,0
